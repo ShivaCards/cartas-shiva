@@ -16,6 +16,7 @@
       min-height: 180vh;
       background-color: rgba(0, 0, 0, 0.2);
       user-select: none;
+      overflow-x: hidden;
     }
     header {
       padding: 50px 10px 40px;
@@ -70,7 +71,7 @@
       align-items: center;
       gap: 10px;
       position: relative;
-      left: 20px;
+      left: -50px;
     }
     .buscador input, .buscador select {
       padding: 10px;
@@ -95,14 +96,13 @@
       background-position: center;
     }
     @keyframes rebotar {
-      0% { transform: translateY(0); }
+      0%, 100% { transform: translateY(0); }
       30% { transform: translateY(-20px) scaleY(1.1); }
-      60% { transform: translateY(0) scaleY(0.9); }
-      80% { transform: translateY(-10px) scaleY(1.05); }
-      100% { transform: translateY(0) scaleY(1); }
+      50% { transform: translateY(0) scaleY(0.9); }
+      70% { transform: translateY(-10px) scaleY(1.05); }
     }
     .rebote {
-      animation: rebotar 0.5s ease-out;
+      animation: rebotar 0.6s ease-out;
     }
   </style>
   <script>
@@ -124,9 +124,9 @@
     }
 
     function hacerRebotar() {
-      const c = document.querySelector("#titulo .large");
+      const c = document.querySelector("h1 span.large");
       c.classList.add("rebote");
-      setTimeout(() => c.classList.remove("rebote"), 500);
+      setTimeout(() => c.classList.remove("rebote"), 600);
     }
 
     document.addEventListener("DOMContentLoaded", mostrarCartas);
@@ -166,4 +166,3 @@
   <div class="galeria"></div>
 </body>
 </html>
-
