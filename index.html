@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cartas Shiva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('images/fondo.png');
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Cinzel', serif;
+      color: #e0a800;
+      text-align: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    header {
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 4px #000;
+      letter-spacing: 3px;
+    }
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .carta {
+      width: 200px;
+      height: 280px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .carta:hover {
+      transform: translateY(-8px) rotateY(5deg);
+      transition: transform 0.5s ease;
+    }
+    .carta.zoom {
+      transition: transform 0.2s ease-in-out;
+      transform: scale(1.5) translateY(-8px);
+      z-index: 10;
+    }
+    .carta.girada {
+      transform: rotateY(180deg) scale(1.5) translateY(-8px);
+      transition: transform 0.8s ease;
+    }
+    .cara {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .reverso {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>CARTAS SHIVA</h1>
+    <p>El destino del reino está en tus manos</p>
+  </header>
+
+  <div class="galeria">
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onwheel="zoomCarta(event, this)">
+      <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
+      <div class="cara reverso" style="background-image: url('images/reverso_militar.png')"></div>
+    </div>
+
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onwheel="zoomCarta(event, this)">
+      <div class="cara" style="background-image: url('images/huargo.png')"></div>
+      <div class="cara reverso" style="background-image: url('images/reverso_bestia.png')"></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleZoom(carta) {
+      if (carta.classList.contains('girada')) return;
+      carta.classList.toggle('zoom');
+      if (carta.classList.contains('zoom')) {
+        carta.style.zIndex = '20';
+      } else {
+        carta.style.zIndex = '';
+        carta.style.transform = '';
+      }
+    }
+
+    let isDragging = false;
+    function startRotate(event, carta) {
+      if (!carta.classList.contains('zoom')) return;
+      isDragging = true;
+      carta.style.transition = 'none';
+      document.onmousemove = () => {
+        if (isDragging) {
+          carta.style.transform = 'rotateY(180deg) scale(1.5) translateY(-8px)';
+        }
+      };
+    }
+
+    function endRotate(carta) {
+      if (!isDragging) return;
+      isDragging = false;
+      carta.style.transition = 'transform 0.8s ease';
+      carta.style.transform = 'scale(1.5) translateY(-8px)';
+      document.onmousemove = null;
+    }
+
+    function zoomCarta(event, carta) {
+      if (!carta.classList.contains('zoom')) return;
+      event.preventDefault();
+      let scale = parseFloat(carta.dataset.scale || 1.5);
+      let delta = event.deltaY * -0.001;
+      scale = Math.min(Math.max(1.5, scale + delta), 2.5);
+      carta.dataset.scale = scale;
+      carta.style.transform = `scale(${scale}) translateY(-8px)`;
+    }
+  </script>
+</body>
+</html>
