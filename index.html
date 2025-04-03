@@ -69,6 +69,8 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      position: relative;
+      left: 20px;
     }
     .buscador input, .buscador select {
       padding: 10px;
@@ -92,6 +94,16 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+    @keyframes rebotar {
+      0% { transform: translateY(0); }
+      30% { transform: translateY(-20px) scaleY(1.1); }
+      60% { transform: translateY(0) scaleY(0.9); }
+      80% { transform: translateY(-10px) scaleY(1.05); }
+      100% { transform: translateY(0) scaleY(1); }
+    }
+    .rebote {
+      animation: rebotar 0.5s ease-out;
+    }
   </style>
   <script>
     const cartas = [
@@ -100,19 +112,10 @@
       { nombre: "Orco Berserker", tipo: "Bestia", grupo: "Horda", nivel: 4, imagen: "images/carta3.png" }
     ];
 
-    function mostrarCartas(filtro = "", criterio = "") {
+    function mostrarCartas() {
       const galeria = document.querySelector(".galeria");
       galeria.innerHTML = "";
-      let cartasFiltradas = [...cartas];
-      
-      if (filtro === "tipo" || filtro === "grupo") {
-        cartasFiltradas = cartasFiltradas.filter(carta => carta.tipo === criterio || carta.grupo === criterio);
-      }
-      if (filtro === "nivel") {
-        cartasFiltradas.sort((a, b) => a.nivel - b.nivel);
-      }
-
-      cartasFiltradas.forEach(carta => {
+      cartas.forEach(carta => {
         const div = document.createElement("div");
         div.classList.add("carta");
         div.style.backgroundImage = `url('${carta.imagen}')`;
@@ -120,12 +123,13 @@
       });
     }
 
-    document.addEventListener("DOMContentLoaded", () => mostrarCartas());
+    function hacerRebotar() {
+      const c = document.querySelector("#titulo .large");
+      c.classList.add("rebote");
+      setTimeout(() => c.classList.remove("rebote"), 500);
+    }
 
-    document.getElementById("buscador").addEventListener("input", function() {
-      const termino = this.value.toLowerCase();
-      mostrarCartas("nombre", termino);
-    });
+    document.addEventListener("DOMContentLoaded", mostrarCartas);
   </script>
 </head>
 <body>
@@ -150,9 +154,10 @@
 
   <div class="buscador">
     <input type="text" id="buscador" placeholder="Buscar cartas...">
-    <select id="filtro">
+    <select>
       <option value="">Filtrar por...</option>
       <option value="tipo">Tipo</option>
+      <option value="atk">ATK</option>
       <option value="nivel">Nivel</option>
       <option value="grupo">Grupo</option>
     </select>
