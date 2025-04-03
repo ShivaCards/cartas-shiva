@@ -49,9 +49,6 @@
       transform: scale(1.5) translateY(-8px);
       z-index: 10;
     }
-    .carta.zoom-max {
-      transform: scale(1.8) translateY(-8px);
-    }
     .carta.girada {
       transform: rotateY(180deg) scale(1.5) translateY(-8px);
       transition: transform 0.6s ease;
@@ -74,16 +71,16 @@
 <body>
   <header>
     <h1>CARTAS SHIVA</h1>
-    <p>El destino del reino está en tus manos</p>
+    <p>El os</p>
   </header>
 
   <div class="galeria">
-    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onwheel="zoomCarta(event, this)">
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)">
       <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
       <div class="cara reverso" style="background-image: url('images/reverso_militar.png')"></div>
     </div>
 
-    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onwheel="zoomCarta(event, this)">
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)">
       <div class="cara" style="background-image: url('images/huargo.png')"></div>
       <div class="cara reverso" style="background-image: url('images/reverso_bestia.png')"></div>
     </div>
@@ -93,32 +90,21 @@
     function toggleZoom(carta) {
       if (carta.classList.contains('girada')) return;
       carta.classList.toggle('zoom');
-      carta.classList.remove('zoom-max');
-    }
-
-    function zoomCarta(event, carta) {
-      if (!carta.classList.contains('zoom')) return;
-      event.preventDefault();
-      if (!carta.classList.contains('zoom-max')) {
-        carta.classList.add('zoom-max');
-      } else {
-        carta.classList.remove('zoom-max');
-      }
     }
 
     let isDragging = false;
     function startRotate(event, carta) {
       if (!carta.classList.contains('zoom')) return;
       isDragging = true;
-      carta.style.transition = 'transform 0.6s ease';
-      carta.classList.add('girada');
+      carta.style.transition = 'none';
+      carta.style.transform = 'rotateY(180deg) scale(1.5) translateY(-8px)';
     }
 
     function endRotate(carta) {
       if (!isDragging) return;
       isDragging = false;
-      carta.classList.remove('girada');
       carta.style.transition = 'transform 0.6s ease';
+      carta.style.transform = 'scale(1.5) translateY(-8px)';
     }
   </script>
 </body>
