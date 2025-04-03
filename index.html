@@ -34,15 +34,6 @@
       font-size: 1.8em;
       text-transform: uppercase;
     }
-    h1 span {
-      transition: text-shadow 1s ease-in-out;
-    }
-    h1:hover span {
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.7), 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-    h1:hover span.active {
-      text-shadow: 0 0 15px rgba(255, 215, 0, 1);
-    }
     p {
       margin-top: -30px;
       font-size: 0.8em;
@@ -64,13 +55,6 @@
     .categorias a:hover {
       text-shadow: 0 0 100px rgba(255, 215, 0, 1), 0 0 150px rgba(255, 215, 0, 1);
       transform: scale(1.3);
-    }
-    .separador, .separador-2 {
-      width: 80%;
-      height: 4px;
-      background: linear-gradient(to right, transparent, #6a4a08, transparent);
-      box-shadow: 0 0 15px rgba(74, 59, 8, 0.8);
-      margin: 5px auto;
     }
     .buscador {
       text-align: left;
@@ -112,15 +96,11 @@
     <p>"El destino del reino está en tus manos"</p>
   </header>
 
-  <div class="separador"></div>
-
   <nav class="categorias">
     <a href="#">Reglas del Juego</a>
     <a href="#">Glosario</a>
     <a href="#">Mitos y Leyendas</a>
   </nav>
-
-  <div class="separador-2"></div>
 
   <div class="buscador">
     <label for="search">Buscar carta:</label>
@@ -140,6 +120,12 @@
     </div>
 
     <div class="carta">
+      <div class="cara" style="background-image: url('images/huargo.png')"></div>
+    </div>
+  </div>
+</body>
+</html>
+
       <div class="cara" style="background-image: url('images/huargo.png')"></div>
     </div>
   </div>
