@@ -74,7 +74,7 @@
 <body>
   <header>
     <h1>CARTAS SHIVA</h1>
-    <p>El destino </p>
+    <p>El destino del reino está en tus manos</p>
   </header>
 
   <div class="galeria">
@@ -99,28 +99,26 @@
     function zoomCarta(event, carta) {
       if (!carta.classList.contains('zoom')) return;
       event.preventDefault();
-      carta.classList.toggle('zoom-max');
+      if (!carta.classList.contains('zoom-max')) {
+        carta.classList.add('zoom-max');
+      } else {
+        carta.classList.remove('zoom-max');
+      }
     }
 
     let isDragging = false;
-    let startX = 0;
     function startRotate(event, carta) {
       if (!carta.classList.contains('zoom')) return;
       isDragging = true;
-      startX = event.clientX;
       carta.style.transition = 'transform 0.6s ease';
-      document.onmousemove = (e) => {
-        if (isDragging) {
-          carta.classList.add('girada');
-        }
-      };
+      carta.classList.add('girada');
     }
 
     function endRotate(carta) {
       if (!isDragging) return;
       isDragging = false;
       carta.classList.remove('girada');
-      document.onmousemove = null;
+      carta.style.transition = 'transform 0.6s ease';
     }
   </script>
 </body>
