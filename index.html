@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Cartas Shiva</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -10,19 +10,41 @@
       background-image: url('images/fondo.png');
       background-size: cover;
       background-attachment: fixed;
-      font-family: 'Cinzel', serif;
+      font-family: 'Cinzel Decorative', serif;
       color: #e0a800;
       text-align: center;
-      min-height: 100vh;
+      min-height: 150vh;
     }
     header {
-      padding: 30px;
-      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
     }
     h1 {
       font-size: 3em;
       text-shadow: 2px 2px 4px #000;
       letter-spacing: 3px;
+      margin-top: 20px;
+    }
+    h1 span.large {
+      font-size: 1.5em;
+      text-transform: uppercase;
+    }
+    p {
+      margin-top: -10px;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .nav a {
+      color: #e0a800;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    .search-bar {
+      margin: 20px;
     }
     .galeria {
       display: flex;
@@ -49,18 +71,43 @@
 
 <body>
   <header>
-    <h1>CARTAS SHIVA</h1>
+    <h1><span class="large">C</span>artas <span class="large">S</span>hiva</h1>
     <p>El destino del reino está en tus manos</p>
+    <div class="nav">
+      <a href="#">Reglas del Juego</a>
+      <a href="#">Glosario</a>
+      <a href="#">Mitos y Leyendas</a>
+    </div>
   </header>
 
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Buscar carta...">
+  </div>
+
   <div class="galeria">
-    <div class="carta">
+    <div class="carta" data-nivel="1" data-atk="200" data-tipo="bestia" data-grupo="cazador">
       <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
     </div>
 
-    <div class="carta">
+    <div class="carta" data-nivel="2" data-atk="300" data-tipo="bestia" data-grupo="salvaje">
       <div class="cara" style="background-image: url('images/huargo.png')"></div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('search').addEventListener('input', function() {
+      let filter = this.value.toLowerCase();
+      let cartas = document.querySelectorAll('.carta');
+      
+      cartas.forEach(carta => {
+        let nombre = carta.querySelector('.cara').style.backgroundImage.toLowerCase();
+        if (nombre.includes(filter)) {
+          carta.style.display = 'block';
+        } else {
+          carta.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
