@@ -52,6 +52,21 @@
       text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 255, 255, 0.8);
       transform: scale(1.1);
     }
+    .separador {
+      width: 80%;
+      height: 5px;
+      background: linear-gradient(to right, transparent, black, transparent);
+      margin: 30px auto;
+    }
+    .buscador {
+      text-align: left;
+      margin: 20px;
+    }
+    .buscador input {
+      padding: 10px;
+      font-size: 1em;
+      width: 200px;
+    }
     .galeria {
       display: flex;
       flex-wrap: wrap;
@@ -87,6 +102,13 @@
     <a href="#">Glosario</a>
     <a href="#">Mitos y Leyendas</a>
   </nav>
+
+  <div class="separador"></div>
+
+  <div class="buscador">
+    <label for="search">Buscar carta:</label>
+    <input type="text" id="search" placeholder="Ingrese nombre...">
+  </div>
 
   <div class="galeria">
     <div class="carta">
