@@ -37,13 +37,13 @@
     }
     h1 span {
       display: inline-block;
-      transition: text-shadow 0.5s ease-in-out;
+      transition: text-shadow 0.8s ease-in-out, opacity 0.8s ease-in-out;
     }
     h1 span:hover {
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 7px rgba(255, 215, 0, 0.15);
     }
     h1 span.active {
-      text-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
     }
     p {
       margin-top: -10px;
@@ -147,7 +147,7 @@
           this.classList.remove("active");
           if (all[index - 1]) all[index - 1].classList.remove("active");
           if (all[index + 1]) all[index + 1].classList.remove("active");
-        }, 500); // Desvanecimiento lento
+        }, 1500); // Desvanecimiento más lento
       });
     });
   </script>
