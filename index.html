@@ -49,6 +49,9 @@
       transform: scale(1.5) translateY(-8px);
       z-index: 10;
     }
+    .carta.girada {
+      transform: scale(1.5) translateY(-8px) rotateY(180deg);
+    }
     .cara {
       position: absolute;
       width: 100%;
@@ -71,12 +74,12 @@
   </header>
 
   <div class="galeria">
-    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)">
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onmouseleave="resetCard(this)">
       <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
       <div class="cara reverso" style="background-image: url('images/reverso_militar.png')"></div>
     </div>
 
-    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)">
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onmouseleave="resetCard(this)">
       <div class="cara" style="background-image: url('images/huargo.png')"></div>
       <div class="cara reverso" style="background-image: url('images/reverso_bestia.png')"></div>
     </div>
@@ -100,6 +103,12 @@
       carta.classList.remove('girando');
       carta.style.transition = 'transform 0.6s ease';
       carta.style.transform = 'scale(1.5) translateY(-8px)';
+    }
+
+    function resetCard(carta) {
+      carta.classList.remove('zoom', 'girando');
+      carta.style.transition = 'transform 0.3s ease';
+      carta.style.transform = 'none';
     }
   </script>
 </body>
