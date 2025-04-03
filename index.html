@@ -16,7 +16,6 @@
       min-height: 180vh;
       background-color: rgba(0, 0, 0, 0.2);
       user-select: none;
-      overflow-x: hidden;
     }
     header {
       padding: 50px 10px 40px;
@@ -34,6 +33,18 @@
     h1 span.large {
       font-size: 1.8em;
       text-transform: uppercase;
+      transition: transform 0.3s ease-in-out;
+    }
+    h1 span.large:hover {
+      transform: scale(1.2);
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
+    @keyframes rebote {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px) scaleY(1.1); }
+    }
+    .rebote {
+      animation: rebote 0.5s ease-out;
     }
     .linea-separadora {
       width: 99%;
@@ -44,7 +55,7 @@
     .degradado-inferior {
       width: 100%;
       height: 80px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
       margin-top: -5px;
     }
     .categorias {
@@ -70,8 +81,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      position: relative;
-      left: -50px;
     }
     .buscador input, .buscador select {
       padding: 10px;
@@ -95,41 +104,13 @@
       background-repeat: no-repeat;
       background-position: center;
     }
-    @keyframes rebotar {
-      0%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-20px) scaleY(1.1); }
-      50% { transform: translateY(0) scaleY(0.9); }
-      70% { transform: translateY(-10px) scaleY(1.05); }
-    }
-    .rebote {
-      animation: rebotar 0.6s ease-out;
-    }
   </style>
   <script>
-    const cartas = [
-      { nombre: "Caballero de Fuego", tipo: "Guerrero", grupo: "Ejército", nivel: 3, imagen: "images/carta1.png" },
-      { nombre: "Maga del Bosque", tipo: "Mago", grupo: "Magia", nivel: 2, imagen: "images/carta2.png" },
-      { nombre: "Orco Berserker", tipo: "Bestia", grupo: "Horda", nivel: 4, imagen: "images/carta3.png" }
-    ];
-
-    function mostrarCartas() {
-      const galeria = document.querySelector(".galeria");
-      galeria.innerHTML = "";
-      cartas.forEach(carta => {
-        const div = document.createElement("div");
-        div.classList.add("carta");
-        div.style.backgroundImage = `url('${carta.imagen}')`;
-        galeria.appendChild(div);
-      });
-    }
-
     function hacerRebotar() {
-      const c = document.querySelector("h1 span.large");
-      c.classList.add("rebote");
-      setTimeout(() => c.classList.remove("rebote"), 600);
+      const cElement = document.querySelector("h1 span.large");
+      cElement.classList.add("rebote");
+      setTimeout(() => cElement.classList.remove("rebote"), 500);
     }
-
-    document.addEventListener("DOMContentLoaded", mostrarCartas);
   </script>
 </head>
 <body>
@@ -166,3 +147,4 @@
   <div class="galeria"></div>
 </body>
 </html>
+
