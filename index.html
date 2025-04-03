@@ -54,6 +54,7 @@
     }
     .carta.girada {
       transform: rotateY(180deg) scale(1.5) translateY(-8px);
+      transition: transform 0.6s ease;
     }
     .cara {
       position: absolute;
@@ -73,7 +74,7 @@
 <body>
   <header>
     <h1>CARTAS SHIVA</h1>
-    <p>El destino del reino está en tus manos</p>
+    <p>El destino </p>
   </header>
 
   <div class="galeria">
@@ -107,10 +108,10 @@
       if (!carta.classList.contains('zoom')) return;
       isDragging = true;
       startX = event.clientX;
-      carta.style.transition = 'none';
+      carta.style.transition = 'transform 0.6s ease';
       document.onmousemove = (e) => {
         if (isDragging) {
-          carta.style.transform = 'rotateY(180deg) scale(1.5) translateY(-8px)';
+          carta.classList.add('girada');
         }
       };
     }
@@ -118,8 +119,7 @@
     function endRotate(carta) {
       if (!isDragging) return;
       isDragging = false;
-      carta.style.transition = 'transform 0.8s ease';
-      carta.style.transform = 'scale(1.5) translateY(-8px)';
+      carta.classList.remove('girada');
       document.onmousemove = null;
     }
   </script>
