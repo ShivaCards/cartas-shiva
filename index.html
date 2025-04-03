@@ -37,13 +37,13 @@
     }
     h1 span {
       display: inline-block;
-      transition: text-shadow 0.3s ease-in-out;
+      transition: text-shadow 0.5s ease-in-out;
     }
-    h1:hover span {
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    h1 span:hover {
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
-    h1:hover span:hover {
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    h1 span.active {
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
     }
     p {
       margin-top: -10px;
@@ -103,7 +103,7 @@
 
 <body>
   <header>
-    <h1><span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> <span class="large">S</span><span>h</span><span>i</span><span>v</span><span>a</span></h1>
+    <h1 id="titulo"><span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> <span class="large">S</span><span>h</span><span>i</span><span>v</span><span>a</span></h1>
     <p>"El destino del reino está en tus manos"</p>
   </header>
 
@@ -134,5 +134,22 @@
       <div class="cara" style="background-image: url('images/huargo.png')"></div>
     </div>
   </div>
+
+  <script>
+    document.querySelectorAll("h1 span").forEach((span, index, all) => {
+      span.addEventListener("mouseenter", function () {
+        this.classList.add("active");
+        if (all[index - 1]) all[index - 1].classList.add("active");
+        if (all[index + 1]) all[index + 1].classList.add("active");
+      });
+      span.addEventListener("mouseleave", function () {
+        setTimeout(() => {
+          this.classList.remove("active");
+          if (all[index - 1]) all[index - 1].classList.remove("active");
+          if (all[index + 1]) all[index + 1].classList.remove("active");
+        }, 500); // Desvanecimiento lento
+      });
+    });
+  </script>
 </body>
 </html>
