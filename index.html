@@ -14,7 +14,7 @@
       color: black;
       text-align: center;
       min-height: 180vh;
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.2);
     }
     header {
       padding: 10px;
@@ -27,18 +27,27 @@
       letter-spacing: 3px;
       margin-top: 10px;
       color: #e0a800;
+      display: inline-block;
     }
     h1 span.large {
       font-size: 1.8em;
       text-transform: uppercase;
     }
+    h1:hover span {
+      animation: brillo 0.3s ease-in-out;
+    }
+    @keyframes brillo {
+      0% { text-shadow: none; }
+      50% { text-shadow: 0 0 15px rgba(255, 215, 0, 1); }
+      100% { text-shadow: none; }
+    }
     p {
-      margin-top: -5px;
-      font-size: 1.3em;
+      margin-top: -15px;
+      font-size: 1.1em;
       font-weight: bold;
     }
     .categorias {
-      margin-top: 10px;
+      margin-top: 5px;
       display: flex;
       justify-content: center;
       gap: 100px;
@@ -51,19 +60,19 @@
       padding: 10px 20px;
     }
     .categorias a:hover {
-      text-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 215, 0, 1);
+      text-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 215, 0, 1);
       transform: scale(1.3);
     }
     .separador, .separador-2 {
       width: 80%;
       height: 4px;
-      background: linear-gradient(to right, transparent, #8b6508, transparent);
-      border: 1px solid #4a3b08;
+      background: linear-gradient(to right, transparent, #6a4a08, transparent);
+      border: 1px solid rgba(74, 59, 8, 0.5);
       margin: 2px auto;
     }
     .buscador {
       text-align: left;
-      margin: 100px 20px 20px;
+      margin: 120px 20px 20px;
     }
     .buscador input, .buscador select {
       padding: 10px;
@@ -75,7 +84,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 200px 20px 20px;
+      padding: 220px 20px 20px;
       gap: 20px;
     }
     .carta {
@@ -134,4 +143,3 @@
   </div>
 </body>
 </html>
-
