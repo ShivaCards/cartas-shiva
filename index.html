@@ -50,8 +50,15 @@
     }
     p {
       margin-top: -10px;
-      font-size: 1.08em; /* Reducción del 60% del tamaño actual */
+      font-size: 1.08em;
       font-weight: bold;
+    }
+    .separator {
+      width: 60%;
+      margin: 20px auto;
+      height: 20px;
+      background: url('images/separador_medieval.png') no-repeat center;
+      background-size: contain;
     }
     .categorias {
       margin-top: 5px;
@@ -113,11 +120,15 @@
     <p>"El destino del reino está en tus manos"</p>
   </header>
 
+  <div class="separator"></div>
+
   <nav class="categorias">
     <a href="#">Reglas del Juego</a>
     <a href="#">Glosario</a>
     <a href="#">Mitos y Leyendas</a>
   </nav>
+
+  <div class="separator"></div>
 
   <div class="buscador">
     <label for="search">Buscar carta:</label>
@@ -153,7 +164,7 @@
           this.classList.remove("active");
           if (all[index - 1]) all[index - 1].classList.remove("active");
           if (all[index + 1]) all[index + 1].classList.remove("active");
-        }, 1500); // Desvanecimiento más lento
+        }, 1500);
       });
     });
   </script>
