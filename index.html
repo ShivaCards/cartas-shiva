@@ -111,13 +111,13 @@
         transform: translateY(0);
       }
       30% {
-        transform: translateY(-30px);
+        transform: translateY(-15px);
       }
       50% {
         transform: translateY(0);
       }
       70% {
-        transform: translateY(-15px);
+        transform: translateY(-10px);
       }
       85% {
         transform: translateY(0);
@@ -130,7 +130,7 @@
       }
     }
     .bounce {
-      animation: bounce 0.8s ease;
+      animation: bounce 1s ease;
     }
   </style>
   <script>
@@ -140,7 +140,7 @@
         letraC.classList.add("bounce");
         setTimeout(() => {
           letraC.classList.remove("bounce");
-        }, 800);
+        }, 1000);
       });
     });
   </script>
