@@ -106,13 +106,20 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+    #c-letra {
+      display: inline-block;
+      transition: transform 0.8s ease-in-out;
+    }
+    #c-letra:active {
+      transform: rotateY(360deg);
+    }
   </style>
 </head>
 
 <body>
   <header>
     <h1 id="titulo">
-      <span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span id="c-letra" class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
       <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
     </h1>
     <p>"El destino del reino está en tus manos"</p>
