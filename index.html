@@ -29,14 +29,23 @@
       margin-top: 10px;
       color: #e0a800;
       display: inline-block;
+      position: relative;
     }
     h1 span.large {
       font-size: 1.8em;
       text-transform: uppercase;
     }
+    h1:hover span {
+      animation: brilloLetras 2s infinite linear;
+    }
+    @keyframes brilloLetras {
+      0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+      50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+      100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    }
     p {
       margin-top: -10px;
-      font-size: 1.2em;
+      font-size: 1.5em;
       font-weight: bold;
     }
     .categorias {
