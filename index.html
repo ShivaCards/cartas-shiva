@@ -57,18 +57,18 @@
       width: 80%;
       height: 4px;
       background: linear-gradient(to right, transparent, #8B5A2B, transparent);
-      margin: 15px auto;
+      margin: 5px auto;
     }
     .categorias {
       margin-top: 5px;
       display: flex;
       justify-content: center;
-      gap: 100px;
+      gap: 80px;
     }
     .categorias a {
       text-decoration: none;
       color: black;
-      font-size: 1.35em;
+      font-size: 1.25em;
       transition: transform 0.5s ease, text-shadow 0.5s ease;
       padding: 10px 20px;
     }
@@ -123,7 +123,7 @@
 
   <nav class="categorias">
     <a href="#">Reglas del Juego</a>
-    <a href="#" style="font-size: 1.35em;">Glosario</a>
+    <a href="#">Glosario</a>
     <a href="#">Mitos y Leyendas</a>
   </nav>
 
@@ -150,22 +150,5 @@
       <div class="cara" style="background-image: url('images/huargo.png')"></div>
     </div>
   </div>
-
-  <script>
-    document.querySelectorAll("h1 span").forEach((span, index, all) => {
-      span.addEventListener("mouseenter", function () {
-        this.classList.add("active");
-        if (all[index - 1]) all[index - 1].classList.add("active");
-        if (all[index + 1]) all[index + 1].classList.add("active");
-      });
-      span.addEventListener("mouseleave", function () {
-        setTimeout(() => {
-          this.classList.remove("active");
-          if (all[index - 1]) all[index - 1].classList.remove("active");
-          if (all[index + 1]) all[index + 1].classList.remove("active");
-        }, 1500);
-      });
-    });
-  </script>
 </body>
 </html>
