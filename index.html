@@ -18,9 +18,8 @@
       user-select: none;
     }
     header {
-      padding: 10px;
+      padding: 50px 10px 40px;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
-      padding-bottom: 30px;
     }
     h1 {
       font-size: 3em;
@@ -57,10 +56,15 @@
       width: 80%;
       height: 4px;
       background: linear-gradient(to right, transparent, #8B5A2B, transparent);
-      margin: 5px auto;
+      margin: 20px auto;
+    }
+    .degrade-negro {
+      width: 100%;
+      height: 30px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
     }
     .categorias {
-      margin-top: 5px;
+      margin-top: 20px;
       display: flex;
       justify-content: center;
       gap: 80px;
@@ -68,7 +72,7 @@
     .categorias a {
       text-decoration: none;
       color: black;
-      font-size: 1.25em;
+      font-size: 1.2em;
       transition: transform 0.5s ease, text-shadow 0.5s ease;
       padding: 10px 20px;
     }
@@ -78,7 +82,7 @@
     }
     .buscador {
       text-align: left;
-      margin: 250px 20px 20px;
+      margin: 300px 20px 20px;
     }
     .buscador input, .buscador select {
       padding: 10px;
@@ -128,6 +132,7 @@
   </nav>
 
   <div class="linea-separadora"></div>
+  <div class="degrade-negro"></div>
 
   <div class="buscador">
     <label for="search">Buscar carta:</label>
