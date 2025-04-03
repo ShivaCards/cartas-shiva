@@ -35,13 +35,15 @@
       font-size: 1.8em;
       text-transform: uppercase;
     }
-    h1:hover span {
-      animation: brilloLetras 2s infinite linear;
+    h1 span {
+      display: inline-block;
+      transition: text-shadow 0.3s ease-in-out;
     }
-    @keyframes brilloLetras {
-      0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-      50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
-      100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    h1:hover span {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    h1:hover span:hover {
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
     }
     p {
       margin-top: -10px;
@@ -101,7 +103,7 @@
 
 <body>
   <header>
-    <h1><span class="large">C</span>artas <span class="large">S</span>hiva</h1>
+    <h1><span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> <span class="large">S</span><span>h</span><span>i</span><span>v</span><span>a</span></h1>
     <p>"El destino del reino está en tus manos"</p>
   </header>
 
