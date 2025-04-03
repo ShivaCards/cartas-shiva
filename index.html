@@ -37,17 +37,20 @@
     }
     h1 span {
       display: inline-block;
-      transition: text-shadow 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      transition: text-shadow 1.2s ease-in-out, opacity 1.2s ease-in-out;
     }
     h1 span:hover {
-      text-shadow: 0 0 7px rgba(255, 215, 0, 0.15);
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.08);
     }
     h1 span.active {
-      text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+    }
+    h1 span#shiva-a {
+      margin-left: -5px;
     }
     p {
       margin-top: -10px;
-      font-size: 1.5em;
+      font-size: 1.8em;
       font-weight: bold;
     }
     .categorias {
@@ -103,7 +106,10 @@
 
 <body>
   <header>
-    <h1 id="titulo"><span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> <span class="large">S</span><span>h</span><span>i</span><span>v</span><span>a</span></h1>
+    <h1 id="titulo">
+      <span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
+    </h1>
     <p>"El destino del reino está en tus manos"</p>
   </header>
 
