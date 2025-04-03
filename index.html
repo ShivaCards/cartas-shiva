@@ -53,15 +53,15 @@
       font-weight: bold;
     }
     .linea-separadora {
-      width: 98%;
+      width: 99%;
       height: 4px;
       background: linear-gradient(to right, transparent, #8B5A2B, transparent);
       margin: 5px auto;
     }
     .degradado-inferior {
       width: 100%;
-      height: 60px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
       margin-top: -5px;
     }
     .categorias {
@@ -82,19 +82,16 @@
       text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
     }
     .buscador {
-      text-align: left;
-      margin: 300px 20px 20px;
+      text-align: center;
+      margin: 50px auto;
     }
     .buscador input, .buscador select {
       padding: 10px;
       font-size: 1em;
-      width: 98px;
+      width: 200px;
       margin-right: 10px;
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
-    }
-    .buscador input {
-      autocomplete: off;
     }
     .galeria {
       display: flex;
@@ -158,5 +155,19 @@
 
   <div class="linea-separadora"></div>
   <div class="degradado-inferior"></div>
+
+  <div class="buscador">
+    <input type="text" placeholder="Buscar cartas...">
+    <select>
+      <option value="">Filtrar por...</option>
+      <option value="raza">Raza</option>
+      <option value="tipo">Tipo</option>
+    </select>
+  </div>
+
+  <div class="galeria">
+    <div class="carta" style="background-image: url('images/carta1.png');"></div>
+    <div class="carta" style="background-image: url('images/carta2.png');"></div>
+  </div>
 </body>
 </html>
