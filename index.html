@@ -108,29 +108,29 @@
     }
     @keyframes bounce {
       0% {
-        transform: translateY(0);
+        transform: translateY(0) scaleX(1);
       }
       30% {
-        transform: translateY(-15px);
+        transform: translateY(-10px) scaleX(1.1);
       }
       50% {
-        transform: translateY(0);
+        transform: translateY(0) scaleX(0.9);
       }
       70% {
-        transform: translateY(-10px);
+        transform: translateY(-7px) scaleX(1.05);
       }
       85% {
-        transform: translateY(0);
+        transform: translateY(0) scaleX(0.95);
       }
       95% {
-        transform: translateY(-5px);
+        transform: translateY(-3px) scaleX(1.02);
       }
       100% {
-        transform: translateY(0);
+        transform: translateY(0) scaleX(1);
       }
     }
     .bounce {
-      animation: bounce 1s ease;
+      animation: bounce 1.2s ease;
     }
   </style>
   <script>
@@ -140,7 +140,7 @@
         letraC.classList.add("bounce");
         setTimeout(() => {
           letraC.classList.remove("bounce");
-        }, 1000);
+        }, 1200);
       });
     });
   </script>
