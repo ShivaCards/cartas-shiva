@@ -70,16 +70,16 @@
 <body>
   <header>
     <h1>CARTAS SHIVA</h1>
-    <p>El destino del sueño está en tus manos</p>
+    <p>El destino del reino está en tus manos</p>
   </header>
 
   <div class="galeria">
-    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onmouseleave="resetCard(this)">
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onmouseleave="resetCard(this)" onmousemove="rotateCard(event, this)">
       <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
       <div class="cara reverso" style="background-image: url('images/reverso_militar.png')"></div>
     </div>
 
-    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onmouseleave="resetCard(this)">
+    <div class="carta" onclick="toggleZoom(this)" onmousedown="startRotate(event, this)" onmouseup="endRotate(this)" onmouseleave="resetCard(this)" onmousemove="rotateCard(event, this)">
       <div class="cara" style="background-image: url('images/huargo.png')"></div>
       <div class="cara reverso" style="background-image: url('images/reverso_bestia.png')"></div>
     </div>
@@ -95,7 +95,15 @@
       if (!carta.classList.contains('zoom')) return;
       carta.classList.add('girando');
       carta.style.transition = 'none';
-      carta.style.transform = 'scale(1.5) translateY(-8px) rotateY(180deg)';
+      carta.dataset.startX = event.clientX;
+    }
+
+    function rotateCard(event, carta) {
+      if (!carta.classList.contains('girando')) return;
+      let startX = parseFloat(carta.dataset.startX);
+      let diff = event.clientX - startX;
+      let rotation = Math.max(-180, Math.min(180, diff));
+      carta.style.transform = `scale(1.5) translateY(-8px) rotateY(${rotation}deg)`;
     }
 
     function endRotate(carta) {
