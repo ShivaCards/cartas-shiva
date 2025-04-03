@@ -58,6 +58,12 @@
       background: linear-gradient(to right, transparent, #8B5A2B, transparent);
       margin: 5px auto;
     }
+    .degradado-inferior {
+      width: 100%;
+      height: 30px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+      margin-top: -5px;
+    }
     .categorias {
       margin-top: 5px;
       display: flex;
@@ -82,8 +88,9 @@
     .buscador input, .buscador select {
       padding: 10px;
       font-size: 1em;
-      width: 200px;
+      width: 140px;
       margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
     }
     .galeria {
       display: flex;
@@ -106,44 +113,7 @@
       background-repeat: no-repeat;
       background-position: center;
     }
-    @keyframes bounce {
-      0% {
-        transform: translateY(0) scaleY(1);
-      }
-      30% {
-        transform: translateY(-10px) scaleY(1.05);
-      }
-      50% {
-        transform: translateY(0) scaleY(0.98);
-      }
-      70% {
-        transform: translateY(-7px) scaleY(1.03);
-      }
-      85% {
-        transform: translateY(0) scaleY(0.99);
-      }
-      95% {
-        transform: translateY(-3px) scaleY(1.01);
-      }
-      100% {
-        transform: translateY(0) scaleY(1);
-      }
-    }
-    .bounce {
-      animation: bounce 1.2s ease;
-    }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const letraC = document.querySelector("h1 span.large");
-      letraC.addEventListener("click", function() {
-        letraC.classList.add("bounce");
-        setTimeout(() => {
-          letraC.classList.remove("bounce");
-        }, 1200);
-      });
-    });
-  </script>
 </head>
 
 <body>
@@ -164,6 +134,7 @@
   </nav>
 
   <div class="linea-separadora"></div>
+  <div class="degradado-inferior"></div>
 
   <div class="buscador">
     <label for="search">Buscar carta:</label>
