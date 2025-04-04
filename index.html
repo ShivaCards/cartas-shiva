@@ -54,11 +54,11 @@
       width: 0.7em;
       height: 1em;
       line-height: 1;
-      top: 0.08em; /* Ajuste clave para alinear la "A" */
+      top: 0.08em;
     }
     .ojo-transformado {
       position: absolute;
-      top: 0.08em; /* Igual que la "A" */
+      top: -0.15em; /* Ojo ligeramente más arriba */
       left: -0.1em;
       width: 1em;
       height: 1em;
@@ -195,8 +195,8 @@
           setTimeout(() => {
             letraA.innerHTML = originalHTML;
             letraA.classList.remove('transformando');
-          }, 50);
-        }, 500);
+          }, 30); /* Retorno ultra rápido */
+        }, 300); /* Tiempo visible reducido */
       }, 10);
     }
   </script>
