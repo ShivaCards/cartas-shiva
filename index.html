@@ -82,14 +82,17 @@
       transform: scale(1.2);
     }
     .buscador {
-      text-align: left;
-      margin: 300px 20px 20px;
+      text-align: center;
+      margin: 20px auto;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
     }
     .buscador input, .buscador select {
       padding: 10px;
       font-size: 1em;
-      width: 98px;
-      margin-right: 10px;
+      width: 200px;
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
@@ -157,9 +160,7 @@
   <div class="degradado-inferior"></div>
 
   <div class="buscador">
-    <label for="search">Buscar carta:</label>
-    <input type="text" id="search" placeholder="Ingrese nombre...">
-    <label for="filter">Ordenar por:</label>
+    <input type="text" id="search" placeholder="Buscar carta...">
     <select id="filter">
       <option value="nivel">Nivel</option>
       <option value="atk">ATK</option>
