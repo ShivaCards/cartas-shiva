@@ -83,18 +83,18 @@
     }
     .buscador {
       position: fixed;
-      top: 220px;
-      right: 30px;
+      top: 300px;
+      left: 30px;
       width: 250px;
-      background: rgba(0, 0, 0, 0.5);
       padding: 15px;
-      border-radius: 8px;
       z-index: 100;
+      background: transparent;
     }
     .buscador-container {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      align-items: flex-start;
     }
     .buscador input, .buscador select {
       padding: 12px;
@@ -116,6 +116,7 @@
       justify-content: center;
       padding: 50px 20px 20px;
       gap: 20px;
+      margin-top: 100px;
     }
     .carta {
       width: 200px;
@@ -175,7 +176,7 @@
   </div>
 
   <div class="galeria">
-    <!-- Cartas MILITAR (ordenadas por nivel) -->
+    <!-- Cartas MILITAR -->
     <div class="carta" data-name="Kethelcazador" data-tipo="Militar" data-nivel="2">
       <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
     </div>
@@ -183,7 +184,7 @@
       <div class="cara" style="background-image: url('images/konganciano.png')"></div>
     </div>
 
-    <!-- Cartas BESTIA (ordenadas por nivel 1→4) -->
+    <!-- Cartas BESTIA -->
     <div class="carta" data-name="Perrodecazador" data-tipo="Bestia" data-nivel="1">
       <div class="cara" style="background-image: url('images/perrodecazador.png')"></div>
     </div>
@@ -228,21 +229,20 @@
       cartas.forEach(carta => galeria.appendChild(carta));
     }
 
-    // Búsqueda por nombre
+    // Búsqueda exacta (solo muestra cartas que EMPIECEN con el texto)
     document.getElementById('search').addEventListener('input', function() {
       const searchTerm = this.value.toLowerCase();
       const cards = document.querySelectorAll('.carta');
       
       cards.forEach(card => {
         const cardName = card.getAttribute('data-name').toLowerCase();
-        card.style.display = cardName.includes(searchTerm) ? 'block' : 'none';
+        card.style.display = cardName.startsWith(searchTerm) ? 'block' : 'none';
       });
     });
 
-    // Filtro por tipo/nivel (opcional)
+    // Filtro por tipo/nivel
     document.getElementById('filter').addEventListener('change', function() {
-      const criterio = this.value;
-      if (criterio) ordenarCartas(); // Reordena según el criterio seleccionado
+      ordenarCartas();
     });
   </script>
 </body>
