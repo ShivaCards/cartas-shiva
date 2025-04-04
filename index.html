@@ -4,6 +4,7 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet"> 
   <style>
+    /* === ESTILOS ORIGINALES (INALTERADOS) === */
     body {
       margin: 0;
       padding: 0;
@@ -28,7 +29,7 @@
       color: #e0a800;
       display: inline-block;
       position: relative;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Difuminado suave */
     }
     h1 span.large {
       font-size: 1.8em;
@@ -39,7 +40,10 @@
       transition: text-shadow 0.4s ease-in-out;
     }
     h1 span:hover {
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Solo brilla la letra bajo el cursor */
+    }
+    h1 span.active {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
     }
     h1 span#shiva-a {
       margin-left: -5px;
@@ -77,6 +81,16 @@
     </h1>
     <p>"El destino del reino está en tus manos"</p>
   </header>
+
+  <div class="contenedor-categorias">
+    <nav class="categorias">
+      <a href="#">Reglas del Juego</a>
+      <a href="#">Glosario</a>
+      <a href="#">Mitos y Leyendas</a>
+    </nav>
+  </div>
+  <div class="degradado-inferior"></div>
 </body>
 </html>
+
 
