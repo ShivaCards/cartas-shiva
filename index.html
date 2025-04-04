@@ -74,27 +74,12 @@
       text-decoration: none;
       color: black;
       font-size: 1.15em;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.3s ease;
       padding: 10px 20px;
-      position: relative;
     }
     .categorias a:hover {
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      transform: translateY(-3px);
-      color: #e0a800;
-    }
-    .categorias a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 8px;
-      left: 20px;
-      background-color: #e0a800;
-      transition: width 0.3s ease;
-    }
-    .categorias a:hover::after {
-      width: calc(100% - 40px);
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
+      transform: scale(1.2);
     }
     .buscador {
       text-align: left;
