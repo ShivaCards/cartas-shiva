@@ -2,9 +2,8 @@
 <html>
 <head>
   <title>Cartas Shiva</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet"> 
   <style>
-    /* === ESTILOS ORIGINALES (INALTERADOS) === */
     body {
       margin: 0;
       padding: 0;
@@ -29,7 +28,7 @@
       color: #e0a800;
       display: inline-block;
       position: relative;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Difuminado suave */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
     }
     h1 span.large {
       font-size: 1.8em;
@@ -40,52 +39,16 @@
       transition: text-shadow 0.4s ease-in-out;
     }
     h1 span:hover {
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Solo brilla la letra bajo el cursor */
-    }
-    h1 span.active {
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
     }
     h1 span#shiva-a {
       margin-left: -5px;
+      cursor: pointer;
     }
-    p {
-      margin-top: -10px;
-      font-size: 1.08em;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-    .contenedor-categorias {
-      border-top: 4px solid;
-      border-bottom: 4px solid;
-      border-image: linear-gradient(to right, transparent, #8B5A2B, transparent) 1;
-      margin: 30px 0 0;
-    }
-    .categorias {
-      margin: 5px 0;
-      display: flex;
-      justify-content: center;
-      gap: 70px;
-    }
-    .categorias a {
-      text-decoration: none;
-      color: black;
-      font-size: 1.15em;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.3s ease;
-      padding: 8px 20px;
-    }
-    .categorias a:hover {
-      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
-      transform: scale(1.2);
-    }
-    @keyframes rebote {
-      0% { transform: translateY(0) scaleY(1); }
-      30% { transform: translateY(-20px) scaleY(0.9); }
-      60% { transform: translateY(0) scaleY(1.05); }
-      80% { transform: translateY(-10px) scaleY(0.95); }
-      100% { transform: translateY(0) scaleY(1); }
-    }
-    .rebote {
-      animation: rebote 0.6s ease-out;
+    .imagen-ojo {
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
     }
   </style>
   <script>
@@ -96,24 +59,24 @@
         letraC.classList.remove('rebote');
       }, { once: true });
     }
+
+    function transformarEnOjo() {
+      let letraA = document.getElementById('shiva-a');
+      letraA.innerHTML = '<img src="images/ojo.png" class="imagen-ojo">';
+      setTimeout(() => {
+        letraA.textContent = 'a';
+      }, 500);
+    }
   </script>
 </head>
 <body>
   <header>
     <h1 id="titulo">
       <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
-      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a" onclick="transformarEnOjo()">a</span>
     </h1>
     <p>"El destino del reino está en tus manos"</p>
   </header>
-
-  <div class="contenedor-categorias">
-    <nav class="categorias">
-      <a href="#">Reglas del Juego</a>
-      <a href="#">Glosario</a>
-      <a href="#">Mitos y Leyendas</a>
-    </nav>
-  </div>
-  <div class="degradado-inferior"></div>
 </body>
 </html>
+
