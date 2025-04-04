@@ -18,7 +18,7 @@
       user-select: none;
     }
     header {
-      padding: 50px 10px 20px;
+      padding: 70px 10px 30px; /* Aumentado padding superior */
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
     }
     h1 {
@@ -51,6 +51,7 @@
       margin-top: -10px;
       font-size: 1.08em;
       font-weight: bold;
+      margin-bottom: 30px; /* Añadido espacio bajo subtítulo */
     }
     .linea-separadora {
       width: 100%;
@@ -65,7 +66,7 @@
       margin: 0;
     }
     .categorias {
-      margin: 5px 0;
+      margin: 30px 0 15px; /* Más espacio arriba y abajo */
       display: flex;
       justify-content: center;
       gap: 70px;
@@ -83,7 +84,7 @@
     }
     .buscador {
       text-align: left;
-      margin: 40px 20px; /* Aumentado el margen superior */
+      margin: 10px 20px 30px; /* Reducido espacio superior, aumentado inferior */
       padding: 10px;
     }
     .buscador input, .buscador select {
@@ -97,21 +98,23 @@
     .seccion-titulo {
       font-size: 1.5em;
       color: #e0a800;
-      margin: 10px 0 5px; /* Reducido el margen inferior */
+      margin: 5px 0 2px; /* Títulos más pegados a líneas */
       text-shadow: 2px 2px 4px #000;
     }
     .galeria {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 20px;
+      padding: 15px 20px 25px; /* Ajuste de padding para centrado vertical */
       gap: 20px;
+      min-height: 320px; /* Altura mínima para mantener separadores */
     }
     .carta {
       width: 200px;
       height: 280px;
       position: relative;
       background-color: transparent;
+      margin: 5px 0;
     }
     .cara {
       position: absolute;
@@ -132,10 +135,7 @@
       animation: rebote 0.6s ease-out;
     }
     .separador-completo {
-      margin: 20px 0;
-    }
-    .separador-categorias {
-      margin: 5px 0;
+      margin: 10px 0; /* Reducido espacio entre secciones */
     }
   </style>
   <script>
