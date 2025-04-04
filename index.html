@@ -61,20 +61,25 @@
       pantalla.innerHTML = '💀';
       document.body.appendChild(pantalla);
       pantalla.style.display = 'flex';
+
+      // Mostrar el mensaje
       let mensaje = document.createElement('div');
       mensaje.classList.add('mensaje');
       mensaje.innerHTML = `te aplastaremos de tal modo que no habrá marcha atrás. Te ocurrirán cosas de las que no podrías recuperarte ni aunque vivieras mil años. no volverás a tener sentimientos humanos y normales. Estarás muerto por dentro, serás incapaz de amar, de sentir amistad, de disfrutar de la vida, de reírte, de sentir curiosidad, valor o integridad. Estarás hueco, te estrujaremos hasta vaciarte y luego te llenaremos de nosotros`;
       document.body.appendChild(mensaje);
+
+      // Mostrar el mensaje con un retraso
       setTimeout(() => {
         mensaje.style.display = 'block';
       }, 500);
-      
-      setTimeout(() => {
-        let audio = new Audio('https://www.myinstants.com/media/sounds/high-pitch-beep.mp3');
-        audio.loop = true;
-        audio.play();
-      }, 1000);
+
+      // Reproducir el pitido
+      let audio = new Audio('https://www.myinstants.com/media/sounds/high-pitch-beep.mp3');
+      audio.loop = true;
+      audio.play();
     }
+
+    // Escuchar el clic en el documento
     document.addEventListener('click', activarPantallaNegra);
   </script>
 </head>
