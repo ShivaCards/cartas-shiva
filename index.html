@@ -29,6 +29,7 @@
       color: #e0a800;
       display: inline-block;
       position: relative;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Difuminado suave */
     }
     h1 span.large {
       font-size: 1.8em;
@@ -36,10 +37,10 @@
     }
     h1 span {
       display: inline-block;
-      transition: text-shadow 1.2s ease-in-out, opacity 1.2s ease-in-out;
+      transition: text-shadow 0.4s ease-in-out;
     }
     h1 span:hover {
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.08);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Solo brilla la letra bajo el cursor */
     }
     h1 span.active {
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
@@ -85,27 +86,6 @@
     }
     .rebote {
       animation: rebote 0.6s ease-out;
-    }
-
-    /* === NUEVOS ESTILOS (AJUSTES SEGUROS) === */
-    /* 1. Difuminado de sombra del título */
-    h1 {
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Más suave que el original */
-    }
-    
-    /* 2. Brillo intenso en todas las letras (incluyendo C y S grandes) */
-    h1 span {
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Brillo base aumentado */
-    }
-    h1 span:hover {
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Brillo al hover más intenso */
-    }
-    /* Mantiene la animación de la C */
-    h1 span.large {
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Igual que las demás */
-    }
-    h1 span.large:hover {
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Igual que las demás */
     }
   </style>
   <script>
