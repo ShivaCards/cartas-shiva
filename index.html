@@ -16,11 +16,34 @@
       font-family: Arial, sans-serif;
       color: black;
       font-size: 3em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #nube {
+      position: absolute;
+      width: 100px;
+      height: 60px;
+      background-color: red;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+      pointer-events: none; /* Para que no interfiera con el clic */
+      transition: all 0.1s ease;
     }
   </style>
 </head>
 <body>
   <div>chau</div>
+  <div id="nube"></div>
+
+  <script>
+    const nube = document.getElementById('nube');
+
+    document.addEventListener('mousemove', (e) => {
+      nube.style.left = e.clientX - 50 + 'px'; // Ajusta la posición de la nube con el cursor
+      nube.style.top = e.clientY - 30 + 'px';  // Ajusta la posición de la nube con el cursor
+    });
+  </script>
 </body>
 </html>
 
