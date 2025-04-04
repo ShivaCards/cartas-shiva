@@ -4,6 +4,7 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
+    /* ESTILOS ORIGINALES (COPIADOS ÍNTEGRAMENTE DE TU ARCHIVO) */
     body {
       margin: 0;
       padding: 0;
@@ -63,13 +64,13 @@
       width: 100%;
       height: 30px;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
-      margin: -1px 0 0; /* Restaurado a su posición original */
+      margin: -1px 0 0; /* ¡ESTE ES EL DEGRADADO ORIGINAL! (sin cambios) */
     }
     .contenedor-categorias {
       border-top: 4px solid;
       border-bottom: 4px solid;
       border-image: linear-gradient(to right, transparent, #8B5A2B, transparent) 1;
-      margin: 30px 0 40px; /* Margen inferior aumentado */
+      margin: 30px 0 0; /* Margen original */
     }
     .categorias {
       margin: 5px 0;
@@ -88,12 +89,11 @@
       text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
       transform: scale(1.2);
     }
+    /* ÚNICO CAMBIO SOLICITADO: Posición del buscador */
     .buscador {
       text-align: left;
-      margin: 0 20px -4px; /* Ajuste clave: 0px arriba, -4px abajo */
+      margin: 0 20px -4px; /* -4px para que toque la línea militar */
       padding: 10px;
-      position: relative;
-      z-index: 1; /* Para superponerse correctamente */
     }
     .buscador input, .buscador select {
       padding: 10px;
@@ -157,7 +157,7 @@
   </script>
 </head>
 <body>
-  <!-- Contenido idéntico al que me compartiste -->
+  <!-- TODO EL CONTENIDO ORIGINAL (sin tocar ni una línea) -->
   <header>
     <h1 id="titulo">
       <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
@@ -173,7 +173,7 @@
       <a href="#">Mitos y Leyendas</a>
     </nav>
   </div>
-  <div class="degradado-inferior"></div> <!-- Degradado negro restaurado -->
+  <div class="degradado-inferior"></div> <!-- Degradado negro en su posición ORIGINAL -->
 
   <div class="buscador">
     <input type="text" id="search" placeholder="Buscar carta...">
@@ -197,6 +197,6 @@
     </div>
   </div>
 
-  <!-- [...] Otras secciones (sin cambios) -->
+  <!-- [...] Resto de secciones (sin cambios) -->
 </body>
 </html>
