@@ -54,10 +54,11 @@
       width: 0.7em;
       height: 1em;
       line-height: 1;
+      top: 0.08em; /* Ajuste clave para alinear la "A" */
     }
     .ojo-transformado {
       position: absolute;
-      top: -0.1em;
+      top: 0.08em; /* Igual que la "A" */
       left: -0.1em;
       width: 1em;
       height: 1em;
@@ -176,32 +177,21 @@
 
     function transformarLetraA() {
       const letraA = document.getElementById('shiva-a');
-      
-      // Evitar múltiples clics
       if (letraA.classList.contains('transformando')) return;
       letraA.classList.add('transformando');
       
-      // Crear ojo
       const ojoImg = new Image();
       ojoImg.src = 'images/ojo.png';
       ojoImg.classList.add('ojo-transformado');
       
-      // Guardar estado original
       const originalHTML = letraA.innerHTML;
-      
-      // Aplicar cambios
       letraA.innerHTML = '';
       letraA.appendChild(ojoImg);
       
-      // Mostrar ojo instantáneamente
       setTimeout(() => {
         ojoImg.style.opacity = '1';
-        
-        // Ocultar después de 0.5s
         setTimeout(() => {
           ojoImg.style.opacity = '0';
-          
-          // Restaurar estado original
           setTimeout(() => {
             letraA.innerHTML = originalHTML;
             letraA.classList.remove('transformando');
