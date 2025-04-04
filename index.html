@@ -81,6 +81,7 @@
       text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
       transform: scale(1.2);
     }
+    /* BUSCADOR FIJO (NO SE MUEVE AL HACER SCROLL) */
     .buscador {
       position: fixed;
       top: 220px;
@@ -116,7 +117,7 @@
       align-items: center;
       padding: 180px 20px 20px;
       gap: 40px;
-      margin-left: 300px; /* Espacio para el buscador */
+      margin-left: 300px; /* Espacio para el buscador fijo */
     }
     .seccion-cartas {
       width: 100%;
@@ -209,6 +210,7 @@
   <div class="linea-separadora"></div>
   <div class="degradado-inferior"></div>
 
+  <!-- BUSCADOR FIJO (NO SE MUEVE AL SCROLL) -->
   <div class="buscador">
     <div class="buscador-container">
       <input type="text" id="search" placeholder="Buscar carta..." autocomplete="off">
