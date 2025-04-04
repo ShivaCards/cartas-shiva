@@ -46,13 +46,11 @@
     }
     h1 span#shiva-a {
       margin-left: -5px;
-      cursor: pointer;
     }
-    p {
-      margin-top: -10px;
-      font-size: 1.08em;
-      font-weight: bold;
-      margin-bottom: 30px;
+    h1 img {
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
     }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
@@ -73,23 +71,11 @@
         letraC.classList.remove('rebote');
       }, { once: true });
     }
-
     function cambiarAporOjo() {
       let letraA = document.getElementById('shiva-a');
-      let originalText = letraA.textContent;
-      letraA.textContent = '';
-      letraA.style.backgroundImage = "url('images/ojo.png')";
-      letraA.style.backgroundSize = 'contain';
-      letraA.style.backgroundRepeat = 'no-repeat';
-      letraA.style.display = 'inline-block';
-      letraA.style.width = '1em';
-      letraA.style.height = '1em';
-      letraA.style.verticalAlign = 'middle';
+      letraA.innerHTML = '<img src="images/ojo.png" alt="Ojo">';
       setTimeout(() => {
-        letraA.textContent = originalText;
-        letraA.style.backgroundImage = '';
-        letraA.style.width = '';
-        letraA.style.height = '';
+        letraA.textContent = 'a';
       }, 500);
     }
   </script>
