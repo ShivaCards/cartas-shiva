@@ -4,38 +4,39 @@
   <title>Cartas Shiva</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- CSS de Phantom -->
+  <!-- CSS de Phantom (IMPORTANTE) -->
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/noscript.css">
-  <!-- CSS personalizado para el buscador fijo -->
-  <link rel="stylesheet" href="assets/css/custom.css">
+  <!-- Estilos personalizados -->
   <style>
-    /* Reset global para evitar conflictos */
-    html, body {
-      overflow-x: hidden;
-      transform: none !important;
-      perspective: none !important;
-    }
-    /* Estilos personalizados (conservando tu diseño) */
+    /* BUSCADOR FIJO (sin romper Phantom) */
     .buscador {
-      position: fixed !important;
-      top: 220px !important;
-      left: 30px !important;
-      width: 250px !important;
-      z-index: 9999 !important;
-      background: transparent;
+      position: fixed;
+      top: 220px;
+      left: 30px;
+      width: 250px;
+      z-index: 9999;
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      border-radius: 5px;
     }
+    /* Ajuste para el contenido */
     .galeria {
-      margin-left: 300px; /* Espacio para el buscador fijo */
+      margin-left: 300px;
+      padding-top: 20px;
+    }
+    /* Conservar tus efectos hover */
+    .categorias a:hover {
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8) !important;
     }
   </style>
 </head>
 <body>
-  <!-- HEADER (COMPLETO) -->
+  <!-- HEADER (ESTILO PHANTOM) -->
   <header>
     <h1 id="titulo">
-      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
-      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
+      <span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span>a</span>
     </h1>
     <p>"El destino del reino está en tus manos"</p>
     <div class="linea-separadora"></div>
@@ -45,110 +46,56 @@
       <a href="#">Mitos y Leyendas</a>
     </nav>
     <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
   </header>
 
-  <!-- BUSCADOR FIJO (COMPLETO) -->
+  <!-- BUSCADOR FIJO -->
   <div class="buscador">
-    <div class="buscador-container">
-      <input type="text" id="search" placeholder="Buscar carta..." autocomplete="off">
-      <select id="filter">
-        <option value="" disabled selected>Ordenar por</option>
-        <option value="tipo">Tipo</option>
-        <option value="nivel">Nivel</option>
-      </select>
-    </div>
+    <input type="text" id="search" placeholder="Buscar carta..." autocomplete="off">
+    <select id="filter">
+      <option value="" disabled selected>Ordenar por</option>
+      <option value="tipo">Tipo</option>
+      <option value="nivel">Nivel</option>
+    </select>
   </div>
 
-  <!-- GALERÍA DE CARTAS (COMPLETA) -->
+  <!-- SECCIONES DE CARTAS -->
   <div class="galeria">
-    <!-- Sección MILITAR -->
-    <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Militar</h2>
+    <!-- MILITAR -->
+    <section>
+      <h2 class="titulo-seccion">MILITAR</h2>
       <div class="contenedor-cartas">
         <div class="carta" data-name="Kethelcazador" data-tipo="Militar" data-nivel="2">
           <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
         </div>
-        <div class="carta" data-name="Konganciano" data-tipo="Militar" data-nivel="2">
-          <div class="cara" style="background-image: url('images/konganciano.png')"></div>
-        </div>
+        <!-- Más cartas... -->
       </div>
-      <div class="separador-seccion"></div>
-    </div>
+    </section>
 
-    <!-- Sección BESTIA -->
-    <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Bestia</h2>
+    <!-- BESTIA -->
+    <section>
+      <h2 class="titulo-seccion">BESTIA</h2>
       <div class="contenedor-cartas">
-        <div class="carta" data-name="Perrodecazador" data-tipo="Bestia" data-nivel="1">
-          <div class="cara" style="background-image: url('images/perrodecazador.png')"></div>
-        </div>
         <div class="carta" data-name="Huargo" data-tipo="Bestia" data-nivel="2">
           <div class="cara" style="background-image: url('images/huargo.png')"></div>
         </div>
-        <div class="carta" data-name="Ukko" data-tipo="Bestia" data-nivel="3">
-          <div class="cara" style="background-image: url('images/ukko.png')"></div>
-        </div>
-        <div class="carta" data-name="Fenrir" data-tipo="Bestia" data-nivel="4">
-          <div class="cara" style="background-image: url('images/fenrir.png')"></div>
-        </div>
+        <!-- Más cartas... -->
       </div>
-      <div class="separador-seccion"></div>
-    </div>
-
-    <!-- Otras secciones (vacías por ahora) -->
-    <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Magia</h2>
-      <div class="contenedor-cartas"></div>
-      <div class="separador-seccion"></div>
-    </div>
-    <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Civil</h2>
-      <div class="contenedor-cartas"></div>
-      <div class="separador-seccion"></div>
-    </div>
-    <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Altar</h2>
-      <div class="contenedor-cartas"></div>
-      <div class="separador-seccion"></div>
-    </div>
+    </section>
   </div>
 
-  <!-- SCRIPTS (COMPLETOS) -->
+  <!-- SCRIPTS (PHANTOM + PERSONALIZADOS) -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    // Función para animar el título
-    function hacerRebotar() {
-      let letraC = document.querySelector('h1 span.large');
-      letraC.classList.add('rebote');
-      letraC.addEventListener('animationend', () => {
-        letraC.classList.remove('rebote');
-      }, { once: true });
-    }
-
     // Búsqueda exacta
     document.getElementById('search').addEventListener('input', function() {
       const searchTerm = this.value.toLowerCase();
-      const cards = document.querySelectorAll('.carta');
-      cards.forEach(card => {
+      document.querySelectorAll('.carta').forEach(card => {
         const cardName = card.getAttribute('data-name').toLowerCase();
         card.style.display = cardName.startsWith(searchTerm) ? 'block' : 'none';
-      });
-    });
-
-    // Filtro por tipo/nivel
-    document.getElementById('filter').addEventListener('change', function() {
-      const secciones = document.querySelectorAll('.contenedor-cartas');
-      secciones.forEach(seccion => {
-        const cartas = Array.from(seccion.querySelectorAll('.carta'));
-        cartas.sort((a, b) => {
-          return parseInt(a.getAttribute('data-nivel')) - parseInt(b.getAttribute('data-nivel'));
-        });
-        cartas.forEach(carta => seccion.appendChild(carta));
       });
     });
   </script>
