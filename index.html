@@ -20,30 +20,66 @@
       overflow: hidden;
     }
 
-    #nube {
+    .particula {
       position: absolute;
-      width: 100px;
-      height: 60px;
-      background-color: red;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(255, 0, 0, 0.7);
       border-radius: 50%;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-      pointer-events: none; /* Para que no interfiera con el clic */
-      transition: all 0.1s ease;
+      pointer-events: none;
+      animation: moverParticulas 1.5s forwards;
+    }
+
+    @keyframes moverParticulas {
+      0% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--dx), var(--dy));
+        opacity: 0;
+      }
+    }
+
+    #mensaje {
+      position: absolute;
+      font-size: 3em;
+      color: black;
+      font-weight: bold;
+      z-index: 100;
     }
   </style>
 </head>
 <body>
-  <div>chau</div>
-  <div id="nube"></div>
+  <div id="mensaje">chau</div>
 
   <script>
-    const nube = document.getElementById('nube');
-
     document.addEventListener('mousemove', (e) => {
-      nube.style.left = e.clientX - 50 + 'px'; // Ajusta la posición de la nube con el cursor
-      nube.style.top = e.clientY - 30 + 'px';  // Ajusta la posición de la nube con el cursor
+      for (let i = 0; i < 5; i++) { // Generar varias partículas por movimiento del mouse
+        const particula = document.createElement('div');
+        particula.classList.add('particula');
+
+        // Colocar la partícula en la posición del cursor
+        particula.style.left = e.clientX + 'px';
+        particula.style.top = e.clientY + 'px';
+
+        // Crear un desplazamiento aleatorio para que las partículas se dispersan
+        const dx = (Math.random() - 0.5) * 100;
+        const dy = (Math.random() - 0.5) * 100;
+
+        particula.style.setProperty('--dx', `${dx}px`);
+        particula.style.setProperty('--dy', `${dy}px`);
+
+        document.body.appendChild(particula);
+
+        // Eliminar la partícula después de la animación
+        setTimeout(() => {
+          particula.remove();
+        }, 1500); // Tiempo de vida de la partícula (coincide con la duración de la animación)
+      }
     });
   </script>
 </body>
 </html>
+
 
