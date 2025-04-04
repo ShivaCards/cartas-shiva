@@ -39,11 +39,11 @@
       display: inline-block;
       transition: text-shadow 0.6s ease-in-out;
     }
-    /* Brillo sutil para todas las letras al hacer hover */
+    /* Brillo sutil SOLO para las letras del título */
     h1 span:hover {
       text-shadow: 
-        0 0 8px rgba(255, 215, 0, 0.6),  /* Halo más pequeño y transparente */
-        0 0 12px rgba(255, 215, 0, 0.4); /* Segunda capa suave */
+        0 0 8px rgba(255, 215, 0, 0.6),
+        0 0 12px rgba(255, 215, 0, 0.4);
     }
     h1 span.active {
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
@@ -60,7 +60,7 @@
     }
     .ojo-transformado {
       position: absolute;
-      top: -0.04em; /* Ojo ligeramente bajado */
+      top: -0.04em;
       left: -0.1em;
       width: 1em;
       height: 1em;
@@ -98,6 +98,7 @@
       justify-content: center;
       gap: 70px;
     }
+    /* RESALTADO ORIGINAL DE CATEGORÍAS (brillo intenso y escala 1.2) */
     .categorias a {
       text-decoration: none;
       color: black;
@@ -106,8 +107,10 @@
       padding: 8px 20px;
     }
     .categorias a:hover {
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-      transform: scale(1.1);
+      text-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.8), 
+        0 0 40px rgba(255, 215, 0, 0.6);
+      transform: scale(1.2);
     }
     .buscador {
       text-align: left;
@@ -126,7 +129,7 @@
       font-size: 1.5em;
       color: #e0a800;
       margin: 2px 0;
-      text-shadow: 1px 1px 3px #000; /* Sombra más sutil */
+      text-shadow: 2px 2px 4px #000;
     }
     .galeria {
       display: flex;
@@ -153,13 +156,16 @@
     }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
-      30% { transform: translateY(-20px) scaleY(0.9); }
+      15% { transform: translateY(-25px) scaleY(0.85); }
+      30% { transform: translateY(0) scaleY(1.1); }
+      45% { transform: translateY(-15px) scaleY(0.9); }
       60% { transform: translateY(0) scaleY(1.05); }
-      80% { transform: translateY(-10px) scaleY(0.95); }
+      75% { transform: translateY(-8px) scaleY(0.95); }
+      90% { transform: translateY(0) scaleY(1.02); }
       100% { transform: translateY(0) scaleY(1); }
     }
     .rebote {
-      animation: rebote 0.8s ease-out;
+      animation: rebote 1.2s cubic-bezier(0.28, 0.84, 0.42, 1);
     }
     .separador-completo {
       margin: 20px 0;
