@@ -39,7 +39,6 @@
       display: inline-block;
       transition: text-shadow 0.6s ease-in-out;
     }
-    /* Brillo sutil para letras del título */
     h1 span:hover {
       text-shadow: 
         0 0 8px rgba(255, 215, 0, 0.6),
@@ -60,7 +59,7 @@
     }
     .ojo-transformado {
       position: absolute;
-      top: -0.05em; /* Posición ajustada por ti */
+      top: -0.05em;
       left: -0.1em;
       width: 1em;
       height: 1em;
@@ -98,7 +97,6 @@
       justify-content: center;
       gap: 70px;
     }
-    /* Resaltado INTENSO original en categorías */
     .categorias a {
       text-decoration: none;
       color: black;
@@ -154,18 +152,18 @@
       background-repeat: no-repeat;
       background-position: center;
     }
-    /* ANIMACIÓN DE REBOTE CORREGIDA (sin movimiento lateral) */
+    /* ANIMACIÓN DE REBOTE AJUSTADA (deformación conservada pero final preciso) */
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
-      15% { transform: translateY(-25px) scaleY(0.85); }
-      30% { transform: translateY(0) scaleY(1.05); }
-      45% { transform: translateY(-10px) scaleY(0.95); }
-      60% { transform: translateY(0) scaleY(1.02); }
-      80% { transform: translateY(-4px) scaleY(0.98); }
+      20% { transform: translateY(-25px) scaleY(0.85); }
+      40% { transform: translateY(0) scaleY(1.1); }
+      55% { transform: translateY(-12px) scaleY(0.93); }
+      70% { transform: translateY(0) scaleY(1.03); }
+      85% { transform: translateY(-4px) scaleY(0.98); }
       100% { transform: translateY(0) scaleY(1); }
     }
     .rebote {
-      animation: rebote 1s cubic-bezier(0.28, 0.84, 0.42, 1);
+      animation: rebote 0.7s cubic-bezier(0.28, 0.84, 0.42, 1);
     }
     .separador-completo {
       margin: 20px 0;
