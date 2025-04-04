@@ -34,6 +34,10 @@
     h1 span.large {
       font-size: 1.8em;
       text-transform: uppercase;
+      display: inline-block;
+      transform-origin: center 70%;
+      backface-visibility: hidden;
+      will-change: transform;
     }
     h1 span {
       display: inline-block;
@@ -152,21 +156,19 @@
       background-repeat: no-repeat;
       background-position: center;
     }
-   /* ANIMACIÓN DE REBOTE (sin desplazamiento lateral) */
-@keyframes rebote {
-  0% { transform: translateY(0) scaleY(1); }
-  20% { transform: translateY(-25px) scaleY(0.88); } /* scaleY menos pronunciado */
-  40% { transform: translateY(0) scaleY(1.05); }     /* Reducimos la deformación */
-  55% { transform: translateY(-12px) scaleY(0.96); }
-  70% { transform: translateY(0) scaleY(1.01); }
-  85% { transform: translateY(-3px) scaleY(0.99); }
-  100% { transform: translateY(0) scaleY(1); }
-}
-
-.rebote {
-  animation: rebote 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform-origin: center bottom; /* ¡Clave! Ancla la transformación en la base */
-}
+    /* ANIMACIÓN DE REBOTE (versión corregida sin desplazamiento lateral) */
+    @keyframes rebote {
+      0% { transform: translateY(0) scaleY(1); }
+      20% { transform: translateY(-25px) scaleY(0.9); }
+      40% { transform: translateY(0) scaleY(1.05); }
+      55% { transform: translateY(-10px) scaleY(0.97); }
+      70% { transform: translateY(0) scaleY(1.01); }
+      85% { transform: translateY(-2px) scaleY(0.995); }
+      100% { transform: translateY(0) scaleY(1); }
+    }
+    .rebote {
+      animation: rebote 1s cubic-bezier(0.37, 1.11, 0.7, 1.2);
+    }
     .separador-completo {
       margin: 20px 0;
     }
