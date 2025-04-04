@@ -1,0 +1,9 @@
+/* ESTO FIJA EL BUSCADOR */
+.buscador {
+  position: fixed !important;
+  top: 220px !important;
+  left: 30px !important;
+  width: 250px !important;
+  z-index: 9999 !important;
+  transform: none !important;
+}
