@@ -18,6 +18,7 @@
       user-select: none;
     }
 
+    /* Pantalla negra */
     .pantalla-negra {
       position: fixed;
       top: 0;
@@ -36,6 +37,14 @@
       animation: parpadeo 0.5s infinite;
     }
 
+    /* Animación de parpadeo entre negro y rojo */
+    @keyframes parpadeo {
+      0% { background-color: black; }
+      50% { background-color: red; }
+      100% { background-color: black; }
+    }
+
+    /* Estilo del mensaje */
     .mensaje {
       position: fixed;
       top: 25%;
@@ -47,22 +56,17 @@
       display: none;
       white-space: pre-line;
     }
-
-    @keyframes parpadeo {
-      0% { background-color: black; }
-      50% { background-color: red; }
-      100% { background-color: black; }
-    }
   </style>
   <script>
     function activarPantallaNegra() {
+      // Crear y mostrar la pantalla negra
       let pantalla = document.createElement('div');
       pantalla.classList.add('pantalla-negra');
       pantalla.innerHTML = '💀';
       document.body.appendChild(pantalla);
       pantalla.style.display = 'flex';
 
-      // Mostrar el mensaje
+      // Crear y mostrar el mensaje
       let mensaje = document.createElement('div');
       mensaje.classList.add('mensaje');
       mensaje.innerHTML = `te aplastaremos de tal modo que no habrá marcha atrás. Te ocurrirán cosas de las que no podrías recuperarte ni aunque vivieras mil años. no volverás a tener sentimientos humanos y normales. Estarás muerto por dentro, serás incapaz de amar, de sentir amistad, de disfrutar de la vida, de reírte, de sentir curiosidad, valor o integridad. Estarás hueco, te estrujaremos hasta vaciarte y luego te llenaremos de nosotros`;
@@ -79,7 +83,7 @@
       audio.play();
     }
 
-    // Escuchar el clic en el documento
+    // Activar la pantalla negra con mensaje al hacer click
     document.addEventListener('click', activarPantallaNegra);
   </script>
 </head>
