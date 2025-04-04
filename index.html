@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cartas Shiva</title>
+  <title>Juego de Terror</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -17,6 +17,7 @@
       background-color: rgba(0, 0, 0, 0.2);
       user-select: none;
     }
+
     .pantalla-negra {
       position: fixed;
       top: 0;
@@ -32,7 +33,21 @@
       text-shadow: 0 0 10px red;
       z-index: 1000;
       display: none;
+      animation: parpadeo 0.5s infinite;
     }
+
+    .mensaje {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.5em;
+      text-shadow: 0 0 10px red;
+      display: none;
+      white-space: pre-line;
+    }
+
     @keyframes parpadeo {
       0% { background-color: black; }
       50% { background-color: red; }
@@ -46,8 +61,15 @@
       pantalla.innerHTML = '💀';
       document.body.appendChild(pantalla);
       pantalla.style.display = 'flex';
+      let mensaje = document.createElement('div');
+      mensaje.classList.add('mensaje');
+      mensaje.innerHTML = `te aplastaremos de tal modo que no habrá marcha atrás. Te ocurrirán cosas de las que no podrías recuperarte ni aunque vivieras mil años. no volverás a tener sentimientos humanos y normales. Estarás muerto por dentro, serás incapaz de amar, de sentir amistad, de disfrutar de la vida, de reírte, de sentir curiosidad, valor o integridad. Estarás hueco, te estrujaremos hasta vaciarte y luego te llenaremos de nosotros`;
+      document.body.appendChild(mensaje);
       setTimeout(() => {
-        pantalla.style.animation = 'parpadeo 0.5s infinite';
+        mensaje.style.display = 'block';
+      }, 500);
+      
+      setTimeout(() => {
         let audio = new Audio('https://www.myinstants.com/media/sounds/high-pitch-beep.mp3');
         audio.loop = true;
         audio.play();
@@ -66,6 +88,4 @@
   </header>
 </body>
 </html>
-
-
 
