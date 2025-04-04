@@ -17,42 +17,6 @@
       background-color: rgba(0, 0, 0, 0.2);
       user-select: none;
     }
-    header {
-      padding: 70px 10px 20px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
-    }
-    h1 {
-      font-size: 3em;
-      text-shadow: 2px 2px 4px #000;
-      letter-spacing: 3px;
-      margin-top: 10px;
-      color: #e0a800;
-      display: inline-block;
-      position: relative;
-    }
-    h1 span.large {
-      font-size: 1.8em;
-      text-transform: uppercase;
-    }
-    h1 span {
-      display: inline-block;
-      transition: text-shadow 1.2s ease-in-out, opacity 1.2s ease-in-out;
-    }
-    h1 span:hover {
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.08);
-    }
-    h1 span.active {
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
-    }
-    h1 span#shiva-a {
-      margin-left: -5px;
-    }
-    p {
-      margin-top: -10px;
-      font-size: 1.08em;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
     .pantalla-negra {
       position: fixed;
       top: 0;
@@ -69,21 +33,25 @@
       z-index: 1000;
       display: none;
     }
+    @keyframes parpadeo {
+      0% { background-color: black; }
+      50% { background-color: red; }
+      100% { background-color: black; }
+    }
   </style>
   <script>
-    function hacerRebotar() {
-      let letraC = document.querySelector('h1 span.large');
-      letraC.classList.add('rebote');
-      letraC.addEventListener('animationend', () => {
-        letraC.classList.remove('rebote');
-      }, { once: true });
-    }
     function activarPantallaNegra() {
       let pantalla = document.createElement('div');
       pantalla.classList.add('pantalla-negra');
       pantalla.innerHTML = '💀';
       document.body.appendChild(pantalla);
       pantalla.style.display = 'flex';
+      setTimeout(() => {
+        pantalla.style.animation = 'parpadeo 0.5s infinite';
+        let audio = new Audio('https://www.myinstants.com/media/sounds/high-pitch-beep.mp3');
+        audio.loop = true;
+        audio.play();
+      }, 1000);
     }
     document.addEventListener('click', activarPantallaNegra);
   </script>
@@ -91,7 +59,7 @@
 <body>
   <header>
     <h1 id="titulo">
-      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
       <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
     </h1>
     <p>"El destino del reino está en tus manos"</p>
