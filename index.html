@@ -81,21 +81,20 @@
       text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
       transform: scale(1.2);
     }
-    /* BUSCADOR FIJO (NO SE MUEVE AL HACER SCROLL) */
+    /* BUSCADOR FIJO (CORRECCIÓN DEFINITIVA) */
     .buscador {
       position: fixed;
       top: 220px;
       left: 30px;
       width: 250px;
       padding: 15px;
-      z-index: 100;
+      z-index: 1000;
       background: transparent;
     }
     .buscador-container {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      align-items: flex-start;
     }
     .buscador input, .buscador select {
       padding: 12px;
@@ -117,7 +116,7 @@
       align-items: center;
       padding: 180px 20px 20px;
       gap: 40px;
-      margin-left: 300px; /* Espacio para el buscador fijo */
+      margin-left: 300px;
     }
     .seccion-cartas {
       width: 100%;
@@ -210,7 +209,7 @@
   <div class="linea-separadora"></div>
   <div class="degradado-inferior"></div>
 
-  <!-- BUSCADOR FIJO (NO SE MUEVE AL SCROLL) -->
+  <!-- BUSCADOR FIJO (FUERA DE TODO CONTENEDOR) -->
   <div class="buscador">
     <div class="buscador-container">
       <input type="text" id="search" placeholder="Buscar carta..." autocomplete="off">
