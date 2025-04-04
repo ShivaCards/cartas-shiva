@@ -4,8 +4,83 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* [Tus estilos anteriores se mantienen igual hasta .galeria] */
-
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('images/fondo.png');
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Cinzel Decorative', serif;
+      color: black;
+      text-align: center;
+      min-height: 180vh;
+      background-color: rgba(0, 0, 0, 0.2);
+      user-select: none;
+    }
+    header {
+      padding: 50px 10px 40px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
+    }
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 4px #000;
+      letter-spacing: 3px;
+      margin-top: 10px;
+      color: #e0a800;
+      display: inline-block;
+      position: relative;
+    }
+    h1 span.large {
+      font-size: 1.8em;
+      text-transform: uppercase;
+    }
+    h1 span {
+      display: inline-block;
+      transition: text-shadow 1.2s ease-in-out, opacity 1.2s ease-in-out;
+    }
+    h1 span:hover {
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.08);
+    }
+    h1 span.active {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+    }
+    h1 span#shiva-a {
+      margin-left: -5px;
+    }
+    p {
+      margin-top: -10px;
+      font-size: 1.08em;
+      font-weight: bold;
+    }
+    .linea-separadora {
+      width: 80%;
+      height: 4px;
+      background: linear-gradient(to right, transparent, #8B5A2B, transparent);
+      margin: 5px auto;
+    }
+    .degradado-inferior {
+      width: 100%;
+      height: 30px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+      margin-top: -5px;
+    }
+    .categorias {
+      margin-top: 5px;
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+    }
+    .categorias a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.15em;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.3s ease;
+      padding: 10px 20px;
+    }
+    .categorias a:hover {
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
+      transform: scale(1.2);
+    }
     .buscador {
       text-align: center;
       margin: 30px auto;
@@ -38,11 +113,58 @@
     input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.7) inset !important;
     }
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 50px 20px 20px;
+      gap: 20px;
+    }
+    .carta {
+      width: 200px;
+      height: 280px;
+      position: relative;
+      background-color: transparent;
+    }
+    .cara {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    @keyframes rebote {
+      0% { transform: translateY(0) scaleY(1); }
+      30% { transform: translateY(-20px) scaleY(0.9); }
+      60% { transform: translateY(0) scaleY(1.05); }
+      80% { transform: translateY(-10px) scaleY(0.95); }
+      100% { transform: translateY(0) scaleY(1); }
+    }
+    .rebote {
+      animation: rebote 0.6s ease-out;
+    }
   </style>
 </head>
-
 <body>
-  <!-- [El resto de tu HTML anterior se mantiene igual hasta el buscador] -->
+  <header>
+    <h1 id="titulo">
+      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
+    </h1>
+    <p>"El destino del reino está en tus manos"</p>
+  </header>
+
+  <div class="linea-separadora"></div>
+
+  <nav class="categorias">
+    <a href="#">Reglas del Juego</a>
+    <a href="#">Glosario</a>
+    <a href="#">Mitos y Leyendas</a>
+  </nav>
+
+  <div class="linea-separadora"></div>
+  <div class="degradado-inferior"></div>
 
   <div class="buscador">
     <div class="buscador-container">
@@ -57,28 +179,31 @@
   </div>
 
   <div class="galeria">
-    <!-- [Tus cartas aquí] -->
+    <div class="carta" data-name="Kethel Cazador">
+      <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
+    </div>
+    <div class="carta" data-name="Huargo">
+      <div class="cara" style="background-image: url('images/huargo.png')"></div>
+    </div>
   </div>
 
   <script>
-    // Función de búsqueda simple
+    function hacerRebotar() {
+      let letraC = document.querySelector('h1 span.large');
+      letraC.classList.add('rebote');
+      letraC.addEventListener('animationend', () => {
+        letraC.classList.remove('rebote');
+      }, { once: true });
+    }
+
     document.getElementById('search').addEventListener('input', function() {
       const searchTerm = this.value.toLowerCase();
       const cards = document.querySelectorAll('.carta');
       
       cards.forEach(card => {
-        const cardName = card.getAttribute('data-name') || '';
-        if (cardName.toLowerCase().includes(searchTerm)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+        const cardName = card.getAttribute('data-name').toLowerCase();
+        card.style.display = cardName.includes(searchTerm) ? 'block' : 'none';
       });
-    });
-
-    // Desactiva autocompletado
-    document.querySelectorAll('input').forEach(input => {
-      input.setAttribute('autocomplete', 'off');
     });
   </script>
 </body>
