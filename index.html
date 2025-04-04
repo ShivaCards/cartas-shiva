@@ -44,6 +44,92 @@
     h1 span.active {
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
     }
+    h1 span#shiva-a {
+      margin-left: -5px;
+    }
+    p {
+      margin-top: -10px;
+      font-size: 1.08em;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .linea-separadora {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, transparent, #8B5A2B, transparent);
+      margin: 0;
+    }
+    .degradado-inferior {
+      width: 100%;
+      height: 30px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+      margin: -1px 0 0;
+    }
+    .contenedor-categorias {
+      border-top: 4px solid;
+      border-bottom: 4px solid;
+      border-image: linear-gradient(to right, transparent, #8B5A2B, transparent) 1;
+      margin: 30px 0 0;
+    }
+    .categorias {
+      margin: 5px 0;
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+    }
+    .categorias a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.15em;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.3s ease;
+      padding: 8px 20px;
+    }
+    .categorias a:hover {
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
+      transform: scale(1.2);
+    }
+    .buscador {
+      text-align: left;
+      margin: -15px 20px 0; /* Ajuste para pegar al separador */
+      padding: 10px;
+    }
+    .buscador input, .buscador select {
+      padding: 10px;
+      font-size: 1em;
+      width: 200px;
+      margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 2px solid #8B5A2B;
+    }
+    .seccion-titulo {
+      font-size: 1.5em;
+      color: #e0a800;
+      margin: 2px 0;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 15px 20px 25px;
+      gap: 20px;
+      min-height: 320px;
+    }
+    .carta {
+      width: 200px;
+      height: 280px;
+      position: relative;
+      background-color: transparent;
+      margin: 5px 0;
+    }
+    .cara {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
       30% { transform: translateY(-20px) scaleY(0.9); }
@@ -54,23 +140,8 @@
     .rebote {
       animation: rebote 0.6s ease-out;
     }
-    .contenedor-categorias {
-      border-top: 4px solid;
-      border-bottom: 4px solid;
-      border-image: linear-gradient(to right, transparent, #8B5A2B, transparent) 1;
-      margin: 30px 0 50px; /* Se aumentó el margen inferior */
-    }
-    .buscador {
-      text-align: center;
-      margin-bottom: 20px; /* Espacio antes de la línea marrón */
-    }
-    .buscador input, .buscador select {
-      padding: 10px;
-      font-size: 1em;
-      width: 200px;
-      margin-right: 10px;
-      background-color: rgba(255, 255, 255, 0.5);
-      border: 2px solid #8B5A2B;
+    .separador-completo {
+      margin: 20px 0;
     }
   </style>
   <script>
@@ -83,11 +154,12 @@
     }
   </script>
 </head>
+
 <body>
   <header>
     <h1 id="titulo">
       <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
-      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span>a</span>
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
     </h1>
     <p>"El destino del reino está en tus manos"</p>
   </header>
@@ -99,6 +171,7 @@
       <a href="#">Mitos y Leyendas</a>
     </nav>
   </div>
+  <div class="degradado-inferior"></div>
 
   <div class="buscador">
     <input type="text" id="search" placeholder="Buscar carta...">
@@ -110,9 +183,55 @@
     </select>
   </div>
 
+  <!-- Sección Militar -->
   <div class="seccion-titulo">Militar</div>
-  <div class="linea-separadora"></div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
+    </div>
+  </div>
 
+  <!-- Sección Magia -->
+  <div class="seccion-titulo">Magia</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <!-- Sección Bestia -->
+  <div class="seccion-titulo">Bestia</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/huargo.png')"></div>
+    </div>
+  </div>
+
+  <!-- Sección Civil -->
+  <div class="seccion-titulo">Civil</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <!-- Sección Altar -->
+  <div class="seccion-titulo">Altar</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
 </body>
 </html>
-
