@@ -1,99 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Juego de Terror</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chau</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-image: url('images/fondo.png');
-      background-size: cover;
-      background-attachment: fixed;
-      font-family: 'Cinzel Decorative', serif;
-      color: black;
-      text-align: center;
-      min-height: 180vh;
-      background-color: rgba(0, 0, 0, 0.2);
-      user-select: none;
-    }
-
-    /* Pantalla negra */
-    .pantalla-negra {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      height: 100vh;
+      background-color: white;
+      font-family: Arial, sans-serif;
+      color: black;
       font-size: 3em;
-      text-shadow: 0 0 10px red;
-      z-index: 1000;
-      display: none;
-      animation: parpadeo 0.5s infinite;
-    }
-
-    /* Animación de parpadeo entre negro y rojo */
-    @keyframes parpadeo {
-      0% { background-color: black; }
-      50% { background-color: red; }
-      100% { background-color: black; }
-    }
-
-    /* Estilo del mensaje */
-    .mensaje {
-      position: fixed;
-      top: 25%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 1.5em;
-      text-shadow: 0 0 10px red;
-      display: none;
-      white-space: pre-line;
     }
   </style>
-  <script>
-    function activarPantallaNegra() {
-      // Crear y mostrar la pantalla negra
-      let pantalla = document.createElement('div');
-      pantalla.classList.add('pantalla-negra');
-      pantalla.innerHTML = '💀';
-      document.body.appendChild(pantalla);
-      pantalla.style.display = 'flex';
-
-      // Crear y mostrar el mensaje
-      let mensaje = document.createElement('div');
-      mensaje.classList.add('mensaje');
-      mensaje.innerHTML = `te aplastaremos de tal modo que no habrá marcha atrás. Te ocurrirán cosas de las que no podrías recuperarte ni aunque vivieras mil años. no volverás a tener sentimientos humanos y normales. Estarás muerto por dentro, serás incapaz de amar, de sentir amistad, de disfrutar de la vida, de reírte, de sentir curiosidad, valor o integridad. Estarás hueco, te estrujaremos hasta vaciarte y luego te llenaremos de nosotros`;
-      document.body.appendChild(mensaje);
-
-      // Mostrar el mensaje con un retraso
-      setTimeout(() => {
-        mensaje.style.display = 'block';
-      }, 500);
-
-      // Reproducir el pitido
-      let audio = new Audio('https://www.myinstants.com/media/sounds/high-pitch-beep.mp3');
-      audio.loop = true;
-      audio.play();
-    }
-
-    // Activar la pantalla negra con mensaje al hacer click
-    document.addEventListener('click', activarPantallaNegra);
-  </script>
 </head>
 <body>
-  <header>
-    <h1 id="titulo">
-      <span class="large">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
-      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
-    </h1>
-    <p>"El destino del reino está en tus manos"</p>
-  </header>
+  <div>chau</div>
 </body>
 </html>
+
