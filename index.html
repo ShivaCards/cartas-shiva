@@ -50,16 +50,20 @@
       margin-left: -5px;
       position: relative;
       display: inline-block;
-      vertical-align: baseline;
+      vertical-align: middle;
+      width: 0.7em;
+      height: 1em;
+      line-height: 1;
     }
     .ojo-transformado {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: -0.1em;
+      left: -0.1em;
       width: 1em;
       height: 1em;
       opacity: 0;
-      pointer-events: none;
+      z-index: 10;
+      object-fit: contain;
     }
     p {
       margin-top: -10px;
@@ -173,24 +177,37 @@
     function transformarLetraA() {
       const letraA = document.getElementById('shiva-a');
       
+      // Evitar múltiples clics
+      if (letraA.classList.contains('transformando')) return;
+      letraA.classList.add('transformando');
+      
       // Crear ojo
-      const ojoImg = document.createElement('img');
+      const ojoImg = new Image();
       ojoImg.src = 'images/ojo.png';
       ojoImg.classList.add('ojo-transformado');
       
-      // Cambio instantáneo
-      letraA.textContent = '';
-      letraA.appendChild(ojoImg);
-      ojoImg.style.opacity = '1';
+      // Guardar estado original
+      const originalHTML = letraA.innerHTML;
       
-      // Volver a la normalidad después de 0.5s
+      // Aplicar cambios
+      letraA.innerHTML = '';
+      letraA.appendChild(ojoImg);
+      
+      // Mostrar ojo instantáneamente
       setTimeout(() => {
-        ojoImg.style.opacity = '0';
+        ojoImg.style.opacity = '1';
+        
+        // Ocultar después de 0.5s
         setTimeout(() => {
-          letraA.removeChild(ojoImg);
-          letraA.textContent = 'a';
-        }, 50);
-      }, 500);
+          ojoImg.style.opacity = '0';
+          
+          // Restaurar estado original
+          setTimeout(() => {
+            letraA.innerHTML = originalHTML;
+            letraA.classList.remove('transformando');
+          }, 50);
+        }, 500);
+      }, 10);
     }
   </script>
 </head>
