@@ -4,18 +4,56 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ... (todo el CSS anterior se mantiene igual) ... */
-    
-    /* Nuevo estilo para el contenedor de la letra A */
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('images/fondo.png');
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Cinzel Decorative', serif;
+      color: black;
+      text-align: center;
+      min-height: 180vh;
+      background-color: rgba(0, 0, 0, 0.2);
+      user-select: none;
+    }
+    header {
+      padding: 70px 10px 20px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
+    }
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      letter-spacing: 3px;
+      margin-top: 10px;
+      color: #e0a800;
+      display: inline-block;
+      position: relative;
+      filter: blur(0.3px);
+    }
+    h1 span.large {
+      font-size: 1.8em;
+      text-transform: uppercase;
+    }
+    h1 span {
+      display: inline-block;
+      transition: text-shadow 0.6s ease-in-out, opacity 0.6s ease-in-out, filter 0.6s ease-in-out;
+    }
+    h1 span:hover {
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.4);
+      filter: blur(0.2px);
+    }
+    h1 span.active {
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
     h1 span#shiva-a {
       margin-left: -5px;
       position: relative;
       display: inline-block;
-      width: 1em; /* Mismo ancho que la letra */
-      height: 1em; /* Mismo alto que la letra */
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
     }
-    
-    /* Estilo para la imagen del ojo */
     .ojo-transformado {
       position: absolute;
       top: 0;
@@ -25,6 +63,106 @@
       object-fit: contain;
       opacity: 0;
       transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    p {
+      margin-top: -10px;
+      font-size: 1.08em;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .linea-separadora {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, transparent, #8B5A2B, transparent);
+      margin: 0;
+    }
+    .degradado-inferior {
+      width: 100%;
+      height: 30px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+      margin: -1px 0 0;
+    }
+    .contenedor-categorias {
+      border-top: 4px solid;
+      border-bottom: 4px solid;
+      border-image: linear-gradient(to right, transparent, #8B5A2B, transparent) 1;
+      margin: 30px 0 0;
+    }
+    .categorias {
+      margin: 5px 0;
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+    }
+    .categorias a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.15em;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.3s ease;
+      padding: 8px 20px;
+    }
+    .categorias a:hover {
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
+      transform: scale(1.2);
+    }
+    .buscador {
+      text-align: left;
+      margin: -15px 20px 0;
+      padding: 10px;
+    }
+    .buscador input, .buscador select {
+      padding: 10px;
+      font-size: 1em;
+      width: 200px;
+      margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 2px solid #8B5A2B;
+    }
+    .seccion-titulo {
+      font-size: 1.5em;
+      color: #e0a800;
+      margin: 2px 0;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 15px 20px 25px;
+      gap: 20px;
+      min-height: 320px;
+    }
+    .carta {
+      width: 200px;
+      height: 280px;
+      position: relative;
+      background-color: transparent;
+      margin: 5px 0;
+    }
+    .cara {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    @keyframes rebote {
+      0% { transform: translateY(0) scaleY(1); }
+      15% { transform: translateY(-25px) scaleY(0.85); }
+      30% { transform: translateY(0) scaleY(1.1); }
+      45% { transform: translateY(-15px) scaleY(0.9); }
+      60% { transform: translateY(0) scaleY(1.05); }
+      75% { transform: translateY(-8px) scaleY(0.95); }
+      90% { transform: translateY(0) scaleY(1.02); }
+      100% { transform: translateY(0) scaleY(1); }
+    }
+    .rebote {
+      animation: rebote 1.2s cubic-bezier(0.28, 0.84, 0.42, 1);
+    }
+    .separador-completo {
+      margin: 20px 0;
     }
   </style>
   <script>
@@ -36,23 +174,19 @@
       }, { once: true });
     }
 
-    // Nueva función para transformar la A
     function transformarLetraA() {
       const letraA = document.getElementById('shiva-a');
       const ojoImg = document.createElement('img');
       ojoImg.src = 'images/ojo.png';
       ojoImg.classList.add('ojo-transformado');
       
-      // Asegurar que el contenedor mantenga el mismo tamaño
       letraA.style.visibility = 'hidden';
       letraA.appendChild(ojoImg);
       
-      // Mostrar el ojo después de un breve retraso para la transición
       setTimeout(() => {
         ojoImg.style.opacity = '1';
       }, 10);
       
-      // Volver a la normalidad después de 0.5 segundos
       setTimeout(() => {
         ojoImg.style.opacity = '0';
         setTimeout(() => {
@@ -72,6 +206,74 @@
     <p>"El destino del reino está en tus manos"</p>
   </header>
 
-  <!-- ... (el resto del HTML permanece exactamente igual) ... -->
+  <div class="contenedor-categorias">
+    <nav class="categorias">
+      <a href="#">Reglas del Juego</a>
+      <a href="#">Glosario</a>
+      <a href="#">Mitos y Leyendas</a>
+    </nav>
+  </div>
+  <div class="degradado-inferior"></div>
+
+  <div class="buscador">
+    <input type="text" id="search" placeholder="Buscar carta...">
+    <select id="filter">
+      <option value="nivel">Nivel</option>
+      <option value="atk">ATK</option>
+      <option value="tipo">Tipo</option>
+      <option value="grupo">Grupo</option>
+    </select>
+  </div>
+
+  <!-- Sección Militar -->
+  <div class="seccion-titulo">Militar</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
+    </div>
+  </div>
+
+  <!-- Sección Magia -->
+  <div class="seccion-titulo">Magia</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <!-- Sección Bestia -->
+  <div class="seccion-titulo">Bestia</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/huargo.png')"></div>
+    </div>
+  </div>
+
+  <!-- Sección Civil -->
+  <div class="seccion-titulo">Civil</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <!-- Sección Altar -->
+  <div class="seccion-titulo">Altar</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
 </body>
 </html>
