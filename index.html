@@ -2,214 +2,53 @@
 <html>
 <head>
   <title>Cartas Shiva</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS de Phantom -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/noscript.css">
+  <!-- CSS personalizado para el buscador fijo -->
+  <link rel="stylesheet" href="assets/css/custom.css">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('images/fondo.png');
-      background-size: cover;
-      background-attachment: fixed;
-      font-family: 'Cinzel Decorative', serif;
-      color: black;
-      text-align: center;
-      min-height: 180vh;
-      background-color: rgba(0, 0, 0, 0.2);
-      user-select: none;
+    /* Reset global para evitar conflictos */
+    html, body {
+      overflow-x: hidden;
+      transform: none !important;
+      perspective: none !important;
     }
-    header {
-      padding: 50px 10px 40px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3), transparent);
-    }
-    h1 {
-      font-size: 3em;
-      text-shadow: 2px 2px 4px #000;
-      letter-spacing: 3px;
-      margin-top: 10px;
-      color: #e0a800;
-      display: inline-block;
-      position: relative;
-    }
-    h1 span.large {
-      font-size: 1.8em;
-      text-transform: uppercase;
-    }
-    h1 span {
-      display: inline-block;
-      transition: text-shadow 1.2s ease-in-out, opacity 1.2s ease-in-out;
-    }
-    h1 span:hover {
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.08);
-    }
-    h1 span.active {
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
-    }
-    h1 span#shiva-a {
-      margin-left: -5px;
-    }
-    p {
-      margin-top: -10px;
-      font-size: 1.08em;
-      font-weight: bold;
-    }
-    .linea-separadora {
-      width: 80%;
-      height: 4px;
-      background: linear-gradient(to right, transparent, #8B5A2B, transparent);
-      margin: 5px auto;
-    }
-    .degradado-inferior {
-      width: 100%;
-      height: 30px;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
-      margin-top: -5px;
-    }
-    .categorias {
-      margin-top: 5px;
-      display: flex;
-      justify-content: center;
-      gap: 70px;
-    }
-    .categorias a {
-      text-decoration: none;
-      color: black;
-      font-size: 1.15em;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.3s ease;
-      padding: 10px 20px;
-    }
-    .categorias a:hover {
-      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.8);
-      transform: scale(1.2);
-    }
-    /* BUSCADOR FIJO (CORRECCIÓN DEFINITIVA) */
+    /* Estilos personalizados (conservando tu diseño) */
     .buscador {
-      position: fixed;
-      top: 220px;
-      left: 30px;
-      width: 250px;
-      padding: 15px;
-      z-index: 1000;
+      position: fixed !important;
+      top: 220px !important;
+      left: 30px !important;
+      width: 250px !important;
+      z-index: 9999 !important;
       background: transparent;
     }
-    .buscador-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .buscador input, .buscador select {
-      padding: 12px;
-      font-size: 1em;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.7);
-      border: 2px solid #8B5A2B;
-      border-radius: 4px;
-      font-family: 'Cinzel Decorative', serif;
-      color: #333;
-    }
-    .buscador input::placeholder {
-      color: #5a3e1b;
-      opacity: 0.7;
-    }
     .galeria {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 180px 20px 20px;
-      gap: 40px;
-      margin-left: 300px;
-    }
-    .seccion-cartas {
-      width: 100%;
-      max-width: 1200px;
-    }
-    .titulo-seccion {
-      font-size: 1.8em;
-      color: #e0a800;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px #000;
-      text-align: left;
-      padding-left: 20px;
-    }
-    .contenedor-cartas {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 20px;
-      margin-bottom: 30px;
-      padding-left: 20px;
-    }
-    .carta {
-      width: 200px;
-      height: 280px;
-      position: relative;
-      background-color: transparent;
-    }
-    .cara {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-    .separador-seccion {
-      width: 80%;
-      height: 4px;
-      background: linear-gradient(to right, transparent, #8B5A2B, transparent);
-      margin: 20px auto;
-      position: relative;
-    }
-    .separador-seccion::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 30%;
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
-    }
-    .separador-seccion::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 30%;
-      background: linear-gradient(to left, rgba(0, 0, 0, 0.9), transparent);
-    }
-    @keyframes rebote {
-      0% { transform: translateY(0) scaleY(1); }
-      30% { transform: translateY(-20px) scaleY(0.9); }
-      60% { transform: translateY(0) scaleY(1.05); }
-      80% { transform: translateY(-10px) scaleY(0.95); }
-      100% { transform: translateY(0) scaleY(1); }
-    }
-    .rebote {
-      animation: rebote 0.6s ease-out;
+      margin-left: 300px; /* Espacio para el buscador fijo */
     }
   </style>
 </head>
 <body>
+  <!-- HEADER (COMPLETO) -->
   <header>
     <h1 id="titulo">
       <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
       <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a">a</span>
     </h1>
     <p>"El destino del reino está en tus manos"</p>
+    <div class="linea-separadora"></div>
+    <nav class="categorias">
+      <a href="#">Reglas del Juego</a>
+      <a href="#">Glosario</a>
+      <a href="#">Mitos y Leyendas</a>
+    </nav>
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
   </header>
 
-  <div class="linea-separadora"></div>
-
-  <nav class="categorias">
-    <a href="#">Reglas del Juego</a>
-    <a href="#">Glosario</a>
-    <a href="#">Mitos y Leyendas</a>
-  </nav>
-
-  <div class="linea-separadora"></div>
-  <div class="degradado-inferior"></div>
-
-  <!-- BUSCADOR FIJO (FUERA DE TODO CONTENEDOR) -->
+  <!-- BUSCADOR FIJO (COMPLETO) -->
   <div class="buscador">
     <div class="buscador-container">
       <input type="text" id="search" placeholder="Buscar carta..." autocomplete="off">
@@ -221,6 +60,7 @@
     </div>
   </div>
 
+  <!-- GALERÍA DE CARTAS (COMPLETA) -->
   <div class="galeria">
     <!-- Sección MILITAR -->
     <div class="seccion-cartas">
@@ -232,15 +72,6 @@
         <div class="carta" data-name="Konganciano" data-tipo="Militar" data-nivel="2">
           <div class="cara" style="background-image: url('images/konganciano.png')"></div>
         </div>
-      </div>
-      <div class="separador-seccion"></div>
-    </div>
-
-    <!-- Sección MAGIA -->
-    <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Magia</h2>
-      <div class="contenedor-cartas">
-        <!-- Cartas de magia irán aquí -->
       </div>
       <div class="separador-seccion"></div>
     </div>
@@ -265,26 +96,32 @@
       <div class="separador-seccion"></div>
     </div>
 
-    <!-- Sección CIVIL -->
+    <!-- Otras secciones (vacías por ahora) -->
     <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Civil</h2>
-      <div class="contenedor-cartas">
-        <!-- Cartas civiles irán aquí -->
-      </div>
+      <h2 class="titulo-seccion">Magia</h2>
+      <div class="contenedor-cartas"></div>
       <div class="separador-seccion"></div>
     </div>
-
-    <!-- Sección ALTAR -->
+    <div class="seccion-cartas">
+      <h2 class="titulo-seccion">Civil</h2>
+      <div class="contenedor-cartas"></div>
+      <div class="separador-seccion"></div>
+    </div>
     <div class="seccion-cartas">
       <h2 class="titulo-seccion">Altar</h2>
-      <div class="contenedor-cartas">
-        <!-- Cartas de altar irán aquí -->
-      </div>
+      <div class="contenedor-cartas"></div>
       <div class="separador-seccion"></div>
     </div>
   </div>
 
+  <!-- SCRIPTS (COMPLETOS) -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
   <script>
+    // Función para animar el título
     function hacerRebotar() {
       let letraC = document.querySelector('h1 span.large');
       letraC.classList.add('rebote');
@@ -293,30 +130,10 @@
       }, { once: true });
     }
 
-    // Ordenar cartas al cargar (por tipo y nivel)
-    document.addEventListener('DOMContentLoaded', () => {
-      ordenarCartas();
-    });
-
-    function ordenarCartas() {
-      const secciones = document.querySelectorAll('.contenedor-cartas');
-      
-      secciones.forEach(seccion => {
-        const cartas = Array.from(seccion.querySelectorAll('.carta'));
-        
-        cartas.sort((a, b) => {
-          return parseInt(a.getAttribute('data-nivel')) - parseInt(b.getAttribute('data-nivel'));
-        });
-
-        cartas.forEach(carta => seccion.appendChild(carta));
-      });
-    }
-
-    // Búsqueda exacta (solo inicios)
+    // Búsqueda exacta
     document.getElementById('search').addEventListener('input', function() {
       const searchTerm = this.value.toLowerCase();
       const cards = document.querySelectorAll('.carta');
-      
       cards.forEach(card => {
         const cardName = card.getAttribute('data-name').toLowerCase();
         card.style.display = cardName.startsWith(searchTerm) ? 'block' : 'none';
@@ -325,7 +142,14 @@
 
     // Filtro por tipo/nivel
     document.getElementById('filter').addEventListener('change', function() {
-      ordenarCartas();
+      const secciones = document.querySelectorAll('.contenedor-cartas');
+      secciones.forEach(seccion => {
+        const cartas = Array.from(seccion.querySelectorAll('.carta'));
+        cartas.sort((a, b) => {
+          return parseInt(a.getAttribute('data-nivel')) - parseInt(b.getAttribute('data-nivel'));
+        });
+        cartas.forEach(carta => seccion.appendChild(carta));
+      });
     });
   </script>
 </body>
