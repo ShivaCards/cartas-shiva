@@ -84,10 +84,8 @@
     .buscador {
       position: fixed;
       top: 220px;
-      left: 0;
-      right: 0;
+      left: 30px;
       width: 250px;
-      margin: 0 auto;
       padding: 15px;
       z-index: 100;
       background: transparent;
@@ -96,12 +94,12 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      align-items: center;
+      align-items: flex-start;
     }
     .buscador input, .buscador select {
       padding: 12px;
       font-size: 1em;
-      width: 250px;
+      width: 100%;
       background-color: rgba(255, 255, 255, 0.7);
       border: 2px solid #8B5A2B;
       border-radius: 4px;
@@ -118,6 +116,7 @@
       align-items: center;
       padding: 180px 20px 20px;
       gap: 40px;
+      margin-left: 300px; /* Espacio para el buscador */
     }
     .seccion-cartas {
       width: 100%;
@@ -128,13 +127,16 @@
       color: #e0a800;
       margin-bottom: 10px;
       text-shadow: 2px 2px 4px #000;
+      text-align: left;
+      padding-left: 20px;
     }
     .contenedor-cartas {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 20px;
       margin-bottom: 30px;
+      padding-left: 20px;
     }
     .carta {
       width: 200px;
@@ -233,6 +235,15 @@
       <div class="separador-seccion"></div>
     </div>
 
+    <!-- Sección MAGIA -->
+    <div class="seccion-cartas">
+      <h2 class="titulo-seccion">Magia</h2>
+      <div class="contenedor-cartas">
+        <!-- Cartas de magia irán aquí -->
+      </div>
+      <div class="separador-seccion"></div>
+    </div>
+
     <!-- Sección BESTIA -->
     <div class="seccion-cartas">
       <h2 class="titulo-seccion">Bestia</h2>
@@ -253,22 +264,21 @@
       <div class="separador-seccion"></div>
     </div>
 
-    <!-- Secciones vacías (para estructura futura) -->
-    <div class="seccion-cartas">
-      <h2 class="titulo-seccion">Magia</h2>
-      <div class="contenedor-cartas"></div>
-      <div class="separador-seccion"></div>
-    </div>
-
+    <!-- Sección CIVIL -->
     <div class="seccion-cartas">
       <h2 class="titulo-seccion">Civil</h2>
-      <div class="contenedor-cartas"></div>
+      <div class="contenedor-cartas">
+        <!-- Cartas civiles irán aquí -->
+      </div>
       <div class="separador-seccion"></div>
     </div>
 
+    <!-- Sección ALTAR -->
     <div class="seccion-cartas">
       <h2 class="titulo-seccion">Altar</h2>
-      <div class="contenedor-cartas"></div>
+      <div class="contenedor-cartas">
+        <!-- Cartas de altar irán aquí -->
+      </div>
       <div class="separador-seccion"></div>
     </div>
   </div>
