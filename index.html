@@ -604,36 +604,34 @@
 document.getElementById('search').addEventListener('input', function() {
   const searchTerm = this.value.trim().toLowerCase().replace(/[´']/g, '');
   const secciones = document.querySelectorAll('.seccion-container');
-  let galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
-  let separadorDinamico = document.querySelector('.separador-completo-dinamico');
+  const galeriaOriginal = document.getElementById('galeria-militar');
+  const contenedorOriginal = galeriaOriginal.parentNode;
+  const separadorOriginal = document.querySelector('.contenedor-categorias').nextElementSibling;
 
-  // Limpiar búsqueda anterior (sin eliminar el separador/clonar de nuevo)
-  if (galeriaDinamica) galeriaDinamica.innerHTML = '';
-  
+  // Limpiar búsqueda anterior
+  const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
+  const separadorDinamico = document.querySelector('.separador-completo-dinamico');
+  if (galeriaDinamica) galeriaDinamica.remove();
+  if (separadorDinamico) separadorDinamico.remove();
+
   if (searchTerm === '') {
-    if (galeriaDinamica) galeriaDinamica.style.display = 'none';
-    if (separadorDinamico) separadorDinamico.style.display = 'none';
     actualizarCartas();
     return;
   }
 
-  // Crear elementos DINÁMICOS solo si no existen
-  if (!separadorDinamico) {
-    separadorDinamico = document.querySelector('.contenedor-categorias').nextElementSibling.cloneNode(true);
-    separadorDinamico.classList.add('separador-completo-dinamico');
-    document.body.appendChild(separadorDinamico);
-  }
-  if (!galeriaDinamica) {
-    galeriaDinamica = document.createElement('div');
-    galeriaDinamica.id = 'galeria-dinamica-busqueda';
-    galeriaDinamica.className = 'galeria';
-    document.body.appendChild(galeriaDinamica);
-  }
-
-  // Mostrar elementos
+  // Ocultar secciones existentes
   secciones.forEach(sec => sec.classList.remove('visible'));
-  separadorDinamico.style.display = 'block';
-  galeriaDinamica.style.display = 'flex';
+
+  // Clonar el separador original (línea + degradado) y posicionarlo
+  const nuevoSeparador = separadorOriginal.cloneNode(true);
+  nuevoSeparador.classList.add('separador-completo-dinamico');
+  contenedorOriginal.insertBefore(nuevoSeparador, galeriaOriginal);
+
+  // Crear galería dinámica en la posición correcta
+  const galeria = document.createElement('div');
+  galeria.id = 'galeria-dinamica-busqueda';
+  galeria.className = 'galeria';
+  contenedorOriginal.insertBefore(galeria, nuevoSeparador.nextSibling);
 
   // Filtrar cartas
   const cartasCoincidentes = cartas.filter(carta => 
@@ -641,18 +639,17 @@ document.getElementById('search').addEventListener('input', function() {
   );
 
   // Mostrar resultados
-  galeriaDinamica.innerHTML = '';
   if (cartasCoincidentes.length > 0) {
     cartasCoincidentes.sort((a, b) => a.nombre.localeCompare(b.nombre));
     cartasCoincidentes.forEach(carta => {
-      galeriaDinamica.innerHTML += `
+      galeria.innerHTML += `
         <div class="carta" data-id="${carta.id}">
           <div class="cara" style="background-image: url('${carta.imagen}')"></div>
         </div>
       `;
     });
   } else {
-    galeriaDinamica.innerHTML = '<p style="width:100%; color:black; text-align:center; font-family: \'Cinzel Decorative\', serif; text-shadow: 0 0 3px #e0a800;">No se encontraron cartas</p>';
+    galeria.innerHTML = '<p style="width:100%; color:black; text-align:center; font-family: \'Cinzel Decorative\', serif; text-shadow: 0 0 3px #e0a800;">No se encontraron cartas</p>';
   }
 });
     
