@@ -438,7 +438,11 @@
       for (let i = 1; i <= 6; i++) {
         seccionesNivel.innerHTML += `
           <div class="seccion-nivel" data-nivel="${i}">
-            <div class="seccion-titulo">Nivel ${i}</div>
+            <div class="seccion-titulo">
+              <img src="images/icon_nivel${i}.png" class="seccion-icono" alt="Icono Nivel ${i}">
+              Nivel ${i}
+              <img src="images/icon_nivel${i}.png" class="seccion-icono" alt="Icono Nivel ${i}">
+            </div>
             <div class="separador-completo">
               <div class="linea-separadora"></div>
               <div class="degradado-inferior"></div>
