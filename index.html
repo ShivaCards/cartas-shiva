@@ -268,6 +268,13 @@
       <div class="carta">
         <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
       </div>
+      <!-- NUEVAS CARTAS MILITAR -->
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/militar/kethelcazador.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/militar/konganciano.png')"></div>
+      </div>
     </div>
 
     <!-- Sección Magia -->
@@ -280,7 +287,12 @@
       <div class="linea-separadora"></div>
       <div class="degradado-inferior"></div>
     </div>
-    <div class="galeria" id="galeria-magia"></div>
+    <div class="galeria" id="galeria-magia">
+      <!-- NUEVA CARTA MAGIA -->
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/magia/thal-ryoneltraidor.png')"></div>
+      </div>
+    </div>
 
     <!-- Sección Bestia -->
     <div class="seccion-titulo">
@@ -296,6 +308,19 @@
       <div class="carta">
         <div class="cara" style="background-image: url('images/huargo.png')"></div>
       </div>
+      <!-- NUEVAS CARTAS BESTIA -->
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/huargo.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/perrodecazador.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/ukko.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/fenrir.png')"></div>
+      </div>
     </div>
 
     <!-- Sección Civil -->
@@ -308,7 +333,12 @@
       <div class="linea-separadora"></div>
       <div class="degradado-inferior"></div>
     </div>
-    <div class="galeria" id="galeria-civil"></div>
+    <div class="galeria" id="galeria-civil">
+      <!-- NUEVA CARTA CIVIL -->
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/civil/torero.png')"></div>
+      </div>
+    </div>
 
     <!-- Sección Altar -->
     <div class="seccion-titulo">
@@ -320,7 +350,12 @@
       <div class="linea-separadora"></div>
       <div class="degradado-inferior"></div>
     </div>
-    <div class="galeria" id="galeria-altar"></div>
+    <div class="galeria" id="galeria-altar">
+      <!-- NUEVA CARTA ALTAR -->
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/altar/aguilaardiente.png')"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Secciones por Nivel -->
@@ -363,8 +398,63 @@
         nivel: 2,
         atk: 1500,
         imagen: 'images/huargo.png'
+      },
+      // NUEVAS CARTAS AÑADIDAS AL ARRAY
+      {
+        id: 'konganciano',
+        nombre: "Kong'Thar Anciano",
+        tipo: 'militar',
+        nivel: 2,
+        atk: 5,
+        imagen: 'images/cartas/militar/konganciano.png'
+      },
+      {
+        id: 'thal-ryoneltraidor',
+        nombre: "Thal'ryon el Traidor",
+        tipo: 'magia',
+        nivel: 5,
+        atk: 16,
+        imagen: 'images/cartas/magia/thal-ryoneltraidor.png'
+      },
+      {
+        id: 'perrodecazador',
+        nombre: "Perro de cazador",
+        tipo: 'bestia',
+        nivel: 1,
+        atk: 2,
+        imagen: 'images/cartas/bestia/perrodecazador.png'
+      },
+      {
+        id: 'ukko',
+        nombre: "Ukko",
+        tipo: 'bestia',
+        nivel: 3,
+        atk: 6,
+        imagen: 'images/cartas/bestia/ukko.png'
+      },
+      {
+        id: 'fenrir',
+        nombre: "Fenrir",
+        tipo: 'bestia',
+        nivel: 4,
+        atk: 10,
+        imagen: 'images/cartas/bestia/fenrir.png'
+      },
+      {
+        id: 'torero',
+        nombre: "Torero",
+        tipo: 'civil',
+        nivel: 1,
+        atk: 3,
+        imagen: 'images/cartas/civil/torero.png'
+      },
+      {
+        id: 'aguilaardiente',
+        nombre: "Águila Ardiente",
+        tipo: 'altar',
+        nivel: 2,
+        imagen: 'images/cartas/altar/aguilaardiente.png'
       }
-      // Agrega aquí el resto de tus cartas
     ];
 
     // Lista de grupos
