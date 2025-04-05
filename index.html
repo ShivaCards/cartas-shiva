@@ -184,14 +184,13 @@
   height: 280px;
   position: relative;
   margin: 5px 0;
-
-  background-color: rgba(0, 0, 0, 0.05); 
   box-shadow: 
     0 4px 8px rgba(0, 0, 0, 0.3),
     0 6px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden; /* Esto es clave */
+  background-color: transparent; /* Mantenemos transparente */
 }
 
 .carta:hover {
@@ -201,17 +200,17 @@
     0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-.carta .cara {
+.cara {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 8px; 
+  
+  background-color: rgba(0, 0, 0, 0.05); 
 }
-    .cara {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
       20% { transform: translateY(-25px) scaleY(0.9); }
