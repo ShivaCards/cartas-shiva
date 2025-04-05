@@ -231,8 +231,13 @@
       display: none;
     }
     .seccion-container.visible {
-      display: block;
+      display: block; 
     }
+    .carta--zoom {
+  transform: scale(2.5) translateY(10px) !important;
+  z-index: 999;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
   </style>
 </head>
 <body>
@@ -657,6 +662,14 @@ document.getElementById('search').addEventListener('input', function() {
         }, 300);
       }, 10);
     }
+  
+  document.querySelectorAll('.carta').forEach(carta => {
+    carta.addEventListener('click', function () {
+      const yaZoom = this.classList.contains('carta--zoom');
+      document.querySelectorAll('.carta').forEach(c => c.classList.remove('carta--zoom'));
+      if (!yaZoom) this.classList.add('carta--zoom');
+    });
+  });
   </script>
 </body>
 </html>
