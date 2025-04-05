@@ -182,6 +182,7 @@
       border-radius: 0;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
     }
    .carta:hover {
   transform: translateY(-15px) scale(1.03);
@@ -194,11 +195,14 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       border-radius: 0 !important;
       z-index: 1;
+      border: none;
+  outline: none;
+  padding: 0;
     }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
