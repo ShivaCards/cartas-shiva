@@ -26,12 +26,11 @@
       cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
     
-    /* ===== NUEVO CURSOR AL HACER CLIC ===== */
     .carta:active {
       cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important;
     }
 
-    /* ===== ESTILOS ORIGINALES (SIN MODIFICACIONES) ===== */
+    /* ===== ESTILOS ORIGINALES ===== */
     body {
       margin: 0;
       padding: 0;
@@ -144,7 +143,7 @@
     }
     .buscador {
       text-align: left;
-      margin: -15px 20px 0;
+      margin: 100px 20px 0;
       padding: 10px;
     }
     .buscador input, .buscador select {
@@ -155,11 +154,27 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
+    /* ===== NUEVOS ESTILOS PARA TÍTULOS ===== */
     .seccion-titulo {
       font-size: 1.5em;
-      color: #e0a800;
+      color: black;
       margin: 2px 0;
-      text-shadow: 2px 2px 4px #000;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      transition: text-shadow 0.3s ease;
+    }
+    .seccion-titulo:hover {
+      text-shadow: 
+        0 0 10px rgba(224, 168, 0, 0.7),
+        0 0 20px rgba(224, 168, 0, 0.4);
+    }
+    .seccion-icono {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
     .galeria {
       display: flex;
@@ -197,10 +212,320 @@
       animation: rebote 1s cubic-bezier(0.37, 1.11, 0.7, 1.2);
     }
     .separador-completo {
-      margin: 20px 0;
+      margin: 1px 0;
+    }
+    
+    /* Clases para controlar visibilidad */
+    .seccion-container {
+      display: none;
+    }
+    .seccion-container.visible {
+      display: block;
     }
   </style>
+</head>
+<body>
+  <header>
+    <h1 id="titulo">
+      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a" onclick="transformarLetraA()">a</span>
+    </h1>
+    <p>"El destino del reino está en tus manos"</p>
+  </header>
+
+  <div class="contenedor-categorias">
+    <nav class="categorias">
+      <a href="#">Reglas del Juego</a>
+      <a href="#">Glosario</a>
+      <a href="#">Mitos y Leyendas</a>
+    </nav>
+  </div>
+  <div class="degradado-inferior"></div>
+
+  <div class="buscador">
+    <input type="text" id="search" placeholder="Buscar carta...">
+    <select id="filter">
+      <option value="tipo">Tipo</option>
+      <option value="nivel">Nivel</option>
+      <option value="atk">ATK</option>
+      <option value="grupo">Grupo</option>
+    </select>
+  </div>
+
+  <!-- Contenedores principales para cada tipo de sección -->
+  <div id="secciones-tipo" class="seccion-container visible">
+    <!-- Sección Militar -->
+    <div class="seccion-titulo">
+      <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+      Militar
+      <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+    </div>
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+    <div class="galeria" id="galeria-militar">
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
+      </div>
+    </div>
+
+    <!-- Sección Magia -->
+    <div class="seccion-titulo">
+      <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+      Magia
+      <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+    </div>
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+    <div class="galeria" id="galeria-magia"></div>
+
+    <!-- Sección Bestia -->
+    <div class="seccion-titulo">
+      <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+      Bestia
+      <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+    </div>
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+    <div class="galeria" id="galeria-bestia">
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/huargo.png')"></div>
+      </div>
+    </div>
+
+    <!-- Sección Civil -->
+    <div class="seccion-titulo">
+      <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+      Civil
+      <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+    </div>
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+    <div class="galeria" id="galeria-civil"></div>
+
+    <!-- Sección Altar -->
+    <div class="seccion-titulo">
+      <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+      Altar
+      <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+    </div>
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+    <div class="galeria" id="galeria-altar"></div>
+  </div>
+
+  <!-- Secciones por Nivel -->
+  <div id="secciones-nivel" class="seccion-container">
+    <!-- Se generarán dinámicamente del 1 al 6 -->
+  </div>
+
+  <!-- Sección ATK -->
+  <div id="seccion-atk" class="seccion-container">
+    <div class="seccion-titulo">ATK</div>
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+    <div class="galeria" id="galeria-atk"></div>
+  </div>
+
+  <!-- Secciones por Grupo -->
+  <div id="secciones-grupo" class="seccion-container">
+    <!-- Se generarán dinámicamente -->
+  </div>
+
   <script>
+    // Datos de ejemplo (deberás reemplazarlos con tus cartas reales)
+    const cartas = [
+      {
+        id: 'kethelcazador',
+        nombre: 'Kethel Cazador',
+        tipo: 'militar',
+        grupo: 'valle-central',
+        nivel: 3,
+        atk: 1800,
+        imagen: 'images/kethelcazador.png'
+      },
+      {
+        id: 'huargo',
+        nombre: 'Huargo',
+        tipo: 'bestia',
+        grupo: 'montañas-norte',
+        nivel: 2,
+        atk: 1500,
+        imagen: 'images/huargo.png'
+      }
+      // Agrega aquí el resto de tus cartas
+    ];
+
+    // Lista de grupos
+    const grupos = [
+      'Reino del Valle Central', 'Montañas del Norte', 'Imperio de la Costa',
+      'Bosque de los Perdidos', 'Nómadas del Desierto', 'Selva Impenetrable',
+      'Kong\'Thar', 'Enanos', 'Criaturas Mágicas', 'Elfos',
+      'Fuego', 'Agua', 'Hielo', 'Viento', 'Rayo', 'Roca',
+      'Oscuridad', 'Deidades', 'Los Siete Herederos Élficos'
+    ];
+
+    // Función para inicializar las secciones dinámicas
+    function inicializarSecciones() {
+      // Secciones de nivel (1-6)
+      const seccionesNivel = document.getElementById('secciones-nivel');
+      for (let i = 1; i <= 6; i++) {
+        seccionesNivel.innerHTML += `
+          <div class="seccion-nivel" data-nivel="${i}">
+            <div class="seccion-titulo">Nivel ${i}</div>
+            <div class="separador-completo">
+              <div class="linea-separadora"></div>
+              <div class="degradado-inferior"></div>
+            </div>
+            <div class="galeria" id="galeria-nivel-${i}"></div>
+          </div>
+        `;
+      }
+
+      // Secciones de grupo
+      const seccionesGrupo = document.getElementById('secciones-grupo');
+      grupos.forEach(grupo => {
+        const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
+        seccionesGrupo.innerHTML += `
+          <div class="seccion-grupo" data-grupo="${idGrupo}">
+            <div class="seccion-titulo">${grupo}</div>
+            <div class="separador-completo">
+              <div class="linea-separadora"></div>
+              <div class="degradado-inferior"></div>
+            </div>
+            <div class="galeria" id="galeria-${idGrupo}"></div>
+          </div>
+        `;
+      });
+    }
+
+    // Función para mostrar las cartas según el filtro seleccionado
+    function actualizarCartas() {
+      const filtro = document.getElementById('filter').value;
+      
+      // Ocultar todas las secciones primero
+      document.querySelectorAll('.seccion-container').forEach(sec => {
+        sec.classList.remove('visible');
+      });
+
+      // Mostrar la sección correspondiente
+      if (filtro === 'tipo') {
+        document.getElementById('secciones-tipo').classList.add('visible');
+        mostrarCartasPorTipo();
+      } else if (filtro === 'nivel') {
+        document.getElementById('secciones-nivel').classList.add('visible');
+        mostrarCartasPorNivel();
+      } else if (filtro === 'atk') {
+        document.getElementById('seccion-atk').classList.add('visible');
+        mostrarCartasPorATK();
+      } else if (filtro === 'grupo') {
+        document.getElementById('secciones-grupo').classList.add('visible');
+        mostrarCartasPorGrupo();
+      }
+    }
+
+    function mostrarCartasPorTipo() {
+      const tipos = ['militar', 'magia', 'bestia', 'civil', 'altar'];
+      tipos.forEach(tipo => {
+        const galeria = document.getElementById(`galeria-${tipo}`);
+        if (galeria) {
+          galeria.innerHTML = '';
+          const cartasFiltradas = cartas.filter(c => c.tipo === tipo);
+          cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
+          cartasFiltradas.forEach(carta => {
+            galeria.innerHTML += `
+              <div class="carta" data-id="${carta.id}">
+                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+              </div>
+            `;
+          });
+        }
+      });
+    }
+
+    function mostrarCartasPorNivel() {
+      for (let i = 1; i <= 6; i++) {
+        const galeria = document.getElementById(`galeria-nivel-${i}`);
+        if (galeria) {
+          galeria.innerHTML = '';
+          const cartasFiltradas = cartas.filter(c => c.nivel === i);
+          cartasFiltradas.forEach(carta => {
+            galeria.innerHTML += `
+              <div class="carta" data-id="${carta.id}">
+                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+              </div>
+            `;
+          });
+        }
+      }
+    }
+
+    function mostrarCartasPorATK() {
+      const galeria = document.getElementById('galeria-atk');
+      if (galeria) {
+        galeria.innerHTML = '';
+        const cartasFiltradas = [...cartas].filter(c => c.atk !== undefined);
+        cartasFiltradas.sort((a, b) => a.atk - b.atk); // Ordenar por ATK
+        cartasFiltradas.forEach(carta => {
+          galeria.innerHTML += `
+            <div class="carta" data-id="${carta.id}">
+              <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+            </div>
+          `;
+        });
+      }
+    }
+
+    function mostrarCartasPorGrupo() {
+      grupos.forEach(grupo => {
+        const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
+        const galeria = document.getElementById(`galeria-${idGrupo}`);
+        if (galeria) {
+          galeria.innerHTML = '';
+          const cartasFiltradas = cartas.filter(c => 
+            c.grupo && c.grupo.toLowerCase() === idGrupo.replace(/-/g, ' ')
+          );
+          cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
+          cartasFiltradas.forEach(carta => {
+            galeria.innerHTML += `
+              <div class="carta" data-id="${carta.id}">
+                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+              </div>
+            `;
+          });
+        }
+      });
+    }
+
+    // Evento para el filtro
+    document.getElementById('filter').addEventListener('change', actualizarCartas);
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+      inicializarSecciones();
+      actualizarCartas();
+      
+      // Configuración de cursores (original)
+      const applyCursor = (element) => {
+        if (element.matches('input, select, textarea, button, a')) {
+          element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
+        }
+      };
+      document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+    });
+
+    // ===== FUNCIONES ORIGINALES (animaciones) =====
     function hacerRebotar() {
       let letraC = document.querySelector('h1 span.large');
       letraC.classList.add('rebote');
@@ -233,119 +558,6 @@
         }, 300);
       }, 10);
     }
-  </script>
-</head>
-<body>
-  <header>
-    <h1 id="titulo">
-      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
-      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a" onclick="transformarLetraA()">a</span>
-    </h1>
-    <p>"El destino del reino está en tus manos"</p>
-  </header>
-
-  <div class="contenedor-categorias">
-    <nav class="categorias">
-      <a href="#">Reglas del Juego</a>
-      <a href="#">Glosario</a>
-      <a href="#">Mitos y Leyendas</a>
-    </nav>
-  </div>
-  <div class="degradado-inferior"></div>
-
-  <div class="buscador">
-    <input type="text" id="search" placeholder="Buscar carta...">
-    <select id="filter">
-      <option value="nivel">Nivel</option>
-      <option value="atk">ATK</option>
-      <option value="tipo">Tipo</option>
-      <option value="grupo">Grupo</option>
-    </select>
-  </div>
-
-  <!-- Sección Militar -->
-  <div class="seccion-titulo">Militar</div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria">
-    <div class="carta">
-      <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
-    </div>
-  </div>
-
-  <!-- Sección Magia -->
-  <div class="seccion-titulo">Magia</div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria">
-  </div>
-
-  <!-- Sección Bestia -->
-  <div class="seccion-titulo">Bestia</div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria">
-    <div class="carta">
-      <div class="cara" style="background-image: url('images/huargo.png')"></div>
-    </div>
-  </div>
-
-  <!-- Sección Civil -->
-  <div class="seccion-titulo">Civil</div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria">
-  </div>
-
-  <!-- Sección Altar -->
-  <div class="seccion-titulo">Altar</div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria">
-  </div>
-
-  <!-- SOLUCIÓN ESPECÍFICA PARA BRAVE -->
-  <script>
-    // Fuerza el cursor en elementos interactivos (solución para Brave)
-    const applyCursor = (element) => {
-      if (element.matches('input, select, textarea, button, a')) {
-        element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
-      }
-    };
-
-    // Aplicar a elementos existentes
-    document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
-
-    // Observer para nuevos elementos dinámicos
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === 1) { // Solo elementos
-            applyCursor(node);
-            node.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
-          }
-        });
-      });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Refuerzo adicional para eventos de clic
-    document.addEventListener('mousedown', (e) => {
-      if (e.target.matches('input, select, textarea, button, a')) {
-        e.target.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
-      }
-    });
   </script>
 </body>
 </html>
