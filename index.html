@@ -600,24 +600,49 @@
 }
 
     // Evento para el buscador (búsqueda exacta)
-    document.getElementById('search').addEventListener('input', function() {
-      const searchTerm = this.value.trim()
-        .toLowerCase()
-        .replace(/[-'\s]/g, '');
+   // EVENTO MEJORADO DEL BUSCADOR (PEGA ESTO EN SU LUGAR):
+document.getElementById('search').addEventListener('input', function() {
+  const searchTerm = this.value.trim().toLowerCase().replace(/[´']/g, '');
+  const secciones = document.querySelectorAll('.seccion-container');
+  const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
 
-      const cartasVisibles = document.querySelectorAll('.carta');
-      cartasVisibles.forEach(carta => {
-        const idCarta = carta.getAttribute('data-id');
-        const cartaData = cartas.find(c => c.id === idCarta);
-        if (cartaData) {
-          const nombreNormalizado = cartaData.nombre
-            .toLowerCase()
-            .replace(/[-'\s]/g, '');
-          const coincideExactamente = nombreNormalizado === searchTerm;
-          carta.style.display = coincideExactamente ? 'block' : 'none';
-        }
-      });
+  if (searchTerm === '') {
+    if (galeriaDinamica) galeriaDinamica.style.display = 'none';
+    actualizarCartas();
+    return;
+  }
+
+  if (!galeriaDinamica) {
+    const div = document.createElement('div');
+    div.id = 'galeria-dinamica-busqueda';
+    div.className = 'galeria';
+    div.style.display = 'none';
+    document.body.appendChild(div);
+  }
+
+  secciones.forEach(sec => sec.classList.remove('visible'));
+  document.getElementById('galeria-dinamica-busqueda').style.display = 'flex';
+
+  const cartasCoincidentes = cartas.filter(carta => 
+    carta.nombre.toLowerCase().replace(/[´']/g, '').startsWith(searchTerm)
+  );
+
+  const galeria = document.getElementById('galeria-dinamica-busqueda');
+  galeria.innerHTML = '';
+  
+  if (cartasCoincidentes.length > 0) {
+    cartasCoincidentes.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    cartasCoincidentes.forEach(carta => {
+      galeria.innerHTML += `
+        <div class="carta" data-id="${carta.id}">
+          <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+        </div>
+      `;
     });
+  } else {
+    galeria.innerHTML = '<p style="width:100%; color:#e0a800; text-align:center; font-family: \'Cinzel Decorative\', serif;">No se encontraron cartas</p>';
+  }
+});
 
     // Evento para el filtro
     document.getElementById('filter').addEventListener('change', actualizarCartas);
