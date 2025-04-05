@@ -4,7 +4,6 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ===== ESTILOS ORIGINALES (COMPLETOS) ===== */
     body, a, button, input, input:hover, input:focus, input:active,
     select, select:hover, select:focus, select:active,
     textarea, h1 span, h1 span:hover {
@@ -139,7 +138,6 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
-    /* AJUSTE PARA ALINEAR TODAS LAS SECCIONES */
     .seccion-titulo {
       font-size: 1.5em;
       color: black;
@@ -151,7 +149,7 @@
       gap: 15px;
       transition: text-shadow 0.3s ease;
       height: 40px;
-      padding: 0; /* Añadido para consistencia */
+      padding: 0;
       box-sizing: border-box;
     }
     .seccion-titulo:hover {
@@ -174,20 +172,46 @@
       min-height: 320px;
     }
     .carta {
-      width: 200px;
-      height: 280px;
-      position: relative;
-      background-color: transparent;
-      margin: 5px 0;
-    }
-    .cara {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
+  width: 200px;
+  height: 280px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.35); 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); 
+  margin: 5px 0;
+  border-radius: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  transform-origin: center; 
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.carta:hover {
+  transform: translateY(-15px) scale(1.02); 
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cara {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0 !important;
+  z-index: 1;
+  border: none;
+  outline: none;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
       20% { transform: translateY(-25px) scaleY(0.9); }
@@ -219,7 +243,6 @@
     </h1>
     <p>"El destino del reino está en tus manos"</p>
   </header>
-
   <div class="contenedor-categorias">
     <nav class="categorias">
       <a href="#">Reglas del Juego</a>
@@ -228,7 +251,6 @@
     </nav>
   </div>
   <div class="degradado-inferior"></div>
-
   <div class="buscador">
     <input 
       type="text" 
@@ -245,10 +267,7 @@
       <option value="grupo">Grupo</option>
     </select>
   </div>
-
-  <!-- Contenedores principales para cada tipo de sección -->
   <div id="secciones-tipo" class="seccion-container visible">
-    <!-- Sección Militar -->
     <div class="seccion-titulo">
       <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
       Militar
@@ -260,17 +279,12 @@
     </div>
     <div class="galeria" id="galeria-militar">
       <div class="carta">
-        <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
-      </div>
-      <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/militar/kethelcazador.png')"></div>
       </div>
       <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/militar/konganciano.png')"></div>
       </div>
     </div>
-
-    <!-- Sección Magia -->
     <div class="seccion-titulo">
       <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
       Magia
@@ -285,8 +299,6 @@
         <div class="cara" style="background-image: url('images/cartas/magia/thal-ryoneltraidor.png')"></div>
       </div>
     </div>
-
-    <!-- Sección Bestia -->
     <div class="seccion-titulo">
       <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
       Bestia
@@ -297,9 +309,6 @@
       <div class="degradado-inferior"></div>
     </div>
     <div class="galeria" id="galeria-bestia">
-      <div class="carta">
-        <div class="cara" style="background-image: url('images/huargo.png')"></div>
-      </div>
       <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/bestia/huargo.png')"></div>
       </div>
@@ -313,8 +322,6 @@
         <div class="cara" style="background-image: url('images/cartas/bestia/fenrir.png')"></div>
       </div>
     </div>
-
-    <!-- Sección Civil -->
     <div class="seccion-titulo">
       <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
       Civil
@@ -329,8 +336,6 @@
         <div class="cara" style="background-image: url('images/cartas/civil/torero.png')"></div>
       </div>
     </div>
-
-    <!-- Sección Altar -->
     <div class="seccion-titulo">
       <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
       Altar
@@ -346,13 +351,8 @@
       </div>
     </div>
   </div>
-
-  <!-- Secciones por Nivel -->
   <div id="secciones-nivel" class="seccion-container">
-    <!-- Se generarán dinámicamente del 1 al 6 -->
   </div>
-
-  <!-- Sección ATK -->
   <div id="seccion-atk" class="seccion-container">
     <div class="seccion-titulo">ATK</div>
     <div class="separador-completo">
@@ -361,12 +361,8 @@
     </div>
     <div class="galeria" id="galeria-atk"></div>
   </div>
-
-  <!-- Secciones por Grupo -->
   <div id="secciones-grupo" class="seccion-container">
-    <!-- Se generarán dinámicamente -->
   </div>
-
   <script>
     const cartas = [
       {
@@ -449,8 +445,6 @@
         grupo: ['Fuego']
       }
     ];
-
-    // Lista de grupos
     const grupos = [
       'Reino del Valle Central', 'Montañas del Norte', 'Imperio de la Costa',
       'Bosque de los Perdidos', 'Nómadas del Desierto', 'Selva Impenetrable',
@@ -458,15 +452,16 @@
       'Fuego', 'Agua', 'Hielo', 'Viento', 'Rayo', 'Roca',
       'Oscuridad', 'Deidades', 'Los Siete Herederos Élficos'
     ];
-
-    // Función para inicializar las secciones dinámicas
     function inicializarSecciones() {
-      // Secciones de nivel (1-6)
       const seccionesNivel = document.getElementById('secciones-nivel');
       for (let i = 1; i <= 6; i++) {
         seccionesNivel.innerHTML += `
           <div class="seccion-nivel" data-nivel="${i}">
-            <div class="seccion-titulo">Nivel ${i}</div>
+            <div class="seccion-titulo">
+              <img src="images/icon_nivel${i}.png" class="seccion-icono" alt="Icono Nivel ${i}">
+              Nivel ${i}
+              <img src="images/icon_nivel${i}.png" class="seccion-icono" alt="Icono Nivel ${i}">
+            </div>
             <div class="separador-completo">
               <div class="linea-separadora"></div>
               <div class="degradado-inferior"></div>
@@ -475,8 +470,6 @@
           </div>
         `;
       }
-
-      // Secciones de grupo
       const seccionesGrupo = document.getElementById('secciones-grupo');
       grupos.forEach(grupo => {
         const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
@@ -492,17 +485,11 @@
         `;
       });
     }
-
-    // Función para mostrar las cartas según el filtro seleccionado
     function actualizarCartas() {
       const filtro = document.getElementById('filter').value;
-      
-      // Ocultar todas las secciones primero
       document.querySelectorAll('.seccion-container').forEach(sec => {
         sec.classList.remove('visible');
       });
-
-      // Mostrar la sección correspondiente
       if (filtro === 'tipo') {
         document.getElementById('secciones-tipo').classList.add('visible');
         mostrarCartasPorTipo();
@@ -517,7 +504,6 @@
         mostrarCartasPorGrupo();
       }
     }
-
     function mostrarCartasPorTipo() {
       const tipos = ['militar', 'magia', 'bestia', 'civil', 'altar'];
       tipos.forEach(tipo => {
@@ -536,21 +522,16 @@
         }
       });
     }
-
  function mostrarCartasPorNivel() {
   for (let i = 1; i <= 6; i++) {
     const galeria = document.getElementById(`galeria-nivel-${i}`);
     if (galeria) {
       galeria.innerHTML = '';
-
-      // 1. Filtrar por nivel y ordenar por tipo (militar > magia > bestia > civil > altar)
       const cartasFiltradas = cartas.filter(c => c.nivel === i);
       const cartasOrdenadas = cartasFiltradas.sort((a, b) => {
         const ordenTipos = ['militar', 'magia', 'bestia', 'civil', 'altar'];
         return ordenTipos.indexOf(a.tipo) - ordenTipos.indexOf(b.tipo);
       });
-
-      // 2. Mostrar cartas en orden (sin subtítulos, flujo natural)
       cartasOrdenadas.forEach(carta => {
         galeria.innerHTML += `
           <div class="carta" data-id="${carta.id}">
@@ -561,7 +542,6 @@
     }
   }
 }
-
     function mostrarCartasPorATK() {
       const galeria = document.getElementById('galeria-atk');
       if (galeria) {
@@ -577,22 +557,17 @@
         });
       }
     }
-
    function mostrarCartasPorGrupo() {
   grupos.forEach(grupo => {
     const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
     const galeria = document.getElementById(`galeria-${idGrupo}`);
     if (galeria) {
       galeria.innerHTML = '';
-      
-      // 1. Filtrar cartas del grupo y ordenar por nivel (ascendente)
       const cartasFiltradas = cartas.filter(c => 
         c.grupo && c.grupo.some(g => 
           g.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '') === idGrupo
         )
-      ).sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
-
-      // 2. Mostrar cartas en orden de nivel (sin subtítulos)
+      ).sort((a, b) => a.nivel - b.nivel);
       cartasFiltradas.forEach(carta => {
         galeria.innerHTML += `
           <div class="carta" data-id="${carta.id}">
@@ -602,29 +577,19 @@
       });
     }
   });
-}
-
-    // Evento para el buscador (búsqueda exacta)
-   // EVENTO MEJORADO DEL BUSCADOR (PEGA ESTO EN SU LUGAR):
+} 
 document.getElementById('search').addEventListener('input', function() {
   const searchTerm = this.value.trim().toLowerCase().replace(/[´']/g, '');
   const secciones = document.querySelectorAll('.seccion-container');
   const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
   const separadorDinamico = document.querySelector('.separador-completo-dinamico');
-
-  // Limpiar búsqueda anterior
   if (galeriaDinamica) galeriaDinamica.remove();
   if (separadorDinamico) separadorDinamico.remove();
-
   if (searchTerm === '') {
     actualizarCartas();
     return;
   }
-
-  // Ocultar secciones existentes
   secciones.forEach(sec => sec.classList.remove('visible'));
-
-  // Crear contenedor dinámico (simulando la estructura de las secciones)
   const contenedorDinamico = document.createElement('div');
   contenedorDinamico.className = 'seccion-container visible';
  contenedorDinamico.innerHTML = `
@@ -636,15 +601,10 @@ document.getElementById('search').addEventListener('input', function() {
   <div class="galeria" id="galeria-dinamica-busqueda"></div>
 `;
   document.querySelector('body').appendChild(contenedorDinamico);
-
   const galeria = document.getElementById('galeria-dinamica-busqueda');
-
-  // Filtrar cartas
   const cartasCoincidentes = cartas.filter(carta => 
     carta.nombre.toLowerCase().replace(/[´']/g, '').startsWith(searchTerm)
   );
-
-  // Mostrar resultados
   if (cartasCoincidentes.length > 0) {
     cartasCoincidentes.sort((a, b) => a.nombre.localeCompare(b.nombre));
     cartasCoincidentes.forEach(carta => {
@@ -658,16 +618,10 @@ document.getElementById('search').addEventListener('input', function() {
     galeria.innerHTML = '<p style="width:100%; color:black; text-align:center; font-family: \'Cinzel Decorative\', serif; text-shadow: 0 0 8px rgba(255, 50, 50, 0.8), 0 0 12px rgba(255, 0, 0, 0.6);">No se encontraron cartas</p>';
   }
 });
-    
-    // Evento para el filtro
     document.getElementById('filter').addEventListener('change', actualizarCartas);
-
-    // Inicialización
     document.addEventListener('DOMContentLoaded', () => {
       inicializarSecciones();
       actualizarCartas();
-      
-      // Configuración de cursores (original)
       const applyCursor = (element) => {
         if (element.matches('input, select, textarea, button, a')) {
           element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
@@ -675,8 +629,6 @@ document.getElementById('search').addEventListener('input', function() {
       };
       document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
     });
-
-    // ===== FUNCIONES ORIGINALES (animaciones) =====
     function hacerRebotar() {
       let letraC = document.querySelector('h1 span.large');
       letraC.classList.add('rebote');
@@ -684,20 +636,16 @@ document.getElementById('search').addEventListener('input', function() {
         letraC.classList.remove('rebote');
       }, { once: true });
     }
-
     function transformarLetraA() {
       const letraA = document.getElementById('shiva-a');
       if (letraA.classList.contains('transformando')) return;
       letraA.classList.add('transformando');
-      
       const ojoImg = new Image();
       ojoImg.src = 'images/ojo.png';
       ojoImg.classList.add('ojo-transformado');
-      
       const originalHTML = letraA.innerHTML;
       letraA.innerHTML = '';
       letraA.appendChild(ojoImg);
-      
       setTimeout(() => {
         ojoImg.style.opacity = '1';
         setTimeout(() => {
@@ -712,4 +660,3 @@ document.getElementById('search').addEventListener('input', function() {
   </script>
 </body>
 </html>
-
