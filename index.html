@@ -190,7 +190,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px;
   overflow: hidden;
-  background: #0a0a0a; /* Fondo oscuro que combina con tu tema */
+  background: transparent; /* Fondo completamente transparente */
 }
 
 .carta:hover {
@@ -202,16 +202,12 @@
 
 .cara {
   position: absolute;
-  width: calc(100% - 3px); /* Ajuste fino para cubrir bordes */
-  height: calc(100% - 3px);
-  left: 1.5px;
-  top: 1.5px;
+  width: 100%;
+  height: 100%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 6.5px; /* 8px - 1.5px */
-  box-shadow: inset 0 0 0 2px rgba(89, 60, 31, 0.5); /* Borde marrón más visible */
-  background-color: rgba(20, 20, 20, 0.2); /* Fondo semi-opaco */
+  border-radius: 8px;
 }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
