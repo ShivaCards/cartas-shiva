@@ -193,13 +193,31 @@
       cursor: zoom-out;
       pointer-events: auto;
     }
+    .carta-contenedor {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+    }
     .cara {
       position: absolute;
       width: 100%;
       height: 100%;
+      backface-visibility: hidden;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+    }
+    .reverso {
+      transform: rotateY(180deg);
+      background-size: cover !important;
+    }
+    .carta.volteada .carta-contenedor {
+      transform: rotateY(180deg);
+    }
+    .carta.ampliada .carta-contenedor {
+      transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1) !important;
     }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
@@ -268,10 +286,16 @@
     </div>
     <div class="galeria" id="galeria-militar">
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/militar/kethelcazador.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/militar/kethelcazador.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/militar/reverso_militar.png')"></div>
+        </div>
       </div>
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/militar/konganciano.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/militar/konganciano.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/militar/reverso_militar.png')"></div>
+        </div>
       </div>
     </div>
     <div class="seccion-titulo">
@@ -285,7 +309,10 @@
     </div>
     <div class="galeria" id="galeria-magia">
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/magia/thal-ryoneltraidor.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/magia/thal-ryoneltraidor.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/magia/reverso_magia.png')"></div>
+        </div>
       </div>
     </div>
     <div class="seccion-titulo">
@@ -299,16 +326,28 @@
     </div>
     <div class="galeria" id="galeria-bestia">
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/bestia/huargo.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/bestia/huargo.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/bestia/reverso_bestia.png')"></div>
+        </div>
       </div>
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/bestia/perrodecazador.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/bestia/perrodecazador.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/bestia/reverso_bestia.png')"></div>
+        </div>
       </div>
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/bestia/ukko.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/bestia/ukko.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/bestia/reverso_bestia.png')"></div>
+        </div>
       </div>
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/bestia/fenrir.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/bestia/fenrir.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/bestia/reverso_bestia.png')"></div>
+        </div>
       </div>
     </div>
     <div class="seccion-titulo">
@@ -322,7 +361,10 @@
     </div>
     <div class="galeria" id="galeria-civil">
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/civil/torero.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/civil/torero.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/civil/reverso_civil.png')"></div>
+        </div>
       </div>
     </div>
     <div class="seccion-titulo">
@@ -336,7 +378,10 @@
     </div>
     <div class="galeria" id="galeria-altar">
       <div class="carta">
-        <div class="cara" style="background-image: url('images/cartas/altar/aguilaardiente.png')"></div>
+        <div class="carta-contenedor">
+          <div class="cara frontal" style="background-image: url('images/cartas/altar/aguilaardiente.png')"></div>
+          <div class="cara reverso" style="background-image: url('images/cartas/altar/reverso_altar.png')"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -478,16 +523,24 @@
 
     function configurarEventosCartas() {
       document.querySelectorAll('.carta').forEach(carta => {
+        // Zoom al hacer clic
         carta.addEventListener('click', function(e) {
           if (e.target.closest('.carta')) {
             this.classList.toggle('ampliada');
+            // Siempre muestra el FRENTE al ampliar
+            if (this.classList.contains('ampliada')) {
+              this.classList.remove('volteada');
+            }
           }
         });
       });
+
+      // Al cerrar el zoom: voltea la carta
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.carta')) {
           document.querySelectorAll('.carta.ampliada').forEach(c => {
             c.classList.remove('ampliada');
+            c.classList.add('volteada'); // ¡Aquí ocurre la magia!
           });
         }
       });
@@ -524,7 +577,10 @@
           cartasFiltradas.forEach(carta => {
             galeria.innerHTML += `
               <div class="carta" data-id="${carta.id}">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+                <div class="carta-contenedor">
+                  <div class="cara frontal" style="background-image: url('${carta.imagen}')"></div>
+                  <div class="cara reverso" style="background-image: url('images/cartas/${carta.tipo}/reverso_${carta.tipo}.png')"></div>
+                </div>
               </div>
             `;
           });
@@ -546,7 +602,10 @@
           cartasOrdenadas.forEach(carta => {
             galeria.innerHTML += `
               <div class="carta" data-id="${carta.id}">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+                <div class="carta-contenedor">
+                  <div class="cara frontal" style="background-image: url('${carta.imagen}')"></div>
+                  <div class="cara reverso" style="background-image: url('images/cartas/${carta.tipo}/reverso_${carta.tipo}.png')"></div>
+                </div>
               </div>
             `;
           });
@@ -564,7 +623,10 @@
         cartasFiltradas.forEach(carta => {
           galeria.innerHTML += `
             <div class="carta" data-id="${carta.id}">
-              <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+              <div class="carta-contenedor">
+                <div class="cara frontal" style="background-image: url('${carta.imagen}')"></div>
+                <div class="cara reverso" style="background-image: url('images/cartas/${carta.tipo}/reverso_${carta.tipo}.png')"></div>
+              </div>
             </div>
           `;
         });
@@ -586,7 +648,10 @@
           cartasFiltradas.forEach(carta => {
             galeria.innerHTML += `
               <div class="carta" data-id="${carta.id}">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+                <div class="carta-contenedor">
+                  <div class="cara frontal" style="background-image: url('${carta.imagen}')"></div>
+                  <div class="cara reverso" style="background-image: url('images/cartas/${carta.tipo}/reverso_${carta.tipo}.png')"></div>
+                </div>
               </div>
             `;
           });
@@ -627,7 +692,10 @@
         cartasCoincidentes.forEach(carta => {
           galeria.innerHTML += `
             <div class="carta" data-id="${carta.id}">
-              <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+              <div class="carta-contenedor">
+                <div class="cara frontal" style="background-image: url('${carta.imagen}')"></div>
+                <div class="cara reverso" style="background-image: url('images/cartas/${carta.tipo}/reverso_${carta.tipo}.png')"></div>
+              </div>
             </div>
           `;
         });
