@@ -605,40 +605,40 @@ document.getElementById('search').addEventListener('input', function() {
   const searchTerm = this.value.trim().toLowerCase().replace(/[´']/g, '');
   const secciones = document.querySelectorAll('.seccion-container');
   const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
+  const contenedorOriginal = document.getElementById('galeria-militar').parentNode; // Referencia al contenedor de "Militar"
 
-  const separadorAnterior = document.querySelector('#galeria-dinamica-busqueda ~ .separador-completo');
+  // Limpiar búsqueda previa
+  if (galeriaDinamica) {
+    galeriaDinamica.remove();
+  }
+  const separadorAnterior = document.querySelector('.separador-completo-dinamico');
   if (separadorAnterior) separadorAnterior.remove();
 
   if (searchTerm === '') {
-    if (galeriaDinamica) galeriaDinamica.style.display = 'none';
     actualizarCartas();
     return;
   }
 
-  if (!galeriaDinamica) {
-    const div = document.createElement('div');
-    div.id = 'galeria-dinamica-busqueda';
-    div.className = 'galeria';
-    div.style.display = 'none';
-    document.body.appendChild(div);
-  }
-
+  // Ocultar secciones y preparar espacio para resultados
   secciones.forEach(sec => sec.classList.remove('visible'));
-  const galeria = document.getElementById('galeria-dinamica-busqueda');
-  galeria.style.display = 'flex';
-  galeria.innerHTML = '';
+  
+  // Clonar la estructura de posición (línea + galería) desde "Militar"
+  const nuevoSeparador = document.querySelector('.contenedor-categorias').nextElementSibling.cloneNode(true);
+  nuevoSeparador.classList.add('separador-completo-dinamico');
+  contenedorOriginal.insertBefore(nuevoSeparador, contenedorOriginal.firstChild);
 
+  // Crear galería dinámica en la posición correcta
+  const galeria = document.createElement('div');
+  galeria.id = 'galeria-dinamica-busqueda';
+  galeria.className = 'galeria';
+  contenedorOriginal.insertBefore(galeria, nuevoSeparador.nextSibling);
+
+  // Filtrar y mostrar cartas
   const cartasCoincidentes = cartas.filter(carta => 
     carta.nombre.toLowerCase().replace(/[´']/g, '').startsWith(searchTerm)
   );
 
   if (cartasCoincidentes.length > 0) {
-    galeria.insertAdjacentHTML('beforebegin', `
-      <div class="separador-completo">
-        <div class="linea-separadora"></div>
-        <div class="degradado-inferior"></div>
-      </div>
-    `);
     cartasCoincidentes.sort((a, b) => a.nombre.localeCompare(b.nombre));
     cartasCoincidentes.forEach(carta => {
       galeria.innerHTML += `
