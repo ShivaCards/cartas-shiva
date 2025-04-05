@@ -381,79 +381,87 @@
   <script>
     
     const cartas = [
-      {
-        id: 'kethelcazador',
+  {
+    id: 'kethelcazador',
     nombre: 'Keth el Cazador',
     tipo: 'militar',
     nivel: 2,
     atk: 5,
-    imagen: 'images/cartas/militar/kethelcazador.png'
-      },
-      {
-        id: 'huargo',
-        nombre: 'Huargo',
-        tipo: 'bestia',
-        nivel: 2,
-        atk: 1500,
-        imagen: 'images/cartas/bestia/huargo.png'
-      },
-      {
-        id: 'konganciano',
-        nombre: "Kong'Thar Anciano",
-        tipo: 'militar',
-        nivel: 2,
-        atk: 5,
-        imagen: 'images/cartas/militar/konganciano.png'
-      },
-      {
-        id: 'thal-ryoneltraidor',
-        nombre: "Thal'ryon el Traidor",
-        tipo: 'magia',
-        nivel: 5,
-        atk: 16,
-        imagen: 'images/cartas/magia/thal-ryoneltraidor.png'
-      },
-      {
-        id: 'perrodecazador',
-        nombre: "Perro de cazador",
-        tipo: 'bestia',
-        nivel: 1,
-        atk: 2,
-        imagen: 'images/cartas/bestia/perrodecazador.png'
-      },
-      {
-        id: 'ukko',
-        nombre: "Ukko",
-        tipo: 'bestia',
-        nivel: 3,
-        atk: 6,
-        imagen: 'images/cartas/bestia/ukko.png'
-      },
-      {
-        id: 'fenrir',
-        nombre: "Fenrir",
-        tipo: 'bestia',
-        nivel: 4,
-        atk: 10,
-        imagen: 'images/cartas/bestia/fenrir.png'
-      },
-      {
-        id: 'torero',
-        nombre: "Torero",
-        tipo: 'civil',
-        nivel: 1,
-        atk: 3,
-        imagen: 'images/cartas/civil/torero.png'
-      },
-      {
-        id: 'aguilaardiente',
-        nombre: "Águila Ardiente",
-        tipo: 'altar',
-        nivel: 2,
-        imagen: 'images/cartas/altar/aguilaardiente.png'
-      }
-    ];
-
+    imagen: 'images/cartas/militar/kethelcazador.png',
+    grupo: ['Bosque de los Perdidos'] // Modificado
+  },
+  {
+    id: 'huargo',
+    nombre: 'Huargo',
+    tipo: 'bestia',
+    nivel: 2,
+    atk: 1500,
+    imagen: 'images/cartas/bestia/huargo.png',
+    grupo: ['Bosque de los Perdidos'] // Modificado
+  },
+  {
+    id: 'konganciano',
+    nombre: "Kong'Thar Anciano",
+    tipo: 'militar',
+    nivel: 2,
+    atk: 5,
+    imagen: 'images/cartas/militar/konganciano.png',
+    grupo: ['Kong\'Thar', 'Selva Impenetrable'] // Modificado
+  },
+  {
+    id: 'thal-ryoneltraidor',
+    nombre: "Thal'ryon el Traidor",
+    tipo: 'magia',
+    nivel: 5,
+    atk: 16,
+    imagen: 'images/cartas/magia/thal-ryoneltraidor.png',
+    grupo: ['Los Siete Herederos Élficos'] // Modificado
+  },
+  {
+    id: 'perrodecazador',
+    nombre: "Perro de cazador",
+    tipo: 'bestia',
+    nivel: 1,
+    atk: 2,
+    imagen: 'images/cartas/bestia/perrodecazador.png' 
+    // Sin grupo (se mantiene igual)
+  },
+  {
+    id: 'ukko',
+    nombre: "Ukko",
+    tipo: 'bestia',
+    nivel: 3,
+    atk: 6,
+    imagen: 'images/cartas/bestia/ukko.png',
+    grupo: ['Bosque de los Perdidos'] // Modificado
+  },
+  {
+    id: 'fenrir',
+    nombre: "Fenrir",
+    tipo: 'bestia',
+    nivel: 4,
+    atk: 10,
+    imagen: 'images/cartas/bestia/fenrir.png',
+    grupo: ['Deidades'] // Modificado
+  },
+  {
+    id: 'torero',
+    nombre: "Torero",
+    tipo: 'civil',
+    nivel: 1,
+    atk: 3,
+    imagen: 'images/cartas/civil/torero.png',
+    grupo: ['Reino del Valle Central'] // Modificado
+  },
+  {
+    id: 'aguilaardiente',
+    nombre: "Águila Ardiente",
+    tipo: 'altar',
+    nivel: 2,
+    imagen: 'images/cartas/altar/aguilaardiente.png',
+    grupo: ['Fuego'] // Modificado
+  }
+];
     // Lista de grupos
     const grupos = [
       'Reino del Valle Central', 'Montañas del Norte', 'Imperio de la Costa',
