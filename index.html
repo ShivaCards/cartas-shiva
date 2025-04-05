@@ -4,33 +4,18 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ===== CURSORES PERSONALIZADOS (VERSIÓN BRAVE) ===== */
-    body, 
-    a, 
-    button, 
-    input, 
-    input:hover, 
-    input:focus, 
-    input:active,
-    select, 
-    select:hover, 
-    select:focus,
-    select:active,
-    textarea,
-    h1 span, 
-    h1 span:hover {
+    /* ===== ESTILOS ORIGINALES (COMPLETOS) ===== */
+    body, a, button, input, input:hover, input:focus, input:active,
+    select, select:hover, select:focus, select:active,
+    textarea, h1 span, h1 span:hover {
       cursor: url('images/cursors/cursornormal1.cur'), auto !important;
     }
-    
     .carta:hover {
       cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
-    
     .carta:active {
       cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important;
     }
-
-    /* ===== ESTILOS ORIGINALES ===== */
     body {
       margin: 0;
       padding: 0;
@@ -154,7 +139,7 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
-    /* ===== NUEVOS ESTILOS PARA TÍTULOS ===== */
+    /* AJUSTE PARA ALINEAR TODAS LAS SECCIONES */
     .seccion-titulo {
       font-size: 1.5em;
       color: black;
@@ -165,6 +150,9 @@
       justify-content: center;
       gap: 15px;
       transition: text-shadow 0.3s ease;
+      height: 40px;
+      padding: 0; /* Añadido para consistencia */
+      box-sizing: border-box;
     }
     .seccion-titulo:hover {
       text-shadow: 
@@ -175,6 +163,7 @@
       width: 40px;
       height: 40px;
       object-fit: contain;
+      margin: 0;
     }
     .galeria {
       display: flex;
@@ -214,8 +203,6 @@
     .separador-completo {
       margin: 1px 0;
     }
-    
-    /* Clases para controlar visibilidad */
     .seccion-container {
       display: none;
     }
@@ -243,7 +230,14 @@
   <div class="degradado-inferior"></div>
 
   <div class="buscador">
-    <input type="text" id="search" placeholder="Buscar carta...">
+    <input 
+      type="text" 
+      id="search" 
+      placeholder="Buscar carta..." 
+      autocomplete="off"
+      autocorrect="off" 
+      spellcheck="false"
+    >
     <select id="filter">
       <option value="tipo">Tipo</option>
       <option value="nivel">Nivel</option>
@@ -268,6 +262,12 @@
       <div class="carta">
         <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
       </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/militar/kethelcazador.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/militar/konganciano.png')"></div>
+      </div>
     </div>
 
     <!-- Sección Magia -->
@@ -280,7 +280,11 @@
       <div class="linea-separadora"></div>
       <div class="degradado-inferior"></div>
     </div>
-    <div class="galeria" id="galeria-magia"></div>
+    <div class="galeria" id="galeria-magia">
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/magia/thal-ryoneltraidor.png')"></div>
+      </div>
+    </div>
 
     <!-- Sección Bestia -->
     <div class="seccion-titulo">
@@ -296,6 +300,18 @@
       <div class="carta">
         <div class="cara" style="background-image: url('images/huargo.png')"></div>
       </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/huargo.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/perrodecazador.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/ukko.png')"></div>
+      </div>
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/bestia/fenrir.png')"></div>
+      </div>
     </div>
 
     <!-- Sección Civil -->
@@ -308,7 +324,11 @@
       <div class="linea-separadora"></div>
       <div class="degradado-inferior"></div>
     </div>
-    <div class="galeria" id="galeria-civil"></div>
+    <div class="galeria" id="galeria-civil">
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/civil/torero.png')"></div>
+      </div>
+    </div>
 
     <!-- Sección Altar -->
     <div class="seccion-titulo">
@@ -320,7 +340,11 @@
       <div class="linea-separadora"></div>
       <div class="degradado-inferior"></div>
     </div>
-    <div class="galeria" id="galeria-altar"></div>
+    <div class="galeria" id="galeria-altar">
+      <div class="carta">
+        <div class="cara" style="background-image: url('images/cartas/altar/aguilaardiente.png')"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Secciones por Nivel -->
@@ -344,27 +368,86 @@
   </div>
 
   <script>
-    // Datos de ejemplo (deberás reemplazarlos con tus cartas reales)
     const cartas = [
       {
         id: 'kethelcazador',
-        nombre: 'Kethel Cazador',
+        nombre: 'Keth el Cazador',
         tipo: 'militar',
-        grupo: 'valle-central',
-        nivel: 3,
-        atk: 1800,
-        imagen: 'images/kethelcazador.png'
+        nivel: 2,
+        atk: 5,
+        imagen: 'images/cartas/militar/kethelcazador.png',
+        grupo: ['Bosque de los Perdidos']
       },
       {
         id: 'huargo',
         nombre: 'Huargo',
         tipo: 'bestia',
-        grupo: 'montañas-norte',
         nivel: 2,
-        atk: 1500,
-        imagen: 'images/huargo.png'
+        atk: 5,
+        imagen: 'images/cartas/bestia/huargo.png',
+        grupo: ['Bosque de los Perdidos']
+      },
+      {
+        id: 'konganciano',
+        nombre: "Kong'Thar Anciano",
+        tipo: 'militar',
+        nivel: 2,
+        atk: 5,
+        imagen: 'images/cartas/militar/konganciano.png',
+        grupo: ['Kong\'Thar', 'Selva Impenetrable']
+      },
+      {
+        id: 'thal-ryoneltraidor',
+        nombre: "Thal'ryon el Traidor",
+        tipo: 'magia',
+        nivel: 5,
+        atk: 16,
+        imagen: 'images/cartas/magia/thal-ryoneltraidor.png',
+        grupo: ['Los Siete Herederos Élficos']
+      },
+      {
+        id: 'perrodecazador',
+        nombre: "Perro de cazador",
+        tipo: 'bestia',
+        nivel: 1,
+        atk: 2,
+        imagen: 'images/cartas/bestia/perrodecazador.png'
+      },
+      {
+        id: 'ukko',
+        nombre: "Ukko",
+        tipo: 'bestia',
+        nivel: 3,
+        atk: 6,
+        imagen: 'images/cartas/bestia/ukko.png',
+        grupo: ['Bosque de los Perdidos']
+      },
+      {
+        id: 'fenrir',
+        nombre: "Fenrir",
+        tipo: 'bestia',
+        nivel: 4,
+        atk: 10,
+        imagen: 'images/cartas/bestia/fenrir.png',
+        grupo: ['Deidades']
+      },
+      {
+        id: 'torero',
+        nombre: "Torero",
+        tipo: 'civil',
+        nivel: 1,
+        atk: 3,
+        imagen: 'images/cartas/civil/torero.png',
+        grupo: ['Reino del Valle Central']
+      },
+      {
+        id: 'aguilaardiente',
+        nombre: "Águila Ardiente",
+        tipo: 'altar',
+        nivel: 1,
+        imagen: 'images/cartas/altar/aguilaardiente.png',
+        grupo: ['Fuego']
       }
-      // Agrega aquí el resto de tus cartas
     ];
 
     // Lista de grupos
@@ -442,7 +525,7 @@
         if (galeria) {
           galeria.innerHTML = '';
           const cartasFiltradas = cartas.filter(c => c.tipo === tipo);
-          cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
+          cartasFiltradas.sort((a, b) => a.nivel - b.nivel);
           cartasFiltradas.forEach(carta => {
             galeria.innerHTML += `
               <div class="carta" data-id="${carta.id}">
@@ -454,29 +537,37 @@
       });
     }
 
-    function mostrarCartasPorNivel() {
-      for (let i = 1; i <= 6; i++) {
-        const galeria = document.getElementById(`galeria-nivel-${i}`);
-        if (galeria) {
-          galeria.innerHTML = '';
-          const cartasFiltradas = cartas.filter(c => c.nivel === i);
-          cartasFiltradas.forEach(carta => {
-            galeria.innerHTML += `
-              <div class="carta" data-id="${carta.id}">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
-              </div>
-            `;
-          });
-        }
-      }
+ function mostrarCartasPorNivel() {
+  for (let i = 1; i <= 6; i++) {
+    const galeria = document.getElementById(`galeria-nivel-${i}`);
+    if (galeria) {
+      galeria.innerHTML = '';
+
+      // 1. Filtrar por nivel y ordenar por tipo (militar > magia > bestia > civil > altar)
+      const cartasFiltradas = cartas.filter(c => c.nivel === i);
+      const cartasOrdenadas = cartasFiltradas.sort((a, b) => {
+        const ordenTipos = ['militar', 'magia', 'bestia', 'civil', 'altar'];
+        return ordenTipos.indexOf(a.tipo) - ordenTipos.indexOf(b.tipo);
+      });
+
+      // 2. Mostrar cartas en orden (sin subtítulos, flujo natural)
+      cartasOrdenadas.forEach(carta => {
+        galeria.innerHTML += `
+          <div class="carta" data-id="${carta.id}">
+            <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+          </div>
+        `;
+      });
     }
+  }
+}
 
     function mostrarCartasPorATK() {
       const galeria = document.getElementById('galeria-atk');
       if (galeria) {
         galeria.innerHTML = '';
         const cartasFiltradas = [...cartas].filter(c => c.atk !== undefined);
-        cartasFiltradas.sort((a, b) => a.atk - b.atk); // Ordenar por ATK
+        cartasFiltradas.sort((a, b) => a.atk - b.atk);
         cartasFiltradas.forEach(carta => {
           galeria.innerHTML += `
             <div class="carta" data-id="${carta.id}">
@@ -487,27 +578,87 @@
       }
     }
 
-    function mostrarCartasPorGrupo() {
-      grupos.forEach(grupo => {
-        const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
-        const galeria = document.getElementById(`galeria-${idGrupo}`);
-        if (galeria) {
-          galeria.innerHTML = '';
-          const cartasFiltradas = cartas.filter(c => 
-            c.grupo && c.grupo.toLowerCase() === idGrupo.replace(/-/g, ' ')
-          );
-          cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
-          cartasFiltradas.forEach(carta => {
-            galeria.innerHTML += `
-              <div class="carta" data-id="${carta.id}">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
-              </div>
-            `;
-          });
-        }
+   function mostrarCartasPorGrupo() {
+  grupos.forEach(grupo => {
+    const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
+    const galeria = document.getElementById(`galeria-${idGrupo}`);
+    if (galeria) {
+      galeria.innerHTML = '';
+      
+      // 1. Filtrar cartas del grupo y ordenar por nivel (ascendente)
+      const cartasFiltradas = cartas.filter(c => 
+        c.grupo && c.grupo.some(g => 
+          g.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '') === idGrupo
+        )
+      ).sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
+
+      // 2. Mostrar cartas en orden de nivel (sin subtítulos)
+      cartasFiltradas.forEach(carta => {
+        galeria.innerHTML += `
+          <div class="carta" data-id="${carta.id}">
+            <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+          </div>
+        `;
       });
     }
+  });
+}
 
+    // Evento para el buscador (búsqueda exacta)
+   // EVENTO MEJORADO DEL BUSCADOR (PEGA ESTO EN SU LUGAR):
+document.getElementById('search').addEventListener('input', function() {
+  const searchTerm = this.value.trim().toLowerCase().replace(/[´']/g, '');
+  const secciones = document.querySelectorAll('.seccion-container');
+  const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
+  const separadorDinamico = document.querySelector('.separador-completo-dinamico');
+
+  // Limpiar búsqueda anterior
+  if (galeriaDinamica) galeriaDinamica.remove();
+  if (separadorDinamico) separadorDinamico.remove();
+
+  if (searchTerm === '') {
+    actualizarCartas();
+    return;
+  }
+
+  // Ocultar secciones existentes
+  secciones.forEach(sec => sec.classList.remove('visible'));
+
+  // Crear contenedor dinámico (simulando la estructura de las secciones)
+  const contenedorDinamico = document.createElement('div');
+  contenedorDinamico.className = 'seccion-container visible';
+ contenedorDinamico.innerHTML = `
+  <div class="seccion-titulo" style="text-shadow: none !important;">Resultados de búsqueda</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria" id="galeria-dinamica-busqueda"></div>
+`;
+  document.querySelector('body').appendChild(contenedorDinamico);
+
+  const galeria = document.getElementById('galeria-dinamica-busqueda');
+
+  // Filtrar cartas
+  const cartasCoincidentes = cartas.filter(carta => 
+    carta.nombre.toLowerCase().replace(/[´']/g, '').startsWith(searchTerm)
+  );
+
+  // Mostrar resultados
+  if (cartasCoincidentes.length > 0) {
+    cartasCoincidentes.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    cartasCoincidentes.forEach(carta => {
+      galeria.innerHTML += `
+        <div class="carta" data-id="${carta.id}">
+          <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+        </div>
+      `;
+    });
+  } else {
+    galeria.innerHTML = '<p style="width:100%; color:black; text-align:center; font-family: \'Cinzel Decorative\', serif; text-shadow: 0 0 8px rgba(255, 50, 50, 0.8), 0 0 12px rgba(255, 0, 0, 0.6);">No se encontraron cartas</p>';
+  }
+});
+    
     // Evento para el filtro
     document.getElementById('filter').addEventListener('change', actualizarCartas);
 
@@ -561,3 +712,4 @@
   </script>
 </body>
 </html>
+
