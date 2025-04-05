@@ -179,23 +179,32 @@
       gap: 20px;
       min-height: 320px;
     }
-/* ESTILOS PRINCIPALES */
+
 .carta {
   width: 200px;
   height: 280px;
   position: relative;
   margin: 5px 0;
-  /* Sombra directa sin efectos secundarios: */
   box-shadow: 
     0 2px 4px rgba(0, 0, 0, 0.25),
     0 3px 6px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
-  /* Bordes rectos y renderizado optimizado: */
   border-radius: 0;
   background: transparent;
-  /* Nueva solución para líneas negras: */
   isolation: isolate;
   contain: style layout paint;
+}
+
+
+.carta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: -1; 
 }
 
 .carta:hover {
@@ -212,7 +221,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* Elimina artefactos de renderizado: */
   image-rendering: crisp-edges;
   -webkit-backface-visibility: hidden;
 }
