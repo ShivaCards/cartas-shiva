@@ -139,6 +139,7 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
+    /* AJUSTE PARA ALINEAR TODAS LAS SECCIONES */
     .seccion-titulo {
       font-size: 1.5em;
       color: black;
@@ -149,6 +150,7 @@
       justify-content: center;
       gap: 15px;
       transition: text-shadow 0.3s ease;
+      padding: 10px 0; /* Añadido para consistencia */
     }
     .seccion-titulo:hover {
       text-shadow: 
@@ -623,6 +625,7 @@ document.getElementById('search').addEventListener('input', function() {
   const contenedorDinamico = document.createElement('div');
   contenedorDinamico.className = 'seccion-container visible';
   contenedorDinamico.innerHTML = `
+    <div class="seccion-titulo">Resultados de búsqueda</div>
     <div class="separador-completo">
       <div class="linea-separadora"></div>
       <div class="degradado-inferior"></div>
