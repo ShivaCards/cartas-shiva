@@ -604,13 +604,10 @@
 document.getElementById('search').addEventListener('input', function() {
   const searchTerm = this.value.trim().toLowerCase().replace(/[´']/g, '');
   const secciones = document.querySelectorAll('.seccion-container');
-  const galeriaOriginal = document.getElementById('galeria-militar');
-  const contenedorOriginal = galeriaOriginal.parentNode;
-  const separadorOriginal = document.querySelector('.contenedor-categorias').nextElementSibling;
-
-  // Limpiar búsqueda anterior
   const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
   const separadorDinamico = document.querySelector('.separador-completo-dinamico');
+
+  // Limpiar búsqueda anterior
   if (galeriaDinamica) galeriaDinamica.remove();
   if (separadorDinamico) separadorDinamico.remove();
 
@@ -622,16 +619,19 @@ document.getElementById('search').addEventListener('input', function() {
   // Ocultar secciones existentes
   secciones.forEach(sec => sec.classList.remove('visible'));
 
-  // Clonar el separador original (línea + degradado) y posicionarlo
-  const nuevoSeparador = separadorOriginal.cloneNode(true);
-  nuevoSeparador.classList.add('separador-completo-dinamico');
-  contenedorOriginal.insertBefore(nuevoSeparador, galeriaOriginal);
+  // Crear contenedor dinámico (simulando la estructura de las secciones)
+  const contenedorDinamico = document.createElement('div');
+  contenedorDinamico.className = 'seccion-container visible';
+  contenedorDinamico.innerHTML = `
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+    <div class="galeria" id="galeria-dinamica-busqueda"></div>
+  `;
+  document.querySelector('body').appendChild(contenedorDinamico);
 
-  // Crear galería dinámica en la posición correcta
-  const galeria = document.createElement('div');
-  galeria.id = 'galeria-dinamica-busqueda';
-  galeria.className = 'galeria';
-  contenedorOriginal.insertBefore(galeria, nuevoSeparador.nextSibling);
+  const galeria = document.getElementById('galeria-dinamica-busqueda');
 
   // Filtrar cartas
   const cartasCoincidentes = cartas.filter(carta => 
