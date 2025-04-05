@@ -185,29 +185,24 @@
   height: 280px;
   position: relative;
   margin: 5px 0;
+  /* Sombra optimizada para bordes rectos: */
   box-shadow: 
-    0 4px 8px rgba(0, 0, 0, 0.3),
-    0 6px 12px rgba(0, 0, 0, 0.2);
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 3px 6px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 8px;
+  /* Bordes completamente rectos: */
+  border-radius: 0;
   overflow: hidden;
-  /* Solución 100% efectiva: */
-  background: 
-    linear-gradient(45deg, 
-      #0a0a0a 48%,  /* Color de tu fondo (ajústalo) */
-      #1a1a1a 50%, 
-      #0a0a0a 52%
-    ) border-box;
-  outline: 1px solid #0a0a0a; /* Mismo color que tu fondo */
-  outline-offset: -1px;
-  contain: strict;
+  /* Solución definitiva para líneas blancas: */
+  outline: 1px solid transparent;
+  background-color: #000; /* Color base que coincide con tus cartas */
 }
 
 .carta:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 
-    0 8px 16px rgba(0, 0, 0, 0.4),
-    0 12px 24px rgba(0, 0, 0, 0.3);
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .cara {
@@ -217,10 +212,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* Aseguramos bordes perfectos: */
-  image-rendering: -webkit-optimize-contrast;
+  /* Asegura renderizado limpio: */
   image-rendering: crisp-edges;
-  backface-visibility: hidden;
+  background-color: inherit; /* Hereda el color del contenedor */
 }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
