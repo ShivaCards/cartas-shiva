@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
   <title>Cartas Shiva</title>
@@ -27,12 +26,11 @@
       cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
     
-    /* ===== NUEVO CURSOR AL HACER CLIC ===== */
     .carta:active {
       cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important;
     }
 
-    /* ===== ESTILOS ORIGINALES (SIN MODIFICACIONES) ===== */
+    /* ===== ESTILOS ORIGINALES ===== */
     body {
       margin: 0;
       padding: 0;
@@ -156,11 +154,27 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
+    /* ===== NUEVOS ESTILOS PARA TÍTULOS ===== */
     .seccion-titulo {
       font-size: 1.5em;
-      color: #e0a800;
+      color: black;
       margin: 2px 0;
-      text-shadow: 2px 2px 4px #000;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      transition: text-shadow 0.3s ease;
+    }
+    .seccion-titulo:hover {
+      text-shadow: 
+        0 0 10px rgba(224, 168, 0, 0.7),
+        0 0 20px rgba(224, 168, 0, 0.4);
+    }
+    .seccion-icono {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
     .galeria {
       display: flex;
@@ -198,7 +212,7 @@
       animation: rebote 1s cubic-bezier(0.37, 1.11, 0.7, 1.2);
     }
     .separador-completo {
-      margin: 1px 0; /* Cambiado de 20px a 10px */
+      margin: 1px 0;
     }
   </style>
   <script>
@@ -254,7 +268,6 @@
   </div>
   <div class="degradado-inferior"></div>
 
-  <!-- BUSCADOR (ya ajustado previamente) -->
   <div class="buscador">
     <input type="text" id="search" placeholder="Buscar carta...">
     <select id="filter">
@@ -266,7 +279,11 @@
   </div>
 
   <!-- Sección Militar -->
-  <div class="seccion-titulo">Militar</div>
+  <div class="seccion-titulo">
+    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+    Militar
+    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+  </div>
   <div class="separador-completo">
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
@@ -278,7 +295,11 @@
   </div>
 
   <!-- Sección Magia -->
-  <div class="seccion-titulo">Magia</div>
+  <div class="seccion-titulo">
+    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+    Magia
+    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+  </div>
   <div class="separador-completo">
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
@@ -287,7 +308,11 @@
   </div>
 
   <!-- Sección Bestia -->
-  <div class="seccion-titulo">Bestia</div>
+  <div class="seccion-titulo">
+    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+    Bestia
+    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+  </div>
   <div class="separador-completo">
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
@@ -299,7 +324,11 @@
   </div>
 
   <!-- Sección Civil -->
-  <div class="seccion-titulo">Civil</div>
+  <div class="seccion-titulo">
+    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+    Civil
+    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+  </div>
   <div class="separador-completo">
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
@@ -308,7 +337,11 @@
   </div>
 
   <!-- Sección Altar -->
-  <div class="seccion-titulo">Altar</div>
+  <div class="seccion-titulo">
+    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+    Altar
+    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+  </div>
   <div class="separador-completo">
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
@@ -316,23 +349,19 @@
   <div class="galeria">
   </div>
 
-  <!-- SOLUCIÓN ESPECÍFICA PARA BRAVE -->
   <script>
-    // Fuerza el cursor en elementos interactivos (solución para Brave)
     const applyCursor = (element) => {
       if (element.matches('input, select, textarea, button, a')) {
         element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
       }
     };
 
-    // Aplicar a elementos existentes
     document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
 
-    // Observer para nuevos elementos dinámicos
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === 1) { // Solo elementos
+          if (node.nodeType === 1) {
             applyCursor(node);
             node.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
           }
@@ -342,7 +371,6 @@
 
     observer.observe(document.body, { childList: true, subtree: true });
 
-    // Refuerzo adicional para eventos de clic
     document.addEventListener('mousedown', (e) => {
       if (e.target.matches('input, select, textarea, button, a')) {
         e.target.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
