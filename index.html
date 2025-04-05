@@ -190,8 +190,8 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px;
   overflow: hidden;
-  background: transparent; /* Fondo completamente transparente */
-}
+  background: transparent;
+  isolation: isolate; 
 
 .carta:hover {
   transform: translateY(-5px);
@@ -208,6 +208,8 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1) inset;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
 }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
