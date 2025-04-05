@@ -175,15 +175,15 @@
   width: 200px;
   height: 280px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.35); 
-  backdrop-filter: blur(8px); 
-  -webkit-backdrop-filter: blur(8px); 
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   margin: 5px 0;
   border-radius: 0;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-  transform-origin: center; 
+  transform-origin: center;
   image-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -199,6 +199,8 @@
 
 .cara {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -212,7 +214,6 @@
   box-sizing: border-box;
   image-rendering: auto;
 }
-
 
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
