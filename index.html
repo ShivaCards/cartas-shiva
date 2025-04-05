@@ -532,22 +532,49 @@
       });
     }
 
-    function mostrarCartasPorNivel() {
-      for (let i = 1; i <= 6; i++) {
-        const galeria = document.getElementById(`galeria-nivel-${i}`);
-        if (galeria) {
-          galeria.innerHTML = '';
-          const cartasFiltradas = cartas.filter(c => c.nivel === i);
-          cartasFiltradas.forEach(carta => {
-            galeria.innerHTML += `
-              <div class="carta" data-id="${carta.id}">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
-              </div>
-            `;
-          });
+   function mostrarCartasPorNivel() {
+  for (let i = 1; i <= 6; i++) {
+    const galeria = document.getElementById(`galeria-nivel-${i}`);
+    if (galeria) {
+      galeria.innerHTML = ''; // Limpiar la galería
+
+      // Filtrar cartas por nivel y ordenar por tipo
+      const cartasFiltradas = cartas.filter(c => c.nivel === i);
+      const cartasOrdenadas = cartasFiltradas.sort((a, b) => {
+        const ordenTipos = ['militar', 'magia', 'bestia', 'civil', 'altar']; // Orden personalizado
+        return ordenTipos.indexOf(a.tipo) - ordenTipos.indexOf(b.tipo);
+      });
+
+      // Agregar subtítulos para cada tipo
+      let tipoActual = '';
+      cartasOrdenadas.forEach(carta => {
+        if (carta.tipo !== tipoActual) {
+          tipoActual = carta.tipo;
+          // Crear un subtítulo para el tipo (ej: "Militar")
+          const subtitulo = document.createElement('div');
+          subtitulo.className = 'subtipo-titulo';
+          subtitulo.textContent = carta.tipo.charAt(0).toUpperCase() + carta.tipo.slice(1); // Ej: "Militar"
+          subtitulo.style.cssText = `
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0 10px;
+            color: #e0a800;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+          `;
+          galeria.appendChild(subtitulo);
         }
-      }
+
+        // Agregar la carta
+        galeria.innerHTML += `
+          <div class="carta" data-id="${carta.id}">
+            <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+          </div>
+        `;
+      });
     }
+  }
+}
 
     function mostrarCartasPorATK() {
       const galeria = document.getElementById('galeria-atk');
