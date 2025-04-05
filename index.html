@@ -606,7 +606,6 @@ document.getElementById('search').addEventListener('input', function() {
   const secciones = document.querySelectorAll('.seccion-container');
   const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
 
-  // Eliminar separadores anteriores si existen
   const separadorAnterior = document.querySelector('#galeria-dinamica-busqueda ~ .separador-completo');
   if (separadorAnterior) separadorAnterior.remove();
 
@@ -625,24 +624,21 @@ document.getElementById('search').addEventListener('input', function() {
   }
 
   secciones.forEach(sec => sec.classList.remove('visible'));
-  
-  // Mostrar galería dinámica con separador
   const galeria = document.getElementById('galeria-dinamica-busqueda');
   galeria.style.display = 'flex';
-  galeria.insertAdjacentHTML('beforebegin', `
-    <div class="separador-completo">
-      <div class="linea-separadora"></div>
-      <div class="degradado-inferior"></div>
-    </div>
-  `);
+  galeria.innerHTML = '';
 
-  // Filtrar y mostrar cartas
   const cartasCoincidentes = cartas.filter(carta => 
     carta.nombre.toLowerCase().replace(/[´']/g, '').startsWith(searchTerm)
   );
-  galeria.innerHTML = '';
-  
+
   if (cartasCoincidentes.length > 0) {
+    galeria.insertAdjacentHTML('beforebegin', `
+      <div class="separador-completo">
+        <div class="linea-separadora"></div>
+        <div class="degradado-inferior"></div>
+      </div>
+    `);
     cartasCoincidentes.sort((a, b) => a.nombre.localeCompare(b.nombre));
     cartasCoincidentes.forEach(carta => {
       galeria.innerHTML += `
@@ -655,6 +651,7 @@ document.getElementById('search').addEventListener('input', function() {
     galeria.innerHTML = '<p style="width:100%; color:black; text-align:center; font-family: \'Cinzel Decorative\', serif; text-shadow: 0 0 3px #e0a800;">No se encontraron cartas</p>';
   }
 });
+    
     // Evento para el filtro
     document.getElementById('filter').addEventListener('change', actualizarCartas);
 
