@@ -627,14 +627,14 @@ document.getElementById('search').addEventListener('input', function() {
   // Crear contenedor dinámico (simulando la estructura de las secciones)
   const contenedorDinamico = document.createElement('div');
   contenedorDinamico.className = 'seccion-container visible';
-  contenedorDinamico.innerHTML = `
-    <div class="seccion-titulo">Resultados de búsqueda</div>
-    <div class="separador-completo">
-      <div class="linea-separadora"></div>
-      <div class="degradado-inferior"></div>
-    </div>
-    <div class="galeria" id="galeria-dinamica-busqueda"></div>
-  `;
+ contenedorDinamico.innerHTML = `
+  <div class="seccion-titulo" style="text-shadow: none !important;">Resultados de búsqueda</div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria" id="galeria-dinamica-busqueda"></div>
+`;
   document.querySelector('body').appendChild(contenedorDinamico);
 
   const galeria = document.getElementById('galeria-dinamica-busqueda');
