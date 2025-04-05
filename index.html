@@ -532,40 +532,21 @@
       });
     }
 
-   function mostrarCartasPorNivel() {
+ function mostrarCartasPorNivel() {
   for (let i = 1; i <= 6; i++) {
     const galeria = document.getElementById(`galeria-nivel-${i}`);
     if (galeria) {
-      galeria.innerHTML = ''; // Limpiar la galería
+      galeria.innerHTML = '';
 
-      // Filtrar cartas por nivel y ordenar por tipo
+      // 1. Filtrar por nivel y ordenar por tipo (militar > magia > bestia > civil > altar)
       const cartasFiltradas = cartas.filter(c => c.nivel === i);
       const cartasOrdenadas = cartasFiltradas.sort((a, b) => {
-        const ordenTipos = ['militar', 'magia', 'bestia', 'civil', 'altar']; // Orden personalizado
+        const ordenTipos = ['militar', 'magia', 'bestia', 'civil', 'altar'];
         return ordenTipos.indexOf(a.tipo) - ordenTipos.indexOf(b.tipo);
       });
 
-      // Agregar subtítulos para cada tipo
-      let tipoActual = '';
+      // 2. Mostrar cartas en orden (sin subtítulos, flujo natural)
       cartasOrdenadas.forEach(carta => {
-        if (carta.tipo !== tipoActual) {
-          tipoActual = carta.tipo;
-          // Crear un subtítulo para el tipo (ej: "Militar")
-          const subtitulo = document.createElement('div');
-          subtitulo.className = 'subtipo-titulo';
-          subtitulo.textContent = carta.tipo.charAt(0).toUpperCase() + carta.tipo.slice(1); // Ej: "Militar"
-          subtitulo.style.cssText = `
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-            margin: 20px 0 10px;
-            color: #e0a800;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-          `;
-          galeria.appendChild(subtitulo);
-        }
-
-        // Agregar la carta
         galeria.innerHTML += `
           <div class="carta" data-id="${carta.id}">
             <div class="cara" style="background-image: url('${carta.imagen}')"></div>
@@ -592,28 +573,31 @@
       }
     }
 
-    function mostrarCartasPorGrupo() {
-      grupos.forEach(grupo => {
-        const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
-        const galeria = document.getElementById(`galeria-${idGrupo}`);
-        if (galeria) {
-          galeria.innerHTML = '';
-          const cartasFiltradas = cartas.filter(c => 
-            c.grupo && c.grupo.some(g => 
-              g.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '') === idGrupo
-            )
-          );
-          cartasFiltradas.sort((a, b) => a.nivel - b.nivel);
-          cartasFiltradas.forEach(carta => {
-            galeria.innerHTML += `
-              <div class="carta" data-id="${carta.id}">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
-              </div>
-            `;
-          });
-        }
+   function mostrarCartasPorGrupo() {
+  grupos.forEach(grupo => {
+    const idGrupo = grupo.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '');
+    const galeria = document.getElementById(`galeria-${idGrupo}`);
+    if (galeria) {
+      galeria.innerHTML = '';
+      
+      // 1. Filtrar cartas del grupo y ordenar por nivel (ascendente)
+      const cartasFiltradas = cartas.filter(c => 
+        c.grupo && c.grupo.some(g => 
+          g.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '') === idGrupo
+        )
+      ).sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
+
+      // 2. Mostrar cartas en orden de nivel (sin subtítulos)
+      cartasFiltradas.forEach(carta => {
+        galeria.innerHTML += `
+          <div class="carta" data-id="${carta.id}">
+            <div class="cara" style="background-image: url('${carta.imagen}')"></div>
+          </div>
+        `;
       });
     }
+  });
+}
 
     // Evento para el buscador (búsqueda exacta)
     document.getElementById('search').addEventListener('input', function() {
