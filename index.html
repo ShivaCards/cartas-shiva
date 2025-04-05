@@ -4,32 +4,16 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ===== TUS ESTILOS ORIGINALES (INTACTOS) ===== */
-    body, 
-    a, 
-    button, 
-    input, 
-    input:hover, 
-    input:focus, 
-    input:active,
-    select, 
-    select:hover, 
-    select:focus,
-    select:active,
-    textarea,
-    h1 span, 
-    h1 span:hover {
+    /* ==== ESTILOS ORIGINALES (COMPLETOS) ==== */
+    body, a, button, input, textarea, h1 span, h1 span:hover {
       cursor: url('images/cursors/cursornormal1.cur'), auto !important;
     }
-    
     .carta:hover {
       cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
-    
     .carta:active {
       cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important;
     }
-
     body {
       margin: 0;
       padding: 0;
@@ -70,9 +54,7 @@
       transition: text-shadow 0.6s ease-in-out;
     }
     h1 span:hover {
-      text-shadow: 
-        0 0 8px rgba(255, 215, 0, 0.6),
-        0 0 12px rgba(255, 215, 0, 0.4);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 0 0 12px rgba(255, 215, 0, 0.4);
     }
     h1 span.active {
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
@@ -135,9 +117,7 @@
       padding: 8px 20px;
     }
     .categorias a:hover {
-      text-shadow: 
-        0 0 20px rgba(255, 215, 0, 0.8), 
-        0 0 40px rgba(255, 215, 0, 0.6);
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6);
       transform: scale(1.2);
     }
     .buscador {
@@ -162,6 +142,11 @@
       align-items: center;
       justify-content: center;
       gap: 15px;
+    }
+    .seccion-icono {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
     .galeria {
       display: flex;
@@ -201,7 +186,7 @@
     .separador-completo {
       margin: 10px 0;
     }
-    /* ===== ESTILOS NUEVOS PARA CARTAS DINÁMICAS ===== */
+    /* ==== ESTILOS NUEVOS PARA CARTAS DINÁMICAS ==== */
     .info-carta {
       position: absolute;
       bottom: 10px;
@@ -215,10 +200,13 @@
     .nivel-carta { color: silver; }
     .atk-carta { color: gold; }
     .atk-carta.null { display: none; }
+    #cartas-dinamicas {
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
-  <!-- ===== HEADER ORIGINAL (INTACTO) ===== -->
+  <!-- ==== HEADER ORIGINAL ==== -->
   <header>
     <h1 id="titulo">
       <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
@@ -227,7 +215,7 @@
     <p>"El destino del reino está en tus manos"</p>
   </header>
 
-  <!-- ===== CATEGORÍAS ORIGINALES (INTACTAS) ===== -->
+  <!-- ==== CATEGORÍAS ORIGINALES ==== -->
   <div class="contenedor-categorias">
     <nav class="categorias">
       <a href="#">Reglas del Juego</a>
@@ -237,7 +225,7 @@
   </div>
   <div class="degradado-inferior"></div>
 
-  <!-- ===== BUSCADOR NUEVO ===== -->
+  <!-- ==== BUSCADOR NUEVO ==== -->
   <div class="buscador">
     <input type="text" id="search" placeholder="Buscar carta...">
     <select id="filter">
@@ -247,7 +235,7 @@
     </select>
   </div>
 
-  <!-- ===== SECCIONES ORIGINALES (INTACTAS) ===== -->
+  <!-- ==== SECCIONES ORIGINALES (CARTAS ESTÁTICAS) ==== -->
   <!-- Sección Militar -->
   <div class="seccion-titulo">
     <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
@@ -274,8 +262,7 @@
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
   </div>
-  <div class="galeria">
-  </div>
+  <div class="galeria"></div>
 
   <!-- Sección Bestia -->
   <div class="seccion-titulo">
@@ -303,8 +290,7 @@
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
   </div>
-  <div class="galeria">
-  </div>
+  <div class="galeria"></div>
 
   <!-- Sección Altar -->
   <div class="seccion-titulo">
@@ -316,14 +302,13 @@
     <div class="linea-separadora"></div>
     <div class="degradado-inferior"></div>
   </div>
-  <div class="galeria">
-  </div>
+  <div class="galeria"></div>
 
-  <!-- ===== CONTENEDOR DINÁMICO (NUEVO) ===== -->
+  <!-- ==== CONTENEDOR DINÁMICO (RESULTADOS DE BÚSQUEDA/FILTROS) ==== -->
   <div id="cartas-dinamicas"></div>
 
   <script>
-    // ===== ARRAY DE CARTAS (NUEVO) =====
+    // ==== ARRAY DE CARTAS (COMPLETO) ====
     const cartas = [
       {
         nombre: "Kethel Cazador",
@@ -390,7 +375,7 @@
       }
     ];
 
-    // ===== FUNCIONES ORIGINALES (INTACTAS) =====
+    // ==== FUNCIONES ORIGINALES (ANIMACIONES) ====
     function hacerRebotar() {
       let letraC = document.querySelector('h1 span.large');
       letraC.classList.add('rebote');
@@ -424,7 +409,7 @@
       }, 10);
     }
 
-    // ===== FUNCIONES NUEVAS (BUSCADOR/FILTROS) =====
+    // ==== FUNCIONES NUEVAS (BUSCADOR/FILTROS) ====
     function filtrarCartas() {
       const texto = document.getElementById('search').value.trim().toLowerCase();
       const criterio = document.getElementById('filter').value;
@@ -433,20 +418,20 @@
         : [...cartas];
 
       // Ordenar
-      cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Orden secundario por nivel
+      cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Orden secundario
       if (criterio === "atk") cartasFiltradas.sort((a, b) => (b.atk || 0) - (a.atk || 0));
       if (criterio === "tipo") cartasFiltradas.sort((a, b) => a.tipo.localeCompare(b.tipo));
 
       renderizarCartasDinamicas(cartasFiltradas, criterio);
     }
 
-    function renderizarCartasDinamicas(cartasFiltradas, criterio) {
+    function renderizarCartasDinamicas(cartas, criterio) {
       const contenedor = document.getElementById('cartas-dinamicas');
       contenedor.innerHTML = '';
 
       // Agrupar por criterio
       const grupos = {};
-      cartasFiltradas.forEach(carta => {
+      cartas.forEach(carta => {
         const clave = criterio === "tipo" ? carta.tipo : 
                      criterio === "nivel" ? `Nivel ${carta.nivel}` : "ATK";
         if (!grupos[clave]) grupos[clave] = [];
@@ -476,16 +461,16 @@
       });
     }
 
-    // ===== INICIALIZACIÓN =====
+    // ==== INICIALIZACIÓN ====
     document.addEventListener('DOMContentLoaded', () => {
       // Configurar buscador
       document.getElementById('search').addEventListener('input', filtrarCartas);
       document.getElementById('filter').addEventListener('change', filtrarCartas);
       
-      // Mostrar todas las cartas inicialmente (agrupadas por tipo)
+      // Mostrar cartas al inicio (agrupadas por tipo)
       renderizarCartasDinamicas(cartas, "tipo");
       
-      // Tus listeners originales para cursores
+      // Listeners para cursores (originales)
       const applyCursor = (element) => {
         if (element.matches('input, select, textarea, button, a')) {
           element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
