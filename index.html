@@ -165,12 +165,6 @@
       object-fit: contain;
       margin: 0;
     }
-    .seccion-icono-nivel {
-  width: auto;
-  height: 40px;
-  object-fit: contain;
-  margin: 0 10px;
-}
     .galeria {
       display: flex;
       flex-wrap: wrap;
@@ -179,51 +173,21 @@
       gap: 20px;
       min-height: 320px;
     }
-
-.carta {
-  width: 200px;
-  height: 280px;
-  position: relative;
-  margin: 5px 0;
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.25),
-    0 3px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-  border-radius: 0;
-  background: transparent;
-  isolation: isolate;
-  contain: style layout paint;
-}
-
-
-.carta::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: inherit;
-  z-index: -1; 
-}
-
-.carta:hover {
-  transform: translateY(-3px);
-  box-shadow: 
-    0 4px 8px rgba(0, 0, 0, 0.3),
-    0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.cara {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  image-rendering: crisp-edges;
-  -webkit-backface-visibility: hidden;
-}
+    .carta {
+      width: 200px;
+      height: 280px;
+      position: relative;
+      background-color: transparent;
+      margin: 5px 0;
+    }
+    .cara {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
       20% { transform: translateY(-25px) scaleY(0.9); }
@@ -497,24 +461,20 @@
 
     // Función para inicializar las secciones dinámicas
     function inicializarSecciones() {
-  // Secciones de nivel (1-6)
-  const seccionesNivel = document.getElementById('secciones-nivel');
-  for (let i = 1; i <= 6; i++) {
-    seccionesNivel.innerHTML += `
-      <div class="seccion-nivel" data-nivel="${i}">
-        <div class="seccion-titulo">
-          <img src="images/icon_nivel${i}.png" class="seccion-icono-nivel" alt="Icono Nivel ${i}">
-          Nivel ${i}
-          <img src="images/icon_nivel${i}.png" class="seccion-icono-nivel" alt="Icono Nivel ${i}">
-        </div>
-        <div class="separador-completo">
-          <div class="linea-separadora"></div>
-          <div class="degradado-inferior"></div>
-        </div>
-        <div class="galeria" id="galeria-nivel-${i}"></div>
-      </div>
-    `;
-  }
+      // Secciones de nivel (1-6)
+      const seccionesNivel = document.getElementById('secciones-nivel');
+      for (let i = 1; i <= 6; i++) {
+        seccionesNivel.innerHTML += `
+          <div class="seccion-nivel" data-nivel="${i}">
+            <div class="seccion-titulo">Nivel ${i}</div>
+            <div class="separador-completo">
+              <div class="linea-separadora"></div>
+              <div class="degradado-inferior"></div>
+            </div>
+            <div class="galeria" id="galeria-nivel-${i}"></div>
+          </div>
+        `;
+      }
 
       // Secciones de grupo
       const seccionesGrupo = document.getElementById('secciones-grupo');
