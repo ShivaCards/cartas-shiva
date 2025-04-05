@@ -518,26 +518,38 @@
       });
     }
 
+    function manejarClickMedio(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const carta = e.target.closest('.carta');
+      if (carta && !carta.classList.contains('ampliada')) {
+        carta.classList.toggle('volteada');
+      }
+    }
+
+    function manejarClickIzquierdo(e) {
+      const carta = e.target.closest('.carta');
+      if (!carta) return;
+      
+      if (carta.classList.contains('volteada')) {
+        carta.classList.remove('volteada');
+      } else {
+        carta.classList.toggle('ampliada');
+      }
+    }
+
     function configurarEventosCartas() {
       document.querySelectorAll('.carta').forEach(carta => {
-        carta.addEventListener('click', function(e) {
-          if (e.button === 0) {
-            if (this.classList.contains('volteada')) {
-              this.classList.remove('volteada');
-            } else {
-              this.classList.toggle('ampliada');
-            }
-          }
-        });
-
-        carta.addEventListener('auxclick', function(e) {
+        carta.removeEventListener('mousedown', manejarClickMedio);
+        carta.removeEventListener('click', manejarClickIzquierdo);
+        
+        carta.addEventListener('mousedown', function(e) {
           if (e.button === 1) {
-            e.preventDefault();
-            if (!this.classList.contains('ampliada')) {
-              this.classList.toggle('volteada');
-            }
+            manejarClickMedio(e);
           }
         });
+        
+        carta.addEventListener('click', manejarClickIzquierdo);
       });
     }
 
@@ -735,16 +747,20 @@
     document.addEventListener('DOMContentLoaded', () => {
       inicializarSecciones();
       actualizarCartas();
+      
+      document.addEventListener('mousedown', function(e) {
+        if (e.button === 1) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }, true);
+      
       const applyCursor = (element) => {
         if (element.matches('input, select, textarea, button, a')) {
           element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
         }
       };
       document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
-      
-      document.addEventListener('auxclick', function(e) {
-        if (e.button === 1) e.preventDefault();
-      }, { passive: false });
     });
   </script>
 </body>
