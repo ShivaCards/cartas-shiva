@@ -4,33 +4,18 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ===== CURSORES PERSONALIZADOS (VERSIÓN BRAVE) ===== */
-    body, 
-    a, 
-    button, 
-    input, 
-    input:hover, 
-    input:focus, 
-    input:active,
-    select, 
-    select:hover, 
-    select:focus,
-    select:active,
-    textarea,
-    h1 span, 
-    h1 span:hover {
+    /* ===== ESTILOS ORIGINALES (COMPLETOS) ===== */
+    body, a, button, input, input:hover, input:focus, input:active,
+    select, select:hover, select:focus, select:active,
+    textarea, h1 span, h1 span:hover {
       cursor: url('images/cursors/cursornormal1.cur'), auto !important;
     }
-    
     .carta:hover {
       cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
-    
     .carta:active {
       cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important;
     }
-
-    /* ===== ESTILOS ORIGINALES ===== */
     body {
       margin: 0;
       padding: 0;
@@ -154,7 +139,6 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
-    /* ===== NUEVOS ESTILOS PARA TÍTULOS ===== */
     .seccion-titulo {
       font-size: 1.5em;
       color: black;
@@ -214,8 +198,6 @@
     .separador-completo {
       margin: 1px 0;
     }
-    
-    /* Clases para controlar visibilidad */
     .seccion-container {
       display: none;
     }
@@ -243,7 +225,14 @@
   <div class="degradado-inferior"></div>
 
   <div class="buscador">
-    <input type="text" id="search" placeholder="Buscar carta...">
+    <input 
+      type="text" 
+      id="search" 
+      placeholder="Buscar carta..." 
+      autocomplete="off"
+      autocorrect="off" 
+      spellcheck="false"
+    >
     <select id="filter">
       <option value="tipo">Tipo</option>
       <option value="nivel">Nivel</option>
@@ -268,7 +257,6 @@
       <div class="carta">
         <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
       </div>
-      <!-- NUEVAS CARTAS MILITAR -->
       <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/militar/kethelcazador.png')"></div>
       </div>
@@ -288,7 +276,6 @@
       <div class="degradado-inferior"></div>
     </div>
     <div class="galeria" id="galeria-magia">
-      <!-- NUEVA CARTA MAGIA -->
       <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/magia/thal-ryoneltraidor.png')"></div>
       </div>
@@ -308,7 +295,6 @@
       <div class="carta">
         <div class="cara" style="background-image: url('images/huargo.png')"></div>
       </div>
-      <!-- NUEVAS CARTAS BESTIA -->
       <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/bestia/huargo.png')"></div>
       </div>
@@ -334,7 +320,6 @@
       <div class="degradado-inferior"></div>
     </div>
     <div class="galeria" id="galeria-civil">
-      <!-- NUEVA CARTA CIVIL -->
       <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/civil/torero.png')"></div>
       </div>
@@ -351,7 +336,6 @@
       <div class="degradado-inferior"></div>
     </div>
     <div class="galeria" id="galeria-altar">
-      <!-- NUEVA CARTA ALTAR -->
       <div class="carta">
         <div class="cara" style="background-image: url('images/cartas/altar/aguilaardiente.png')"></div>
       </div>
@@ -379,89 +363,88 @@
   </div>
 
   <script>
-    
     const cartas = [
-  {
-    id: 'kethelcazador',
-    nombre: 'Keth el Cazador',
-    tipo: 'militar',
-    nivel: 2,
-    atk: 5,
-    imagen: 'images/cartas/militar/kethelcazador.png',
-    grupo: ['Bosque de los Perdidos'] // Modificado
-  },
-  {
-    id: 'huargo',
-    nombre: 'Huargo',
-    tipo: 'bestia',
-    nivel: 2,
-    atk: 1500,
-    imagen: 'images/cartas/bestia/huargo.png',
-    grupo: ['Bosque de los Perdidos'] // Modificado
-  },
-  {
-    id: 'konganciano',
-    nombre: "Kong'Thar Anciano",
-    tipo: 'militar',
-    nivel: 2,
-    atk: 5,
-    imagen: 'images/cartas/militar/konganciano.png',
-    grupo: ['Kong\'Thar', 'Selva Impenetrable'] // Modificado
-  },
-  {
-    id: 'thal-ryoneltraidor',
-    nombre: "Thal'ryon el Traidor",
-    tipo: 'magia',
-    nivel: 5,
-    atk: 16,
-    imagen: 'images/cartas/magia/thal-ryoneltraidor.png',
-    grupo: ['Los Siete Herederos Élficos'] // Modificado
-  },
-  {
-    id: 'perrodecazador',
-    nombre: "Perro de cazador",
-    tipo: 'bestia',
-    nivel: 1,
-    atk: 2,
-    imagen: 'images/cartas/bestia/perrodecazador.png' 
-    // Sin grupo (se mantiene igual)
-  },
-  {
-    id: 'ukko',
-    nombre: "Ukko",
-    tipo: 'bestia',
-    nivel: 3,
-    atk: 6,
-    imagen: 'images/cartas/bestia/ukko.png',
-    grupo: ['Bosque de los Perdidos'] // Modificado
-  },
-  {
-    id: 'fenrir',
-    nombre: "Fenrir",
-    tipo: 'bestia',
-    nivel: 4,
-    atk: 10,
-    imagen: 'images/cartas/bestia/fenrir.png',
-    grupo: ['Deidades'] // Modificado
-  },
-  {
-    id: 'torero',
-    nombre: "Torero",
-    tipo: 'civil',
-    nivel: 1,
-    atk: 3,
-    imagen: 'images/cartas/civil/torero.png',
-    grupo: ['Reino del Valle Central'] // Modificado
-  },
-  {
-    id: 'aguilaardiente',
-    nombre: "Águila Ardiente",
-    tipo: 'altar',
-    nivel: 2,
-    imagen: 'images/cartas/altar/aguilaardiente.png',
-    grupo: ['Fuego'] // Modificado
-  }
-];
+      {
+        id: 'kethelcazador',
+        nombre: 'Keth el Cazador',
+        tipo: 'militar',
+        nivel: 2,
+        atk: 5,
+        imagen: 'images/cartas/militar/kethelcazador.png',
+        grupo: ['Bosque de los Perdidos']
+      },
+      {
+        id: 'huargo',
+        nombre: 'Huargo',
+        tipo: 'bestia',
+        nivel: 2,
+        atk: 1500,
+        imagen: 'images/cartas/bestia/huargo.png',
+        grupo: ['Bosque de los Perdidos']
+      },
+      {
+        id: 'konganciano',
+        nombre: "Kong'Thar Anciano",
+        tipo: 'militar',
+        nivel: 2,
+        atk: 5,
+        imagen: 'images/cartas/militar/konganciano.png',
+        grupo: ['Kong\'Thar', 'Selva Impenetrable']
+      },
+      {
+        id: 'thal-ryoneltraidor',
+        nombre: "Thal'ryon el Traidor",
+        tipo: 'magia',
+        nivel: 5,
+        atk: 16,
+        imagen: 'images/cartas/magia/thal-ryoneltraidor.png',
+        grupo: ['Los Siete Herederos Élficos']
+      },
+      {
+        id: 'perrodecazador',
+        nombre: "Perro de cazador",
+        tipo: 'bestia',
+        nivel: 1,
+        atk: 2,
+        imagen: 'images/cartas/bestia/perrodecazador.png'
+      },
+      {
+        id: 'ukko',
+        nombre: "Ukko",
+        tipo: 'bestia',
+        nivel: 3,
+        atk: 6,
+        imagen: 'images/cartas/bestia/ukko.png',
+        grupo: ['Bosque de los Perdidos']
+      },
+      {
+        id: 'fenrir',
+        nombre: "Fenrir",
+        tipo: 'bestia',
+        nivel: 4,
+        atk: 10,
+        imagen: 'images/cartas/bestia/fenrir.png',
+        grupo: ['Deidades']
+      },
+      {
+        id: 'torero',
+        nombre: "Torero",
+        tipo: 'civil',
+        nivel: 1,
+        atk: 3,
+        imagen: 'images/cartas/civil/torero.png',
+        grupo: ['Reino del Valle Central']
+      },
+      {
+        id: 'aguilaardiente',
+        nombre: "Águila Ardiente",
+        tipo: 'altar',
+        nivel: 2,
+        imagen: 'images/cartas/altar/aguilaardiente.png',
+        grupo: ['Fuego']
+      }
+    ];
+
     // Lista de grupos
     const grupos = [
       'Reino del Valle Central', 'Montañas del Norte', 'Imperio de la Costa',
@@ -537,7 +520,7 @@
         if (galeria) {
           galeria.innerHTML = '';
           const cartasFiltradas = cartas.filter(c => c.tipo === tipo);
-          cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
+          cartasFiltradas.sort((a, b) => a.nivel - b.nivel);
           cartasFiltradas.forEach(carta => {
             galeria.innerHTML += `
               <div class="carta" data-id="${carta.id}">
@@ -571,7 +554,7 @@
       if (galeria) {
         galeria.innerHTML = '';
         const cartasFiltradas = [...cartas].filter(c => c.atk !== undefined);
-        cartasFiltradas.sort((a, b) => a.atk - b.atk); // Ordenar por ATK
+        cartasFiltradas.sort((a, b) => a.atk - b.atk);
         cartasFiltradas.forEach(carta => {
           galeria.innerHTML += `
             <div class="carta" data-id="${carta.id}">
@@ -589,9 +572,11 @@
         if (galeria) {
           galeria.innerHTML = '';
           const cartasFiltradas = cartas.filter(c => 
-            c.grupo && c.grupo.toLowerCase() === idGrupo.replace(/-/g, ' ')
+            c.grupo && c.grupo.some(g => 
+              g.toLowerCase().replace(/\s+/g, '-').replace(/[´']/g, '') === idGrupo
+            )
           );
-          cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Ordenar por nivel
+          cartasFiltradas.sort((a, b) => a.nivel - b.nivel);
           cartasFiltradas.forEach(carta => {
             galeria.innerHTML += `
               <div class="carta" data-id="${carta.id}">
@@ -602,6 +587,26 @@
         }
       });
     }
+
+    // Evento para el buscador (búsqueda exacta)
+    document.getElementById('search').addEventListener('input', function() {
+      const searchTerm = this.value.trim()
+        .toLowerCase()
+        .replace(/[-'\s]/g, '');
+
+      const cartasVisibles = document.querySelectorAll('.carta');
+      cartasVisibles.forEach(carta => {
+        const idCarta = carta.getAttribute('data-id');
+        const cartaData = cartas.find(c => c.id === idCarta);
+        if (cartaData) {
+          const nombreNormalizado = cartaData.nombre
+            .toLowerCase()
+            .replace(/[-'\s]/g, '');
+          const coincideExactamente = nombreNormalizado === searchTerm;
+          carta.style.display = coincideExactamente ? 'block' : 'none';
+        }
+      });
+    });
 
     // Evento para el filtro
     document.getElementById('filter').addEventListener('change', actualizarCartas);
