@@ -4,16 +4,33 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ==== ESTILOS ORIGINALES (COMPLETOS) ==== */
-    body, a, button, input, textarea, h1 span, h1 span:hover {
+    /* ===== CURSORES PERSONALIZADOS (VERSIÓN BRAVE) ===== */
+    body, 
+    a, 
+    button, 
+    input, 
+    input:hover, 
+    input:focus, 
+    input:active,
+    select, 
+    select:hover, 
+    select:focus,
+    select:active,
+    textarea,
+    h1 span, 
+    h1 span:hover {
       cursor: url('images/cursors/cursornormal1.cur'), auto !important;
     }
+    
     .carta:hover {
       cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
+    
     .carta:active {
       cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important;
     }
+
+    /* ===== ESTILOS ORIGINALES ===== */
     body {
       margin: 0;
       padding: 0;
@@ -54,7 +71,9 @@
       transition: text-shadow 0.6s ease-in-out;
     }
     h1 span:hover {
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 0 0 12px rgba(255, 215, 0, 0.4);
+      text-shadow: 
+        0 0 8px rgba(255, 215, 0, 0.6),
+        0 0 12px rgba(255, 215, 0, 0.4);
     }
     h1 span.active {
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
@@ -117,12 +136,14 @@
       padding: 8px 20px;
     }
     .categorias a:hover {
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6);
+      text-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.8), 
+        0 0 40px rgba(255, 215, 0, 0.6);
       transform: scale(1.2);
     }
     .buscador {
       text-align: left;
-      margin: 20px 20px 0;
+      margin: 100px 20px 0;
       padding: 10px;
     }
     .buscador input, .buscador select {
@@ -133,15 +154,22 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
+    /* ===== NUEVOS ESTILOS PARA TÍTULOS ===== */
     .seccion-titulo {
       font-size: 1.5em;
       color: black;
-      margin: 15px 0 5px;
-      text-shadow: 2px 2px 4px rgba(224, 168, 0, 0.7);
+      margin: 2px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 15px;
+      transition: text-shadow 0.3s ease;
+    }
+    .seccion-titulo:hover {
+      text-shadow: 
+        0 0 10px rgba(224, 168, 0, 0.7),
+        0 0 20px rgba(224, 168, 0, 0.4);
     }
     .seccion-icono {
       width: 40px;
@@ -184,198 +212,10 @@
       animation: rebote 1s cubic-bezier(0.37, 1.11, 0.7, 1.2);
     }
     .separador-completo {
-      margin: 10px 0;
-    }
-    /* ==== ESTILOS NUEVOS PARA CARTAS DINÁMICAS ==== */
-    .info-carta {
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      color: white;
-      font-size: 0.9em;
-      text-shadow: 0 0 3px black;
-    }
-    .nivel-carta { color: silver; }
-    .atk-carta { color: gold; }
-    .atk-carta.null { display: none; }
-    #cartas-dinamicas {
-      margin-top: 40px;
+      margin: 1px 0;
     }
   </style>
-</head>
-<body>
-  <!-- ==== HEADER ORIGINAL ==== -->
-  <header>
-    <h1 id="titulo">
-      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
-      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a" onclick="transformarLetraA()">a</span>
-    </h1>
-    <p>"El destino del reino está en tus manos"</p>
-  </header>
-
-  <!-- ==== CATEGORÍAS ORIGINALES ==== -->
-  <div class="contenedor-categorias">
-    <nav class="categorias">
-      <a href="#">Reglas del Juego</a>
-      <a href="#">Glosario</a>
-      <a href="#">Mitos y Leyendas</a>
-    </nav>
-  </div>
-  <div class="degradado-inferior"></div>
-
-  <!-- ==== BUSCADOR NUEVO ==== -->
-  <div class="buscador">
-    <input type="text" id="search" placeholder="Buscar carta...">
-    <select id="filter">
-      <option value="tipo">Tipo</option>
-      <option value="nivel">Nivel</option>
-      <option value="atk">ATK</option>
-    </select>
-  </div>
-
-  <!-- ==== SECCIONES ORIGINALES (CARTAS ESTÁTICAS) ==== -->
-  <!-- Sección Militar -->
-  <div class="seccion-titulo">
-    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
-    Militar
-    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
-  </div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria">
-    <div class="carta">
-      <div class="cara" style="background-image: url('images/cartas/militar/kethelcazador.png')"></div>
-    </div>
-  </div>
-
-  <!-- Sección Magia -->
-  <div class="seccion-titulo">
-    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
-    Magia
-    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
-  </div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria"></div>
-
-  <!-- Sección Bestia -->
-  <div class="seccion-titulo">
-    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
-    Bestia
-    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
-  </div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria">
-    <div class="carta">
-      <div class="cara" style="background-image: url('images/cartas/bestia/huargo.png')"></div>
-    </div>
-  </div>
-
-  <!-- Sección Civil -->
-  <div class="seccion-titulo">
-    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
-    Civil
-    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
-  </div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria"></div>
-
-  <!-- Sección Altar -->
-  <div class="seccion-titulo">
-    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
-    Altar
-    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
-  </div>
-  <div class="separador-completo">
-    <div class="linea-separadora"></div>
-    <div class="degradado-inferior"></div>
-  </div>
-  <div class="galeria"></div>
-
-  <!-- ==== CONTENEDOR DINÁMICO (RESULTADOS DE BÚSQUEDA/FILTROS) ==== -->
-  <div id="cartas-dinamicas"></div>
-
   <script>
-    // ==== ARRAY DE CARTAS (COMPLETO) ====
-    const cartas = [
-      {
-        nombre: "Kethel Cazador",
-        imagen: "images/cartas/militar/kethelcazador.png",
-        tipo: "militar",
-        nivel: 2,
-        atk: 5
-      },
-      {
-        nombre: "Konganciano",
-        imagen: "images/cartas/militar/konganciano.png",
-        tipo: "militar",
-        nivel: 2,
-        atk: 5
-      },
-      {
-        nombre: "Huargo",
-        imagen: "images/cartas/bestia/huargo.png",
-        tipo: "bestia",
-        nivel: 2,
-        atk: 5
-      },
-      {
-        nombre: "Perro de Cazador",
-        imagen: "images/cartas/bestia/perrodecazador.png",
-        tipo: "bestia",
-        nivel: 1,
-        atk: 2
-      },
-      {
-        nombre: "Ukko",
-        imagen: "images/cartas/bestia/ukko.png",
-        tipo: "bestia",
-        nivel: 3,
-        atk: 6
-      },
-      {
-        nombre: "Fenrir",
-        imagen: "images/cartas/bestia/fenrir.png",
-        tipo: "bestia",
-        nivel: 4,
-        atk: 10
-      },
-      {
-        nombre: "Thal'ryon el Traidor",
-        imagen: "images/cartas/magia/thal'ryoneltraidor.png",
-        tipo: "magia",
-        nivel: 5,
-        atk: 16
-      },
-      {
-        nombre: "Torero",
-        imagen: "images/cartas/civil/torero.png",
-        tipo: "civil",
-        nivel: 1,
-        atk: 3
-      },
-      {
-        nombre: "Águila Ardiente",
-        imagen: "images/cartas/altar/aguilaardiente.png",
-        tipo: "altar",
-        nivel: 2,
-        atk: null
-      }
-    ];
-
-    // ==== FUNCIONES ORIGINALES (ANIMACIONES) ====
     function hacerRebotar() {
       let letraC = document.querySelector('h1 span.large');
       letraC.classList.add('rebote');
@@ -408,75 +248,133 @@
         }, 300);
       }, 10);
     }
+  </script>
+</head>
+<body>
+  <header>
+    <h1 id="titulo">
+      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a" onclick="transformarLetraA()">a</span>
+    </h1>
+    <p>"El destino del reino está en tus manos"</p>
+  </header>
 
-    // ==== FUNCIONES NUEVAS (BUSCADOR/FILTROS) ====
-    function filtrarCartas() {
-      const texto = document.getElementById('search').value.trim().toLowerCase();
-      const criterio = document.getElementById('filter').value;
-      let cartasFiltradas = texto 
-        ? cartas.filter(c => c.nombre.toLowerCase().includes(texto))
-        : [...cartas];
+  <div class="contenedor-categorias">
+    <nav class="categorias">
+      <a href="#">Reglas del Juego</a>
+      <a href="#">Glosario</a>
+      <a href="#">Mitos y Leyendas</a>
+    </nav>
+  </div>
+  <div class="degradado-inferior"></div>
 
-      // Ordenar
-      cartasFiltradas.sort((a, b) => a.nivel - b.nivel); // Orden secundario
-      if (criterio === "atk") cartasFiltradas.sort((a, b) => (b.atk || 0) - (a.atk || 0));
-      if (criterio === "tipo") cartasFiltradas.sort((a, b) => a.tipo.localeCompare(b.tipo));
+  <div class="buscador">
+    <input type="text" id="search" placeholder="Buscar carta...">
+    <select id="filter">
+      <option value="nivel">Nivel</option>
+      <option value="atk">ATK</option>
+      <option value="tipo">Tipo</option>
+      <option value="grupo">Grupo</option>
+    </select>
+  </div>
 
-      renderizarCartasDinamicas(cartasFiltradas, criterio);
-    }
+  <!-- Sección Militar -->
+  <div class="seccion-titulo">
+    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+    Militar
+    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
+    </div>
+  </div>
 
-    function renderizarCartasDinamicas(cartas, criterio) {
-      const contenedor = document.getElementById('cartas-dinamicas');
-      contenedor.innerHTML = '';
+  <!-- Sección Magia -->
+  <div class="seccion-titulo">
+    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+    Magia
+    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
 
-      // Agrupar por criterio
-      const grupos = {};
-      cartas.forEach(carta => {
-        const clave = criterio === "tipo" ? carta.tipo : 
-                     criterio === "nivel" ? `Nivel ${carta.nivel}` : "ATK";
-        if (!grupos[clave]) grupos[clave] = [];
-        grupos[clave].push(carta);
+  <!-- Sección Bestia -->
+  <div class="seccion-titulo">
+    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+    Bestia
+    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/huargo.png')"></div>
+    </div>
+  </div>
+
+  <!-- Sección Civil -->
+  <div class="seccion-titulo">
+    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+    Civil
+    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <!-- Sección Altar -->
+  <div class="seccion-titulo">
+    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+    Altar
+    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <script>
+    const applyCursor = (element) => {
+      if (element.matches('input, select, textarea, button, a')) {
+        element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
+      }
+    };
+
+    document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            applyCursor(node);
+            node.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+          }
+        });
       });
+    });
 
-      // Renderizar
-      Object.keys(grupos).forEach(clave => {
-        contenedor.innerHTML += `
-          <div class="seccion-titulo">${clave}</div>
-          <div class="separador-completo">
-            <div class="linea-separadora"></div>
-            <div class="degradado-inferior"></div>
-          </div>
-          <div class="galeria">
-            ${grupos[clave].map(carta => `
-              <div class="carta">
-                <div class="cara" style="background-image: url('${carta.imagen}')"></div>
-                <div class="info-carta">
-                  <span class="nivel-carta">Nivel ${carta.nivel}</span>
-                  ${carta.atk !== null ? `<span class="atk-carta">ATK: ${carta.atk}</span>` : ''}
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      });
-    }
+    observer.observe(document.body, { childList: true, subtree: true });
 
-    // ==== INICIALIZACIÓN ====
-    document.addEventListener('DOMContentLoaded', () => {
-      // Configurar buscador
-      document.getElementById('search').addEventListener('input', filtrarCartas);
-      document.getElementById('filter').addEventListener('change', filtrarCartas);
-      
-      // Mostrar cartas al inicio (agrupadas por tipo)
-      renderizarCartasDinamicas(cartas, "tipo");
-      
-      // Listeners para cursores (originales)
-      const applyCursor = (element) => {
-        if (element.matches('input, select, textarea, button, a')) {
-          element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
-        }
-      };
-      document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+    document.addEventListener('mousedown', (e) => {
+      if (e.target.matches('input, select, textarea, button, a')) {
+        e.target.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
+      }
     });
   </script>
 </body>
