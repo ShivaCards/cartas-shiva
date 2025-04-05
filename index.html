@@ -4,19 +4,24 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ===== CURSORES PERSONALIZADOS (VERSIÓN FINAL DEFINITIVA) ===== */
+    /* ===== CURSORES PERSONALIZADOS (VERSIÓN BRAVE) ===== */
     body, 
     a, 
     button, 
     input, 
     input:hover, 
     input:focus, 
+    input:active,
     select, 
     select:hover, 
+    select:focus,
+    select:active,
+    textarea,
     h1 span, 
     h1 span:hover {
       cursor: url('images/cursors/cursornormal1.cur'), auto !important;
     }
+    
     .carta:hover {
       cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
@@ -303,5 +308,39 @@
   </div>
   <div class="galeria">
   </div>
+
+  <!-- SOLUCIÓN ESPECÍFICA PARA BRAVE -->
+  <script>
+    // Fuerza el cursor en elementos interactivos (solución para Brave)
+    const applyCursor = (element) => {
+      if (element.matches('input, select, textarea, button, a')) {
+        element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
+      }
+    };
+
+    // Aplicar a elementos existentes
+    document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+
+    // Observer para nuevos elementos dinámicos
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) { // Solo elementos
+            applyCursor(node);
+            node.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Refuerzo adicional para eventos de clic
+    document.addEventListener('mousedown', (e) => {
+      if (e.target.matches('input, select, textarea, button, a')) {
+        e.target.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
+      }
+    });
+  </script>
 </body>
 </html>
