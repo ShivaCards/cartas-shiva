@@ -185,17 +185,17 @@
   height: 280px;
   position: relative;
   margin: 5px 0;
-  /* Sombra optimizada para bordes rectos: */
+  /* Sombra directa sin efectos secundarios: */
   box-shadow: 
     0 2px 4px rgba(0, 0, 0, 0.25),
     0 3px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Bordes completamente rectos: */
+  transition: transform 0.3s ease;
+  /* Bordes rectos y renderizado optimizado: */
   border-radius: 0;
-  overflow: hidden;
-  /* Solución definitiva para líneas blancas: */
-  outline: 1px solid transparent;
-  background-color: #000; /* Color base que coincide con tus cartas */
+  background: transparent;
+  /* Nueva solución para líneas negras: */
+  isolation: isolate;
+  contain: style layout paint;
 }
 
 .carta:hover {
@@ -212,9 +212,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* Asegura renderizado limpio: */
+  /* Elimina artefactos de renderizado: */
   image-rendering: crisp-edges;
-  background-color: inherit; /* Hereda el color del contenedor */
+  -webkit-backface-visibility: hidden;
 }
     @keyframes rebote {
       0% { transform: translateY(0) scaleY(1); }
