@@ -4,15 +4,30 @@
   <title>Cartas Shiva</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ===== CURSORES PERSONALIZADOS ===== */
-    body, a, button, input, textarea, h1 span { 
-      cursor: url('images/cursors/cursornormal1.cur'), auto !important; 
+    /* ===== CURSORES PERSONALIZADOS (VERSIÓN BRAVE) ===== */
+    body, 
+    a, 
+    button, 
+    input, 
+    input:hover, 
+    input:focus, 
+    input:active,
+    select, 
+    select:hover, 
+    select:focus,
+    select:active,
+    textarea,
+    h1 span, 
+    h1 span:hover {
+      cursor: url('images/cursors/cursornormal1.cur'), auto !important;
     }
-    .carta:hover { 
-      cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important; 
+    
+    .carta:hover {
+      cursor: url('images/cursors/cursorinteractivo.cur'), pointer !important;
     }
-    .carta:active { 
-      cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important; 
+    
+    .carta:active {
+      cursor: url('images/cursors/cursorinteractivo_cerrado.cur'), pointer !important;
     }
 
     /* ===== ESTILOS ORIGINALES ===== */
@@ -59,6 +74,19 @@
       text-shadow: 
         0 0 8px rgba(255, 215, 0, 0.6),
         0 0 12px rgba(255, 215, 0, 0.4);
+    }
+    h1 span.active {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    h1 span#shiva-a {
+      margin-left: -5px;
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 0.7em;
+      height: 1em;
+      line-height: 1;
+      top: 0.08em;
     }
     .ojo-transformado {
       position: absolute;
@@ -126,6 +154,7 @@
       background-color: rgba(255, 255, 255, 0.5);
       border: 2px solid #8B5A2B;
     }
+    /* ===== NUEVOS ESTILOS PARA TÍTULOS ===== */
     .seccion-titulo {
       font-size: 1.5em;
       color: black;
@@ -182,196 +211,11 @@
     .rebote {
       animation: rebote 1s cubic-bezier(0.37, 1.11, 0.7, 1.2);
     }
+    .separador-completo {
+      margin: 1px 0;
+    }
   </style>
-</head>
-<body>
-  <header>
-    <h1 id="titulo">
-      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
-      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a" onclick="transformarLetraA()">a</span>
-    </h1>
-    <p>"El destino del reino está en tus manos"</p>
-  </header>
-
-  <div class="contenedor-categorias">
-    <nav class="categorias">
-      <a href="#">Reglas del Juego</a>
-      <a href="#">Glosario</a>
-      <a href="#">Mitos y Leyendas</a>
-    </nav>
-  </div>
-  <div class="degradado-inferior"></div>
-
-  <div class="buscador">
-    <input type="text" id="search" placeholder="Buscar carta...">
-    <select id="filter">
-      <option value="tipo">Tipo</option>
-      <option value="nivel">Nivel</option>
-      <option value="atk">ATK</option>
-      <option value="grupo">Grupo</option>
-    </select>
-  </div>
-
-  <!-- ===== SECCIONES ===== -->
-  <!-- Secciones por Tipo (Militar, Magia, Bestia, Civil, Altar) -->
-  <div id="secciones-tipo">
-    <!-- Ejemplo: Sección Militar -->
-    <div class="seccion-tipo" id="seccion-militar">
-      <div class="seccion-titulo">
-        <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
-        Militar
-        <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
-      </div>
-      <div class="separador-completo">
-        <div class="linea-separadora"></div>
-        <div class="degradado-inferior"></div>
-      </div>
-      <div class="galeria"></div>
-    </div>
-    <!-- ... (Agrega las demás secciones de Tipo aquí) ... -->
-  </div>
-
-  <!-- Secciones por Nivel (1-6) -->
-  <div id="secciones-nivel" style="display: none;">
-    <div class="seccion-nivel" data-nivel="1" id="nivel-1">
-      <div class="seccion-titulo">Nivel 1</div>
-      <div class="separador-completo">
-        <div class="linea-separadora"></div>
-        <div class="degradado-inferior"></div>
-      </div>
-      <div class="galeria"></div>
-    </div>
-    <!-- ... (Niveles 2-6) ... -->
-  </div>
-
-  <!-- Sección ATK -->
-  <div id="seccion-atk" style="display: none;">
-    <div class="seccion-titulo">ATK</div>
-    <div class="separador-completo">
-      <div class="linea-separadora"></div>
-      <div class="degradado-inferior"></div>
-    </div>
-    <div class="galeria"></div>
-  </div>
-
-  <!-- Secciones por Grupo -->
-  <div id="secciones-grupo" style="display: none;">
-    <div class="seccion-grupo" data-grupo="valle-central" id="grupo-valle-central">
-      <div class="seccion-titulo">Reino del Valle Central</div>
-      <div class="separador-completo">
-        <div class="linea-separadora"></div>
-        <div class="degradado-inferior"></div>
-      </div>
-      <div class="galeria"></div>
-    </div>
-    <!-- ... (Agrega las demás secciones de Grupo aquí) ... -->
-  </div>
-
   <script>
-    // ===== DATOS DE CARTAS (vacío) =====
-    const cartas = [
-      // Ejemplo (completa con tus cartas):
-      // { 
-      //   id: 'huargo',
-      //   tipo: 'bestia',
-      //   grupo: 'montañas-norte',
-      //   nivel: 2,
-      //   atk: 1500,
-      //   imagen: 'images/huargo.png'
-      // }
-    ];
-
-    // ===== FUNCIONES DE ORDENAMIENTO =====
-    function ordenarPorNivel(cartas) {
-      return [...cartas].sort((a, b) => a.nivel - b.nivel);
-    }
-
-    function ordenarPorATK(cartas) {
-      return [...cartas].sort((a, b) => a.atk - b.atk);
-    }
-
-    // ===== MOSTRAR CARTAS EN SECCIÓN =====
-    function mostrarCartas(seccionSelector, cartasFiltradas, ordenarPor = 'nivel') {
-      const galeria = document.querySelector(`${seccionSelector} .galeria`);
-      if (!galeria) return;
-
-      galeria.innerHTML = '';
-      const cartasOrdenadas = ordenarPor === 'nivel' 
-        ? ordenarPorNivel(cartasFiltradas) 
-        : ordenarPorATK(cartasFiltradas);
-
-      cartasOrdenadas.forEach(carta => {
-        galeria.innerHTML += `
-          <div class="carta" data-id="${carta.id}">
-            <div class="cara" style="background-image: url('${carta.imagen}')"></div>
-          </div>
-        `;
-      });
-    }
-
-    // ===== ACTUALIZAR SECCIONES =====
-    function actualizarSecciones() {
-      const filtro = document.getElementById('filter').value;
-
-      // Secciones por Tipo
-      if (filtro === 'tipo') {
-        mostrarCartas('#seccion-militar', cartas.filter(c => c.tipo === 'militar'));
-        mostrarCartas('#seccion-magia', cartas.filter(c => c.tipo === 'magia'));
-        mostrarCartas('#seccion-bestia', cartas.filter(c => c.tipo === 'bestia'));
-        mostrarCartas('#seccion-civil', cartas.filter(c => c.tipo === 'civil'));
-        mostrarCartas('#seccion-altar', cartas.filter(c => c.tipo === 'altar'));
-      } 
-      // Secciones por Nivel
-      else if (filtro === 'nivel') {
-        for (let nivel = 1; nivel <= 6; nivel++) {
-          mostrarCartas(`#nivel-${nivel}`, cartas.filter(c => c.nivel === nivel));
-        }
-      } 
-      // Sección ATK
-      else if (filtro === 'atk') {
-        mostrarCartas('#seccion-atk', cartas.filter(c => c.atk !== undefined), 'atk');
-      } 
-      // Secciones por Grupo
-      else if (filtro === 'grupo') {
-        const grupos = [
-          'valle-central', 'montañas-norte', 'imperio-costa',
-          'bosque-perdidos', 'nomadas-desierto', 'selva-impenetrable',
-          'kongthar', 'enanos', 'criaturas-magicas', 'elfos',
-          'fuego', 'agua', 'hielo', 'viento', 'rayo', 'roca',
-          'oscuridad', 'deidades', 'siete-herederos'
-        ];
-        grupos.forEach(grupo => {
-          mostrarCartas(`#grupo-${grupo}`, cartas.filter(c => c.grupo === grupo));
-        });
-      }
-    }
-
-    // ===== EVENTO DEL FILTRO =====
-    document.getElementById('filter').addEventListener('change', function() {
-      const valor = this.value;
-      
-      // Ocultar todas las secciones
-      document.getElementById('secciones-tipo').style.display = 'none';
-      document.getElementById('secciones-nivel').style.display = 'none';
-      document.getElementById('seccion-atk').style.display = 'none';
-      document.getElementById('secciones-grupo').style.display = 'none';
-
-      // Mostrar la sección seleccionada
-      if (valor === 'tipo') {
-        document.getElementById('secciones-tipo').style.display = 'block';
-      } else if (valor === 'nivel') {
-        document.getElementById('secciones-nivel').style.display = 'block';
-      } else if (valor === 'atk') {
-        document.getElementById('seccion-atk').style.display = 'block';
-      } else if (valor === 'grupo') {
-        document.getElementById('secciones-grupo').style.display = 'block';
-      }
-
-      // Aplicar ordenamiento
-      actualizarSecciones();
-    });
-
-    // ===== FUNCIONES ORIGINALES =====
     function hacerRebotar() {
       let letraC = document.querySelector('h1 span.large');
       letraC.classList.add('rebote');
@@ -404,6 +248,134 @@
         }, 300);
       }, 10);
     }
+  </script>
+</head>
+<body>
+  <header>
+    <h1 id="titulo">
+      <span class="large" onclick="hacerRebotar()">C</span><span>a</span><span>r</span><span>t</span><span>a</span><span>s</span> 
+      <span class="large">S</span><span>h</span><span>i</span><span>v</span><span id="shiva-a" onclick="transformarLetraA()">a</span>
+    </h1>
+    <p>"El destino del reino está en tus manos"</p>
+  </header>
+
+  <div class="contenedor-categorias">
+    <nav class="categorias">
+      <a href="#">Reglas del Juego</a>
+      <a href="#">Glosario</a>
+      <a href="#">Mitos y Leyendas</a>
+    </nav>
+  </div>
+  <div class="degradado-inferior"></div>
+
+  <div class="buscador">
+    <input type="text" id="search" placeholder="Buscar carta...">
+    <select id="filter">
+      <option value="nivel">Nivel</option>
+      <option value="atk">ATK</option>
+      <option value="tipo">Tipo</option>
+      <option value="grupo">Grupo</option>
+    </select>
+  </div>
+
+  <!-- Sección Militar -->
+  <div class="seccion-titulo">
+    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+    Militar
+    <img src="images/icon_militar.png" class="seccion-icono" alt="Icono Militar">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/kethelcazador.png')"></div>
+    </div>
+  </div>
+
+  <!-- Sección Magia -->
+  <div class="seccion-titulo">
+    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+    Magia
+    <img src="images/icon_magia.png" class="seccion-icono" alt="Icono Magia">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <!-- Sección Bestia -->
+  <div class="seccion-titulo">
+    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+    Bestia
+    <img src="images/icon_bestia.png" class="seccion-icono" alt="Icono Bestia">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+    <div class="carta">
+      <div class="cara" style="background-image: url('images/huargo.png')"></div>
+    </div>
+  </div>
+
+  <!-- Sección Civil -->
+  <div class="seccion-titulo">
+    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+    Civil
+    <img src="images/icon_civil.png" class="seccion-icono" alt="Icono Civil">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <!-- Sección Altar -->
+  <div class="seccion-titulo">
+    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+    Altar
+    <img src="images/icon_altar.png" class="seccion-icono" alt="Icono Altar">
+  </div>
+  <div class="separador-completo">
+    <div class="linea-separadora"></div>
+    <div class="degradado-inferior"></div>
+  </div>
+  <div class="galeria">
+  </div>
+
+  <script>
+    const applyCursor = (element) => {
+      if (element.matches('input, select, textarea, button, a')) {
+        element.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
+      }
+    };
+
+    document.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            applyCursor(node);
+            node.querySelectorAll('input, select, textarea, button, a').forEach(applyCursor);
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    document.addEventListener('mousedown', (e) => {
+      if (e.target.matches('input, select, textarea, button, a')) {
+        e.target.style.cursor = 'url("images/cursors/cursornormal1.cur"), auto !important';
+      }
+    });
   </script>
 </body>
 </html>
