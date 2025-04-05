@@ -606,6 +606,10 @@ document.getElementById('search').addEventListener('input', function() {
   const secciones = document.querySelectorAll('.seccion-container');
   const galeriaDinamica = document.getElementById('galeria-dinamica-busqueda');
 
+  // Eliminar separadores anteriores si existen
+  const separadorAnterior = document.querySelector('#galeria-dinamica-busqueda ~ .separador-completo');
+  if (separadorAnterior) separadorAnterior.remove();
+
   if (searchTerm === '') {
     if (galeriaDinamica) galeriaDinamica.style.display = 'none';
     actualizarCartas();
@@ -621,13 +625,21 @@ document.getElementById('search').addEventListener('input', function() {
   }
 
   secciones.forEach(sec => sec.classList.remove('visible'));
-  document.getElementById('galeria-dinamica-busqueda').style.display = 'flex';
+  
+  // Mostrar galería dinámica con separador
+  const galeria = document.getElementById('galeria-dinamica-busqueda');
+  galeria.style.display = 'flex';
+  galeria.insertAdjacentHTML('beforebegin', `
+    <div class="separador-completo">
+      <div class="linea-separadora"></div>
+      <div class="degradado-inferior"></div>
+    </div>
+  `);
 
+  // Filtrar y mostrar cartas
   const cartasCoincidentes = cartas.filter(carta => 
     carta.nombre.toLowerCase().replace(/[´']/g, '').startsWith(searchTerm)
   );
-
-  const galeria = document.getElementById('galeria-dinamica-busqueda');
   galeria.innerHTML = '';
   
   if (cartasCoincidentes.length > 0) {
@@ -640,10 +652,9 @@ document.getElementById('search').addEventListener('input', function() {
       `;
     });
   } else {
-    galeria.innerHTML = '<p style="width:100%; color:#e0a800; text-align:center; font-family: \'Cinzel Decorative\', serif;">No se encontraron cartas</p>';
+    galeria.innerHTML = '<p style="width:100%; color:black; text-align:center; font-family: \'Cinzel Decorative\', serif; text-shadow: 0 0 3px #e0a800;">No se encontraron cartas</p>';
   }
 });
-
     // Evento para el filtro
     document.getElementById('filter').addEventListener('change', actualizarCartas);
 
